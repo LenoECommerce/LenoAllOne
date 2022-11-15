@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.3.32804.467
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Leno All In One", "EigenbelegToolAlpha\Leno All In One.csproj", "{7985C6EC-93B3-44E2-9D3D-93ADC22EFDAE}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{7985C6EC-93B3-44E2-9D3D-93ADC22EFDAE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7985C6EC-93B3-44E2-9D3D-93ADC22EFDAE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7985C6EC-93B3-44E2-9D3D-93ADC22EFDAE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7985C6EC-93B3-44E2-9D3D-93ADC22EFDAE}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {5E3D5C96-EBC9-4160-82F9-4E780D512044}
+	EndGlobalSection
+EndGlobal
