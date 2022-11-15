@@ -15,7 +15,7 @@ namespace EigenbelegToolAlpha
 {
     public partial class Settings : Form
     {
-        public static string currentUser = File.ReadAllText("user.txt");
+        public static string currentUser = File.ReadAllText(Environment.GetFolderPath(Environment.SpecialFolder.Desktop) + @"\user.txt");
         public string valueIntern = CRUDQueries.ExecuteQueryWithResult("Config", "Nummer", "Typ", "InterneNummer").ToString();
         public string valueEigenbelegNumber = CRUDQueries.ExecuteQueryWithResult("Config", "Nummer", "Typ", "Eigenbelegnummer").ToString();
         public string defaultStartingWindow = CRUDQueries.ExecuteQueryWithResultString("ConfigUser", "Standardfenster", "Nutzer", currentUser).ToString();

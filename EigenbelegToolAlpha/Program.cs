@@ -64,5 +64,17 @@ namespace EigenbelegToolAlpha
                 Application.Run(new Eigenbelege());
             }
         }
+
+        private static bool ExistsUserFile()
+        {
+            if (File.Exists(Environment.GetFolderPath(Environment.SpecialFolder.Desktop)+ @"\user.txt"))
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
     }
 }
