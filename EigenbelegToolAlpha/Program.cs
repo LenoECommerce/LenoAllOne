@@ -9,7 +9,7 @@ namespace EigenbelegToolAlpha
 {
     internal static class Program
     {
-        public static string currentUser = File.ReadAllText("user.txt");
+        //public static string currentUser = File.ReadAllText("user.txt");
         /// <summary>
         /// Der Haupteinstiegspunkt für die Anwendung.
         /// </summary>
