@@ -14,7 +14,7 @@
     <Deterministic>true</Deterministic>
     <TargetFrameworkProfile />
     <IsWebBootstrapper>true</IsWebBootstrapper>
-    <PublishUrl>C:\Users\lenna\Desktop\Leno All In One\published\</PublishUrl>
+    <PublishUrl>C:\Users\lenna\Desktop\LenoAllOne\published\</PublishUrl>
     <Install>true</Install>
     <InstallFrom>Web</InstallFrom>
     <UpdateEnabled>true</UpdateEnabled>
@@ -24,8 +24,8 @@
     <UpdatePeriodically>false</UpdatePeriodically>
     <UpdateRequired>false</UpdateRequired>
     <MapFileExtensions>true</MapFileExtensions>
-    <InstallUrl>https://raw.githubusercontent.com/LenoECommerce/LenoAllinOne/main/published/</InstallUrl>
-    <UpdateUrl>https://raw.githubusercontent.com/LenoECommerce/LenoAllinOne/main/published/</UpdateUrl>
+    <InstallUrl>https://raw.githubusercontent.com/LenoECommerce/LenoAllOne/main/published/</InstallUrl>
+    <UpdateUrl>https://raw.githubusercontent.com/LenoECommerce/LenoAllOne/main/published/</UpdateUrl>
     <CreateWebPageOnPublish>true</CreateWebPageOnPublish>
     <WebPage>publish.htm</WebPage>
     <ApplicationRevision>4</ApplicationRevision>
