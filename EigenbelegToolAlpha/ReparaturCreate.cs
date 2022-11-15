@@ -30,7 +30,7 @@ namespace EigenbelegToolAlpha
         {
             string tempInternalNumber = textBox_ReparaturenInternalNumber.Text;
             string tempDateBought = textBox_reparaturenDateBought.Text;
-            string tempDevice = comboBox_reparaturenCreateDevice.Text;
+            string tempDevice = "";
             string tempTransactionAmount = textBox_reparaturenTransactionAmount.Text;
             string tempMake = "";
             string tempStorage = comboBox__reparaturenStorage.Text;
@@ -48,17 +48,27 @@ namespace EigenbelegToolAlpha
             string tempColor = comboBox_ReparaturCreateColor.Text;
             string tempTaxes = comboBox_ReparaturCreateTaxes.Text;
             string tempCondition = comboBox_ReparaturCreateCondition.Text;
+            string fiveG = comboBox_FiveG.Text;
             if (comboBox_SamsungDevices.Text != "")
             {
-                tempMake = comboBox_SamsungDevices.Text;
+                tempDevice = comboBox_SamsungDevices.Text;
             }
             else if (comboBox_reparaturenCreateDevice.Text != "")
             {
-                tempMake = comboBox_reparaturenCreateDevice.Text;
+                tempDevice = comboBox_reparaturenCreateDevice.Text;
             }
 
-            string query = string.Format("INSERT INTO `Reparaturen`(`Intern`,`Kaufdatum`,`Geraet`,`Kaufbetrag`,`IMEI`,`Marke`,`Speicher`,`Defekt`,`ExterneKosten`,`Kommentar`,`Meldungen?`,`Getestet?`,`Reparaturstatus`,`Quelle`,`Risikostufe`,`LohntSich?`,`EBReferenz`,`Farbe`,`Besteuerung`,`Zustand`) VALUES ('{0}','{1}','{2}','{3}','{4}','{5}','{6}','{7}','{8}','{9}','{10}','{11}','{12}','{13}','{14}','{15}','{16}','{17}','{18}','{19}')"
-            , tempInternalNumber, tempDateBought, tempDevice, tempTransactionAmount, tempImei, tempMake, tempStorage, tempDefect, tempExternalCosts, tempComment, tempNotifications, tempTested, tempStatus, tempSource, tempRiskLevel, tempWorthIt, tempReferenceToEB, tempColor, tempTaxes, tempCondition);
+            if (comboBox_SamsungDevices.Text != "")
+            {
+                tempMake = "Samsung";
+            }
+            else if (comboBox_reparaturenCreateDevice.Text != "")
+            {
+                tempMake = "Apple";
+            }
+
+            string query = string.Format("INSERT INTO `Reparaturen`(`Intern`,`Kaufdatum`,`Geraet`,`Kaufbetrag`,`IMEI`,`Marke`,`Speicher`,`Defekt`,`ExterneKosten`,`Kommentar`,`Meldungen?`,`Getestet?`,`Reparaturstatus`,`Quelle`,`Risikostufe`,`LohntSich?`,`EBReferenz`,`Farbe`,`Besteuerung`,`Zustand`,`5G`) VALUES ('{0}','{1}','{2}','{3}','{4}','{5}','{6}','{7}','{8}','{9}','{10}','{11}','{12}','{13}','{14}','{15}','{16}','{17}','{18}','{19}','{20}')"
+            , tempInternalNumber, tempDateBought, tempDevice, tempTransactionAmount, tempImei, tempMake, tempStorage, tempDefect, tempExternalCosts, tempComment, tempNotifications, tempTested, tempStatus, tempSource, tempRiskLevel, tempWorthIt, tempReferenceToEB, tempColor, tempTaxes, tempCondition,fiveG);
 
             Reparaturen.ExecuteQuery(query);
             CRUDQueries.ExecuteQuery("UPDATE `Config` SET `Nummer` = '" + tempNumber + "' WHERE `Typ` = 'InterneNummer'");
@@ -83,6 +93,8 @@ namespace EigenbelegToolAlpha
             {
                 comboBox_reparaturenCreateDevice.Visible = false;
                 comboBox_SamsungDevices.Visible = true;
+                label7.Visible = true;
+                comboBox_FiveG.Visible = true;
             }
         }
 

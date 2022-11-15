@@ -73,6 +73,7 @@ namespace EigenbelegToolAlpha
             //Column verstecken
             reparaturenDGV.Columns[0].Visible = false;
             reparaturenDGV.Columns[22].Visible = false;
+            reparaturenDGV.Columns[23].Visible = false;
             //Sortierte Ansicht
             reparaturenDGV.Sort(reparaturenDGV.Columns[1], ListSortDirection.Descending);
             conn.Close();
@@ -231,7 +232,7 @@ namespace EigenbelegToolAlpha
                 riskLevel = reparaturenDGV.Rows[rowIndex].Cells[19].Value.ToString();
                 worthIt = reparaturenDGV.Rows[rowIndex].Cells[20].Value.ToString();
                 referenceToEB = reparaturenDGV.Rows[rowIndex].Cells[21].Value.ToString();
-                fiveG = reparaturenDGV.Rows[rowIndex].Cells[24].Value.ToString();
+                fiveG = reparaturenDGV.Rows[rowIndex].Cells[23].Value.ToString();
                 lastSelectedProductKey = (int)reparaturenDGV.Rows[rowIndex].Cells[0].Value;
                 using (var form = new ReparaturenEdit())
                 {
@@ -276,6 +277,7 @@ namespace EigenbelegToolAlpha
             worthIt = reparaturenDGV.SelectedRows[0].Cells[20].Value.ToString();
             referenceToEB = reparaturenDGV.SelectedRows[0].Cells[21].Value.ToString();
             donorMonth = reparaturenDGV.SelectedRows[0].Cells[22].Value.ToString();
+            fiveG = reparaturenDGV.SelectedRows[0].Cells[23].Value.ToString();
 
             lastSelectedProductKey = (int)reparaturenDGV.SelectedRows[0].Cells[0].Value;
 
@@ -430,7 +432,7 @@ namespace EigenbelegToolAlpha
 
                 //SKU Generator in andere Klasse auslagern!
                 SKUGeneration newObject = new SKUGeneration();
-                barcodeSKU = newObject.SKUGenerationMethod(make, device, color, condition, taxes, storage);
+                barcodeSKU = newObject.SKUGenerationMethod(make, device, color, condition, taxes, storage, fiveG);
 
                 string barcodeIMEICombo = internPrefix + internalNumber + "/" + imei;
                 

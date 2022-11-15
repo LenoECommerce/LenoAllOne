@@ -17,6 +17,7 @@ namespace EigenbelegToolAlpha
         public string condition = "";
         public string tax = "";
         public string storage = "";
+        public string fiveG = "";
 
         Dictionary<string, string> modelleDictionaryApple = new Dictionary<string, string>
         {
@@ -50,7 +51,7 @@ namespace EigenbelegToolAlpha
             { "S20 Ultra", "20.2" },
             { "S21", "21" },
             { "S21 Plus", "21.1" },
-            { "S2", "21.2" },
+            { "S21 Ultra", "21.2" },
         };
 
         Dictionary<string, string> conditionsDictionary = new Dictionary<string, string>
@@ -96,7 +97,7 @@ namespace EigenbelegToolAlpha
         };
 
 
-        public string SKUGenerationMethod(string valueMake, string valueModell, string valueColor, string valueCondition, string valueTax, string valueStorage)
+        public string SKUGenerationMethod(string valueMake, string valueModell, string valueColor, string valueCondition, string valueTax, string valueStorage, string valueFiveG)
         {
             try
             {
@@ -109,6 +110,10 @@ namespace EigenbelegToolAlpha
                 {
                     modell = modelleDictionarySamsung[valueModell];
                     category = "SAM/";
+                    if (valueFiveG == "Ja")
+                    {
+                        fiveG = "/5G/";
+                    }
                 }
                 color = colorsDictionary[valueColor];
                 storage = storageDictionary[valueStorage];
@@ -120,7 +125,7 @@ namespace EigenbelegToolAlpha
                 MessageBox.Show(ex.Message);
             }
 
-            finalText = category + modell + color + storage + condition + "/" + tax;
+            finalText = category + modell + fiveG + color + storage + condition + "/" + tax;
             return finalText;
         }
     }

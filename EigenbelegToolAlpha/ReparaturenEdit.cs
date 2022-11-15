@@ -43,6 +43,7 @@ namespace EigenbelegToolAlpha
             string color = comboBox_ReparaturEditColor.Text;
             string condition = comboBox_ReparaturEditCondition.Text;
             string taxes = comboBox_ReparaturEditTaxes.Text;
+            string fiveG = comboBox_FiveG.Text;
 
             if (comboBox_SamsungDevices.Text != "")
             {
@@ -73,8 +74,8 @@ namespace EigenbelegToolAlpha
             {
                 try
                 {
-                    string query = string.Format("UPDATE `Reparaturen` SET `Intern` = '{0}',`Kaufdatum` = '{1}', `Geraet` = '{2}', `Kaufbetrag` = '{3}', `IMEI` = '{4}', `Marke` = '{5}', `Speicher` = '{6}', `Defekt` = '{7}', `ExterneKosten` = '{8}', `Kommentar` = '{9}', `Meldungen?` = '{10}', `Getestet?` = '{11}', `Reparaturstatus` = '{12}', `Quelle` = '{13}', `Risikostufe` = '{14}', `LohntSich?` = '{15}', `EBReferenz` = '{16}' , `Hauptteile` = '{17}', `Farbe` = '{18}', `Besteuerung` = '{19}', `Zustand` = '{20}', `Spendermonat` = '{21}' WHERE `Id` = {22}"
-                , internalNumber, dateBought, device, transactionAmount, imei, make, storage, defect, externalCosts, comment, notifications, tested, state, source, riskLevel, worthIt, referenceToEB, maindefects, color, taxes, condition, donorMonth, Reparaturen.lastSelectedProductKey);
+                    string query = string.Format("UPDATE `Reparaturen` SET `Intern` = '{0}',`Kaufdatum` = '{1}', `Geraet` = '{2}', `Kaufbetrag` = '{3}', `IMEI` = '{4}', `Marke` = '{5}', `Speicher` = '{6}', `Defekt` = '{7}', `ExterneKosten` = '{8}', `Kommentar` = '{9}', `Meldungen?` = '{10}', `Getestet?` = '{11}', `Reparaturstatus` = '{12}', `Quelle` = '{13}', `Risikostufe` = '{14}', `LohntSich?` = '{15}', `EBReferenz` = '{16}' , `Hauptteile` = '{17}', `Farbe` = '{18}', `Besteuerung` = '{19}', `Zustand` = '{20}', `Spendermonat` = '{21}', `5G` = '{22}' WHERE `Id` = {23}"
+                , internalNumber, dateBought, device, transactionAmount, imei, make, storage, defect, externalCosts, comment, notifications, tested, state, source, riskLevel, worthIt, referenceToEB, maindefects, color, taxes, condition, donorMonth, fiveG, Reparaturen.lastSelectedProductKey);
                     Reparaturen.ExecuteQuery(query);
                 }
                 catch (Exception ex)
@@ -110,6 +111,7 @@ namespace EigenbelegToolAlpha
             comboBox_ReparaturEditTaxes.Text = Reparaturen.taxes;
             comboBox_ReparaturEditCondition.Text = Reparaturen.condition;
             lbl_donorMonth.Text = Reparaturen.donorMonth;
+            comboBox_FiveG.Text = Reparaturen.fiveG;
 
             string tempCheckDevice = Reparaturen.device;
             if (comboBox_reparaturenEditDevice.Items.Contains(tempCheckDevice))
@@ -249,6 +251,8 @@ namespace EigenbelegToolAlpha
             {
                 comboBox_reparaturenEditDevice.Visible = false;
                 comboBox_SamsungDevices.Visible = true;
+                label25.Visible = true;
+                comboBox_FiveG.Visible = true;
             }
         }
 
