@@ -19,6 +19,7 @@ namespace EigenbelegToolAlpha
         {
             try
             {
+                Console.WriteLine("This is a test.");
                 Application.EnableVisualStyles();
                 Application.SetCompatibleTextRenderingDefault(false);
                 Application.Run(new Eigenbelege());
