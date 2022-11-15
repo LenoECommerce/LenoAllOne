@@ -58,6 +58,7 @@
             this.auswertungenToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.btn_folderInstaCreate = new System.Windows.Forms.Button();
             this.btn_buybackPriceAdaptions = new System.Windows.Forms.Button();
+            this.lbl_LastPayPalImport = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.eigenbelegeDGV)).BeginInit();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
@@ -374,12 +375,25 @@
             this.btn_buybackPriceAdaptions.UseVisualStyleBackColor = false;
             this.btn_buybackPriceAdaptions.Click += new System.EventHandler(this.btn_buybackPriceAdaptions_Click);
             // 
+            // lbl_LastPayPalImport
+            // 
+            this.lbl_LastPayPalImport.AutoSize = true;
+            this.lbl_LastPayPalImport.BackColor = System.Drawing.Color.Transparent;
+            this.lbl_LastPayPalImport.Font = new System.Drawing.Font("Atlanta", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbl_LastPayPalImport.ForeColor = System.Drawing.Color.White;
+            this.lbl_LastPayPalImport.Location = new System.Drawing.Point(803, 769);
+            this.lbl_LastPayPalImport.Name = "lbl_LastPayPalImport";
+            this.lbl_LastPayPalImport.Size = new System.Drawing.Size(214, 28);
+            this.lbl_LastPayPalImport.TabIndex = 51;
+            this.lbl_LastPayPalImport.Text = "Letzter Datenimport:";
+            // 
             // Eigenbelege
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
             this.ClientSize = new System.Drawing.Size(1264, 814);
+            this.Controls.Add(this.lbl_LastPayPalImport);
             this.Controls.Add(this.btn_buybackPriceAdaptions);
             this.Controls.Add(this.btn_folderInstaCreate);
             this.Controls.Add(this.menuStrip1);
@@ -445,6 +459,7 @@
         private System.Windows.Forms.ToolStripMenuItem auswertungenToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem sucheToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem serviceToolStripMenuItem;
+        private System.Windows.Forms.Label lbl_LastPayPalImport;
     }
 }
 

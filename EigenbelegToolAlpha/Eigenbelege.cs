@@ -27,8 +27,6 @@ namespace EigenbelegToolAlpha
             InitializeComponent();
             ShowEigenbelege();
         }
-
-        //SQL Verbindung zu 
         public static MySqlConnection conn;
         public static string connString = "SERVER=sql11.freesqldatabase.com;PORT=3306;Initial Catalog='sql11525524';username=sql11525524;password=d3ByMHVgie";
 
@@ -56,81 +54,21 @@ namespace EigenbelegToolAlpha
 
         private void Hauptmenü_Load(object sender, EventArgs e)
         {
-
+            ShowEigenbelege();
+            string lastPayPalImport = CRUDQueries.ExecuteQueryWithResultString("Config", "Nummer", "Typ", "LastPayPalImport").ToString();
+            lbl_LastPayPalImport.Text = "Letzter Datenimport "+ lastPayPalImport;
         }
 
         private void dataImport()
         {
-            Microsoft.Office.Interop.Excel.Application xlApp;
-            Microsoft.Office.Interop.Excel.Workbook xlWorkbook;
-            Microsoft.Office.Interop.Excel.Worksheet xlWorksheet;
-            Microsoft.Office.Interop.Excel.Range xlRange;
-
-            int xlrow;
-            int newNumber;
-            string strFileName;
-            //Excel Datei aussuchen
             openFD.ShowDialog();
-            strFileName = openFD.FileName;
-
-            if (destPath != "")
-            {
-                xlApp = new Microsoft.Office.Interop.Excel.Application();
-                xlWorkbook = xlApp.Workbooks.Open(strFileName);
-                xlWorksheet = xlWorkbook.Worksheets["Worksheet"];
-                xlRange = xlWorksheet.UsedRange;
-
-                //row 2 weil erst da die daten anfange
-                for (xlrow = 2; xlrow <= xlRange.Rows.Count; xlrow++)
-                {
-                    newNumber = Convert.ToInt32(File.ReadAllText("config4.txt")) + 1;
-                    File.WriteAllText("config4.txt",newNumber.ToString());
-                    string tempDate = xlRange.Cells[xlrow, 1].Text;
-                    string tempSeller = xlRange.Cells[xlrow, 4].Text;
-                    string tempAmount = xlRange.Cells[xlrow, 8].Text;
-                    //- Zeichen entfernen, später für storno eigenbelege!
-                    int adaptAmount = Convert.ToInt32(tempAmount) * (-1);
-                    tempAmount = adaptAmount.ToString() + "€";
-                    string tempMail = xlRange.Cells[xlrow, 12].Text;
-                    string tempPlatform = "";
-
-                    string tempFullTransactionText = xlRange.Cells[xlrow, 17].Text;
-                    var length = tempFullTransactionText.Length;
-                    var posTrenn = tempFullTransactionText.IndexOf("trenn");
-                    var posTrenn2 = tempFullTransactionText.IndexOf("trenn2");
-                    var posTrenn3 = tempFullTransactionText.IndexOf("trenn3");
-                    var posDoublePoint = tempFullTransactionText.IndexOf(":");
-
-                    string tempReference = tempFullTransactionText.Substring(0, posTrenn-1);
-                    // Abfrage welche Plattform
-                    if (tempFullTransactionText.Contains("Ebay Kleinanzeigen"))
-                    {
-                        tempPlatform = "Ebay Kleinanzeigen";
-                    }
-                    else if (tempFullTransactionText.Contains("Ebay"))
-                    {
-                        tempPlatform = "Ebay";
-                    }
-                    else if (tempFullTransactionText.Contains("BackMarket"))
-                    {
-                        tempPlatform = "BackMarket";
-                    }
-                    string tempDevice = tempFullTransactionText.Substring(posDoublePoint + 2, posTrenn2 - posDoublePoint - 3);
-                    string tempStorage = tempFullTransactionText.Substring(posTrenn2 + 7, posTrenn3 - posTrenn2 - 8);
-
-                    //in Datenbank einfügen
-
-                    string query = string.Format("INSERT INTO `Eigenbelege` (`Eigenbelegnummer`, `Verkaeufername`,`Referenz`,`Modell`,`Kaufdatum`,`Kaufbetrag`,`E-Mail`,`Plattform`,`Zahlungsmethode`,`Adresse`,`Erstellt?`,`Angekommen?`,`Transaktionstext`,`Speicher`) VALUES ('{0}','{1}','{2}','{3}','{4}','{5}','{6}','{7}','{8}','{9}','{10}','{11}','{12}','{13}')"
-                        , newNumber, tempSeller, tempReference, tempDevice, tempDate, tempAmount, tempMail, tempPlatform, "PayPal", "", "Nein", "Nein", tempFullTransactionText, tempStorage);
-                    ExecuteQuery(query);
-
-                }
- 
-                xlWorkbook.Close();
-                xlApp.Quit();
-            }
+            string strFileName = openFD.FileName;
+            EigenbelegePayPalImport algorithm = new EigenbelegePayPalImport();
+            algorithm.MainAlgorithm(strFileName);
             ShowEigenbelege();
-
+            string newLastDataImport = DateTime.Now.ToString();
+            CRUDQueries.ExecuteQuery("UPDATE `Config` SET `Nummer` = '"+newLastDataImport+ "' WHERE `Typ` = 'LastPayPalImport'");
+            lbl_LastPayPalImport.Text = "Letzer Datenimport: "+newLastDataImport;
         }
 
 

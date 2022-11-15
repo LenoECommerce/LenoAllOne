@@ -28,7 +28,7 @@
     <UpdateUrl>https://raw.githubusercontent.com/LenoECommerce/LenoAllOne/main/published/</UpdateUrl>
     <CreateWebPageOnPublish>true</CreateWebPageOnPublish>
     <WebPage>publish.htm</WebPage>
-    <ApplicationRevision>6</ApplicationRevision>
+    <ApplicationRevision>7</ApplicationRevision>
     <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
     <CreateDesktopShortcut>true</CreateDesktopShortcut>
@@ -213,6 +213,7 @@
     <Compile Include="EigenbelegEdit.Designer.cs">
       <DependentUpon>EigenbelegEdit.cs</DependentUpon>
     </Compile>
+    <Compile Include="EigenbelegePayPalImport.cs" />
     <Compile Include="EigenbelegFilter.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -357,6 +358,12 @@
     <Compile Include="Service.Designer.cs">
       <DependentUpon>Service.cs</DependentUpon>
     </Compile>
+    <Compile Include="ServicePayPalMessageConfigurator.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ServicePayPalMessageConfigurator.Designer.cs">
+      <DependentUpon>ServicePayPalMessageConfigurator.cs</DependentUpon>
+    </Compile>
     <Compile Include="Settings.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -467,6 +474,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Service.resx">
       <DependentUpon>Service.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ServicePayPalMessageConfigurator.resx">
+      <DependentUpon>ServicePayPalMessageConfigurator.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Settings.resx">
       <DependentUpon>Settings.cs</DependentUpon>

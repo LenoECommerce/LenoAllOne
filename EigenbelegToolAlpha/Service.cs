@@ -40,5 +40,39 @@ namespace EigenbelegToolAlpha
             string message = BuildMessage("ich wollte gerade das Gerät bearbeiten.\r\nLeider ist es jedoch noch mit der iCloud verbunden und somit noch nicht nutzbar. Bitte wie folgt aus dem Konto entfernen: 1. Auf dem Smartphone auf iCloud.com gehen.  2. Auf „iPhone Suche“ klicken.  3. Das Gerät auswählen.  4. Auf „Aus dem Account entfernen“ klicken (Bitte nicht mit Gerät \"löschen\" verwechseln).\r\nVielen Dank.");
             Clipboard.SetText(message);
         }
+
+        private void btn_PayPalMessageConfigurator_Click(object sender, EventArgs e)
+        {
+            ServicePayPalMessageConfigurator window = new ServicePayPalMessageConfigurator();
+            window.Show();
+        }
+
+        private void serviceToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Eigenbelege window = new Eigenbelege();
+            window.Show();
+            this.Hide();
+        }
+
+        private void eigenbelegeToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Reparaturen window = new Reparaturen();
+            window.Show();
+            this.Hide();
+        }
+
+        private void protokollierungToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Protokollierung window = new Protokollierung();
+            window.Show();
+            this.Hide();
+        }
+
+        private void proofingToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Proofing window = new Proofing();
+            window.Show();
+            this.Hide();
+        }
     }
 }
