@@ -17,16 +17,9 @@ namespace EigenbelegToolAlpha
         
         static void Main()
         {
-            try
-            {
-                Application.EnableVisualStyles();
-                Application.SetCompatibleTextRenderingDefault(false);
-                Application.Run(new Eigenbelege());
-            }
-            catch (Exception e)
-            {
-                MessageBox.Show(e.Message);
-            }
+            Application.EnableVisualStyles();
+            Application.SetCompatibleTextRenderingDefault(false);
+
             CRUDQueries window = new CRUDQueries();
             window.Backup();
             StartMenu window2 = new StartMenu();
