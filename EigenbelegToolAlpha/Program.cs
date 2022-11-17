@@ -21,7 +21,6 @@ namespace EigenbelegToolAlpha
             Application.SetCompatibleTextRenderingDefault(false);
 
             CRUDQueries window = new CRUDQueries();
-            window.Backup();
             StartMenu window2 = new StartMenu();
             if (window2.CheckUser() == false)
             {
@@ -33,7 +32,7 @@ namespace EigenbelegToolAlpha
                 string preferedWindow = CRUDQueries.ExecuteQueryWithResultString("ConfigUser", "Standardfenster", "Nutzer", currentUser).ToString();
                 RunWindow(preferedWindow);
             }
-
+            window.Backup();
         }
         private static void RunWindow (string window)
         {
