@@ -141,7 +141,7 @@ namespace EigenbelegToolAlpha
         private static UserCredential GetCredentials()
         {
             UserCredential credential;
-            string path = Environment.GetFolderPath(Environment.SpecialFolder.Desktop) + @"\Resources\credentials.json";
+            string path = Environment.GetFolderPath(Environment.SpecialFolder.Desktop) + @"\credentials.json";
             using (var stream = new FileStream(path, FileMode.Open, FileAccess.Read))
             {
                 // The file token.json stores the user's access and refresh tokens, and is created
