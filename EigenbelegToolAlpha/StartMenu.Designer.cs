@@ -49,7 +49,8 @@
             this.comboBox_UserSelection.FormattingEnabled = true;
             this.comboBox_UserSelection.Items.AddRange(new object[] {
             "NoahMainPC",
-            "LennartMainPC"});
+            "LennartMainPC",
+            "LennartLagerLaptop"});
             this.comboBox_UserSelection.Location = new System.Drawing.Point(225, 136);
             this.comboBox_UserSelection.Name = "comboBox_UserSelection";
             this.comboBox_UserSelection.Size = new System.Drawing.Size(121, 21);
