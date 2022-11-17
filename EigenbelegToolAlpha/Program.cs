@@ -25,14 +25,15 @@ namespace EigenbelegToolAlpha
             if (window2.CheckUser() == false)
             {
                 Application.Run(new StartMenu());
+                window.Backup();
             }
             else
             {
                 currentUser = ReturnCurrentUser();
                 string preferedWindow = CRUDQueries.ExecuteQueryWithResultString("ConfigUser", "Standardfenster", "Nutzer", currentUser).ToString();
                 RunWindow(preferedWindow);
+                window.Backup();
             }
-            window.Backup();
         }
         private static void RunWindow (string window)
         {
