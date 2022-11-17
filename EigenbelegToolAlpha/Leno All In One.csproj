@@ -543,9 +543,9 @@
     </BootstrapperPackage>
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\credentials.json">
+    <Resource Include="Resources\credentials.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
+    </Resource>
     <None Include="Resources\evaluations.webp" />
     <None Include="Resources\Unterschrift.png" />
   </ItemGroup>
