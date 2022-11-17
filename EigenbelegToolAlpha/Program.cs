@@ -9,7 +9,7 @@ namespace EigenbelegToolAlpha
 {
     internal static class Program
     {
-        //public static string currentUser = File.ReadAllText("user.txt");
+        public static string currentUser = "";
         /// <summary>
         /// Der Haupteinstiegspunkt für die Anwendung.
         /// </summary>
@@ -27,18 +27,19 @@ namespace EigenbelegToolAlpha
             {
                 MessageBox.Show(e.Message);
             }
-            //CRUDQueries window = new CRUDQueries();
-            //window.Backup();
-            //StartMenu window2 = new StartMenu();
-            //if (window2.CheckUser() == false)
-            //{
-            //    Application.Run(new StartMenu());
-            //}
-            //else
-            //{
-            //    string preferedWindow = CRUDQueries.ExecuteQueryWithResultString("ConfigUser", "Standardfenster", "Nutzer", currentUser).ToString();
-            //    RunWindow(preferedWindow);
-            //}
+            CRUDQueries window = new CRUDQueries();
+            window.Backup();
+            StartMenu window2 = new StartMenu();
+            if (window2.CheckUser() == false)
+            {
+                Application.Run(new StartMenu());
+            }
+            else
+            {
+                currentUser = ReturnCurrentUser();
+                string preferedWindow = CRUDQueries.ExecuteQueryWithResultString("ConfigUser", "Standardfenster", "Nutzer", currentUser).ToString();
+                RunWindow(preferedWindow);
+            }
 
         }
         private static void RunWindow (string window)
@@ -67,7 +68,7 @@ namespace EigenbelegToolAlpha
 
         private static bool ExistsUserFile()
         {
-            if (File.Exists(Environment.GetFolderPath(Environment.SpecialFolder.Desktop)+ @"\user.txt"))
+            if (File.Exists(Environment.CurrentDirectory + @"\user.txt"))
             {
                 return true;
             }
@@ -75,6 +76,20 @@ namespace EigenbelegToolAlpha
             {
                 return false;
             }
+        }
+
+        private static string ReturnCurrentUser()
+        {
+            string returnValue = "";
+            try
+            {
+                returnValue = File.ReadAllText(Environment.CurrentDirectory + @"\user.txt");
+            }
+            catch (Exception e)
+            {
+                MessageBox.Show(e.Message);
+            }
+            return returnValue;
         }
     }
 }

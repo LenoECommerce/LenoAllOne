@@ -32,8 +32,9 @@ namespace EigenbelegToolAlpha
                 {
                     string tempSeller = xlRange.Cells[xlrow, 4].Text;
                     var doesSellerExist = CRUDQueries.ExecuteQueryWithResult("Eigenbelege", "Id", "Verkaeufername", tempSeller);
-                    
-                    if (doesSellerExist == 0)
+                    string transactionText = xlRange.Cells[xlrow, 17].Text;
+                    string tempSenderMail = xlRange.Cells[xlrow, 11].Text;
+                    if (doesSellerExist == 0 && transactionText.Contains("Ebay") && tempSenderMail == "dange.businessebay@gmail.com")
                     {
                         string tempDate = xlRange.Cells[xlrow, 1].Text;
                         string tempAmount = Convert.ToInt32(xlRange.Cells[xlrow, 8].Text) * (-1) + "€";

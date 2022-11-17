@@ -14,6 +14,7 @@ namespace EigenbelegToolAlpha
 {
     public partial class StartMenu : Form
     {
+        public string basePath = Environment.CurrentDirectory + @"\user.txt";
         public StartMenu()
         {
             InitializeComponent();
@@ -26,7 +27,7 @@ namespace EigenbelegToolAlpha
 
         public bool CheckUser()
         {
-            if (File.Exists("user.txt") == true)
+            if (FileExists() == true)
             {
                 return true;
             }
@@ -38,10 +39,26 @@ namespace EigenbelegToolAlpha
 
         private void comboBox_UserSelection_SelectedIndexChanged(object sender, EventArgs e)
         {
-            File.WriteAllText("user.txt",comboBox_UserSelection.Text);
+            if (FileExists() == true)
+            {
+                File.Create(basePath);
+            }
+            File.WriteAllText(basePath, comboBox_UserSelection.Text);
             this.Hide();
             Reparaturen window = new Reparaturen();
             window.Show();
+        }
+
+        private bool FileExists ()
+        {
+            if (File.Exists(basePath) == true)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
         }
     }
 }
