@@ -83,7 +83,6 @@
             this.comboBox_FiveG = new System.Windows.Forms.ComboBox();
             this.label25 = new System.Windows.Forms.Label();
             this.SuspendLayout();
-            this.comboBox_FiveG.Visible = false;
             // 
             // label1
             // 
@@ -648,6 +647,8 @@
             // 
             this.comboBox_SamsungDevices.FormattingEnabled = true;
             this.comboBox_SamsungDevices.Items.AddRange(new object[] {
+            "S10",
+            "S10 Plus",
             "S20",
             "S20 Plus",
             "S20 Ultra",
@@ -669,6 +670,7 @@
             this.comboBox_FiveG.Name = "comboBox_FiveG";
             this.comboBox_FiveG.Size = new System.Drawing.Size(256, 21);
             this.comboBox_FiveG.TabIndex = 99;
+            this.comboBox_FiveG.Visible = false;
             // 
             // label25
             // 

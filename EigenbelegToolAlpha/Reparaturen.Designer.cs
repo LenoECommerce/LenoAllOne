@@ -244,14 +244,14 @@
             // hauptetikettToolStripMenuItem
             // 
             this.hauptetikettToolStripMenuItem.Name = "hauptetikettToolStripMenuItem";
-            this.hauptetikettToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.hauptetikettToolStripMenuItem.Size = new System.Drawing.Size(155, 22);
             this.hauptetikettToolStripMenuItem.Text = "Hauptetikett";
             this.hauptetikettToolStripMenuItem.Click += new System.EventHandler(this.hauptetikettToolStripMenuItem_Click);
             // 
             // xHauptetikettToolStripMenuItem
             // 
             this.xHauptetikettToolStripMenuItem.Name = "xHauptetikettToolStripMenuItem";
-            this.xHauptetikettToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.xHauptetikettToolStripMenuItem.Size = new System.Drawing.Size(155, 22);
             this.xHauptetikettToolStripMenuItem.Text = "2x Hauptetikett";
             this.xHauptetikettToolStripMenuItem.Click += new System.EventHandler(this.xHauptetikettToolStripMenuItem_Click);
             // 
@@ -370,6 +370,7 @@
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MainMenuStrip = this.menuStrip1;
+            this.MaximizeBox = false;
             this.Name = "Reparaturen";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Reparaturen";

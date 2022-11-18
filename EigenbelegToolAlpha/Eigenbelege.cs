@@ -56,7 +56,9 @@ namespace EigenbelegToolAlpha
         {
             ShowEigenbelege();
             string lastPayPalImport = CRUDQueries.ExecuteQueryWithResultString("Config", "Nummer", "Typ", "LastPayPalImport").ToString();
-            lbl_LastPayPalImport.Text = "Letzter Datenimport "+ lastPayPalImport;
+            lbl_LastPayPalImport.Text = "Letzter PayPal-Import: " + lastPayPalImport;
+            string lastBuyBackSync = CRUDQueries.ExecuteQueryWithResultString("Config", "Nummer", "Typ", "LastBuyBackSync").ToString();
+            lbl_LastBuyBackSync.Text = "Letzter BuyBackSync: " + lastBuyBackSync;
         }
 
         private void dataImport()
@@ -410,28 +412,29 @@ namespace EigenbelegToolAlpha
                 return;
             }
 
-
-            //Abfrage ob PayPal Datenimport; Übernahme des Defekts 
-            if (transactionText.Contains("defekt"))
+            //Übernahme des Defekts in REP Eintrag
+            try
             {
                 var posTrenn3 = transactionText.IndexOf("trenn3");
                 var posAnsonsten = transactionText.IndexOf("ansonsten");
-
-                defect = transactionText.Substring(posTrenn3 + 6, posAnsonsten - posTrenn3 - 7);
+                defect = transactionText.Substring(posTrenn3 + 7, posAnsonsten - posTrenn3 - 8);
             }
-
-
+            catch (Exception)
+            {
+            
+            }
 
             int intern = CRUDQueries.ExecuteQueryWithResult("Config", "Nummer", "Typ", "InterneNummer") + 1; ;
             CRUDQueries.ExecuteQuery("UPDATE `Config` SET `Nummer` = '" + intern + "' WHERE `Typ` = 'InterneNummer'");
-
-
             string query = string.Format("INSERT INTO `Reparaturen`(`Intern`,`Kaufdatum`,`Geraet`,`Kaufbetrag`,`Speicher`,`Defekt`,`Reparaturstatus`,`Quelle`,`EBReferenz`) VALUES ('{0}','{1}','{2}','{3}','{4}','{5}','{6}','{7}','{8}')"
             , intern.ToString(), dateBought, model, transactionAmount, storage, defect, "Entgegengenommen" ,platform, eigenbelegNumber);
-            
             ExecuteQuery(query);
             MessageBox.Show("Die Reparatur wurde erfolgreich erfasst.");
-            ShowEigenbelege();
+            //Jump to REP directly
+            Reparaturen reparaturen = new Reparaturen();
+            reparaturen.Show();
+            this.Hide();
+            reparaturen.SelectReparaturFromEigenbelege(eigenbelegNumber);
         }
 
         private void button5_Click_1(object sender, EventArgs e)
@@ -536,58 +539,70 @@ namespace EigenbelegToolAlpha
             Microsoft.Office.Interop.Excel.Workbook xlWorkbook;
             Microsoft.Office.Interop.Excel.Worksheet xlWorksheet;
             Microsoft.Office.Interop.Excel.Range xlRange;
-
-            if (strFileName != "")
+            try
             {
-                xlApp = new Microsoft.Office.Interop.Excel.Application();
-                xlWorkbook = xlApp.Workbooks.Open(strFileName);
-                xlWorksheet = xlWorkbook.Worksheets["Worksheet"];
-                xlRange = xlWorksheet.UsedRange;
-
-                for (xlrow = 2; xlrow <= xlRange.Rows.Count; xlrow++)
+                if (strFileName != "")
                 {
-                    if (xlRange.Cells[xlrow, 5].Text == "ADYEN NV")
+                    xlApp = new Microsoft.Office.Interop.Excel.Application();
+                    xlWorkbook = xlApp.Workbooks.Open(strFileName);
+                    xlWorksheet = xlWorkbook.Worksheets["Worksheet"];
+                    xlRange = xlWorksheet.UsedRange;
+
+                    for (xlrow = 1; xlrow <= xlRange.Rows.Count; xlrow++)
                     {
-                        //Filterung 
-                        string tempAmount = xlRange.Cells[xlrow, 9].Text;
-                        string newTransactionAmount = tempAmount.Substring(1,tempAmount.Length-1);
-
-                        string fullTransactionstext = xlRange.Cells[xlrow, 8].Text;
-                        var fullLength = fullTransactionstext.Length;
-                        var posMarket = fullTransactionstext.IndexOf("Market");
-                        string temp = fullTransactionstext.Substring(posMarket + 7, fullLength - posMarket - 7);
-                        var posLastSpace = temp.IndexOf(" ");
-
-                        string orderID = temp.Substring(0,posLastSpace);
-                        foreach (DataGridViewRow row in eigenbelegeDGV.Rows)
+                        if (xlRange.Cells[xlrow, 5].Text == "ADYEN NV")
                         {
-                            if (row.Cells[3].Value.Equals(orderID))
+                            //Filterung 
+                            string tempAmount = xlRange.Cells[xlrow, 9].Text;
+                            string newTransactionAmount = tempAmount.Substring(1, tempAmount.Length - 1);
+                            //Decoding transaction text
+                            string fullTransactionstext = xlRange.Cells[xlrow, 8].Text;
+                            var fullLength = fullTransactionstext.Length;
+                            var posMarket = fullTransactionstext.IndexOf("Market");
+                            string temp = fullTransactionstext.Substring(posMarket + 7, fullLength - posMarket - 7);
+                            var posLastSpace = temp.IndexOf(" ");
+                            //Find matching entry with help of orderID
+                            string orderID = temp.Substring(0, posLastSpace);
+                            var posMatchingEntry = CRUDQueries.ExecuteQueryWithResult("Eigenbelege","Id","Referenz",orderID);
+                            //Compare amount values
+                            string tempNumber = CRUDQueries.ExecuteQueryWithResultString("Eigenbelege", "Eigenbelegnummer", "Id", posMatchingEntry.ToString());
+                            string tempCalcOldAmount = CheckEuroSign(CRUDQueries.ExecuteQueryWithResultString("Eigenbelege", "Kaufbetrag", "Id", posMatchingEntry.ToString()));
+                            double calcOldAmount = Convert.ToDouble(tempCalcOldAmount);
+                            double calcNewAmount = Convert.ToDouble(newTransactionAmount);
+                            double difference = calcOldAmount - calcNewAmount;
+                            if (difference != 0)
                             {
-                                string tempNumber = row.Cells[1].Value.ToString();
-                                double calcOldAmount = Convert.ToDouble(row.Cells[6].Value.ToString());
-                                double calcNewAmount = Convert.ToDouble(newTransactionAmount);
-                                double difference = calcOldAmount - calcNewAmount;
-                                if (difference != 0)
-                                {
-                                    CRUDQueries.ExecuteQuery("UPDATE `Eigenbelege` SET `Kaufbetrag` = '" + newTransactionAmount + "' WHERE `Referenz` = '"+orderID+"'");
-                                    CRUDQueries.ExecuteQuery("UPDATE `Reparaturen` SET `Kaufbetrag` = '" + newTransactionAmount + "' WHERE `EBReferenz` = '" + tempNumber + "'");
-                                    countValueChanges++;
-                                }
+                                CRUDQueries.ExecuteQuery("UPDATE `Eigenbelege` SET `Kaufbetrag` = '" + newTransactionAmount + "' WHERE `Referenz` = '" + orderID + "'");
+                                CRUDQueries.ExecuteQuery("UPDATE `Reparaturen` SET `Kaufbetrag` = '" + newTransactionAmount + "' WHERE `EBReferenz` = '" + tempNumber + "'");
+                                countValueChanges++;
                             }
                         }
                     }
-
                     string tempDate = xlRange.Cells[xlrow, 4].Text;
+                    xlWorkbook.Close();
+                    xlApp.Quit();
+                    string newLastDataImport = DateTime.Now.ToString();
+                    CRUDQueries.ExecuteQuery("UPDATE `Config` SET `Nummer` = '" + newLastDataImport + "' WHERE `Typ` = 'LastBuyBackSync'");
+                    lbl_LastBuyBackSync.Text = "Letzer Datenimport: " + newLastDataImport;
                 }
-
-
-                xlWorkbook.Close();
-                xlApp.Quit();
             }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Fehler: "+ ex.Message);
+            }
+            
             MessageBox.Show("Es wurden "+countValueChanges+" Werte angepasst.");
             ShowEigenbelege();
         }
-
+        private string CheckEuroSign(string checkValue)
+        {
+            if (checkValue.Contains("€"))
+            {
+                var length = checkValue.Length;
+                checkValue = checkValue.Substring(0, length-1);
+            }
+            return checkValue;
+        }
         private void filterToolStripMenuItem_Click(object sender, EventArgs e)
         {
             using (var form = new EigenbelegFilter())

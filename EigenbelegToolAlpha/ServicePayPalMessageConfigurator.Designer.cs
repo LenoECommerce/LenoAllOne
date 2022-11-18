@@ -150,6 +150,8 @@
             "iPhone 13",
             "iPhone 13 Pro",
             "iPhone 13 Pro Max",
+            "S10",
+            "S10 Plus",
             "S20",
             "S20 Plus",
             "S20 Ultra",

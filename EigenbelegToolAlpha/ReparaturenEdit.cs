@@ -122,7 +122,27 @@ namespace EigenbelegToolAlpha
             {
                 comboBox_SamsungDevices.Text = tempCheckDevice;
             }
+            // preselect make with help of the model value
+            if (comboBox_reparaturenMake.Text == "")
+            {
+                string returnValue = "";
+                try
+                {
+                    returnValue = SKUGeneration.modelleDictionaryApple[Reparaturen.device];
+                }
+                catch (Exception ex)
+                {
 
+                }
+                if (returnValue != "")
+                {
+                    comboBox_reparaturenMake.Text = "Apple";
+                }
+                else
+                {
+                    comboBox_reparaturenMake.Text = "Samsung";
+                }
+            }
             //check if device value is given and modify the visibility
             if (comboBox_SamsungDevices.Text != "")
             {
@@ -132,15 +152,11 @@ namespace EigenbelegToolAlpha
             {
                 comboBox_reparaturenEditDevice.Visible = true;
             }
-
-
             //Externe Kosten Feld nicht leer lassen, da sonst Fehlermeldung bei Kosten hinzufügen.
             if (textBox_reparaturenExternalCosts.Text.Equals(""))
             {
                 textBox_reparaturenExternalCosts.Text = "0€";
             }
-
-
             //Umständlich gebaut aber ja
             if (Reparaturen.maindefects.Contains("Display"))
             {

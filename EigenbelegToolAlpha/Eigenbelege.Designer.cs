@@ -59,6 +59,7 @@
             this.btn_folderInstaCreate = new System.Windows.Forms.Button();
             this.btn_buybackPriceAdaptions = new System.Windows.Forms.Button();
             this.lbl_LastPayPalImport = new System.Windows.Forms.Label();
+            this.lbl_LastBuyBackSync = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.eigenbelegeDGV)).BeginInit();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
@@ -381,18 +382,31 @@
             this.lbl_LastPayPalImport.BackColor = System.Drawing.Color.Transparent;
             this.lbl_LastPayPalImport.Font = new System.Drawing.Font("Atlanta", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbl_LastPayPalImport.ForeColor = System.Drawing.Color.White;
-            this.lbl_LastPayPalImport.Location = new System.Drawing.Point(803, 769);
+            this.lbl_LastPayPalImport.Location = new System.Drawing.Point(803, 761);
             this.lbl_LastPayPalImport.Name = "lbl_LastPayPalImport";
-            this.lbl_LastPayPalImport.Size = new System.Drawing.Size(214, 28);
+            this.lbl_LastPayPalImport.Size = new System.Drawing.Size(232, 28);
             this.lbl_LastPayPalImport.TabIndex = 51;
-            this.lbl_LastPayPalImport.Text = "Letzter Datenimport:";
+            this.lbl_LastPayPalImport.Text = "Letzter PayPal-Import:";
+            // 
+            // lbl_LastBuyBackSync
+            // 
+            this.lbl_LastBuyBackSync.AutoSize = true;
+            this.lbl_LastBuyBackSync.BackColor = System.Drawing.Color.Transparent;
+            this.lbl_LastBuyBackSync.Font = new System.Drawing.Font("Atlanta", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbl_LastBuyBackSync.ForeColor = System.Drawing.Color.White;
+            this.lbl_LastBuyBackSync.Location = new System.Drawing.Point(803, 799);
+            this.lbl_LastBuyBackSync.Name = "lbl_LastBuyBackSync";
+            this.lbl_LastBuyBackSync.Size = new System.Drawing.Size(225, 28);
+            this.lbl_LastBuyBackSync.TabIndex = 52;
+            this.lbl_LastBuyBackSync.Text = "Letzter BuyBackSync:";
             // 
             // Eigenbelege
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
-            this.ClientSize = new System.Drawing.Size(1264, 814);
+            this.ClientSize = new System.Drawing.Size(1264, 836);
+            this.Controls.Add(this.lbl_LastBuyBackSync);
             this.Controls.Add(this.lbl_LastPayPalImport);
             this.Controls.Add(this.btn_buybackPriceAdaptions);
             this.Controls.Add(this.btn_folderInstaCreate);
@@ -460,6 +474,7 @@
         private System.Windows.Forms.ToolStripMenuItem sucheToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem serviceToolStripMenuItem;
         private System.Windows.Forms.Label lbl_LastPayPalImport;
+        private System.Windows.Forms.Label lbl_LastBuyBackSync;
     }
 }
 

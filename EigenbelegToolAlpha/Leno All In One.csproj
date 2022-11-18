@@ -7,7 +7,7 @@
     <ProjectGuid>{7985C6EC-93B3-44E2-9D3D-93ADC22EFDAE}</ProjectGuid>
     <OutputType>WinExe</OutputType>
     <RootNamespace>EigenbelegToolAlpha</RootNamespace>
-    <AssemblyName>EigenbelegToolAlpha</AssemblyName>
+    <AssemblyName>Leno All In One</AssemblyName>
     <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>

@@ -19,7 +19,7 @@ namespace EigenbelegToolAlpha
         public string storage = "";
         public string fiveG = "";
 
-        Dictionary<string, string> modelleDictionaryApple = new Dictionary<string, string>
+        public static Dictionary<string, string> modelleDictionaryApple = new Dictionary<string, string>
         {
             { "iPhone 6S", "6" },
             { "iPhone 6S Plus", "6.1" },
@@ -44,8 +44,10 @@ namespace EigenbelegToolAlpha
             { "iPhone 13 Pro", "13.1" },
             { "iPhone 13 Pro Max", "13.2" },
         };
-        Dictionary<string, string> modelleDictionarySamsung = new Dictionary<string, string>
+        public static Dictionary<string, string> modelleDictionarySamsung = new Dictionary<string, string>
         {
+            { "S10", "10" },
+            { "S10 Plus", "10.1" },
             { "S20", "20" },
             { "S20 Plus", "20.1" },
             { "S20 Ultra", "20.2" },
