@@ -100,6 +100,7 @@
             this.comboBox_eigenbelegPlatform.FormattingEnabled = true;
             this.comboBox_eigenbelegPlatform.Items.AddRange(new object[] {
             "Ebay Kleinanzeigen",
+            "Ebay Kleinanzeigen Ankaufanzeige",
             "Ebay",
             "BackMarket",
             "Extern"});

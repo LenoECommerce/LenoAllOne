@@ -55,6 +55,7 @@
             this.folderBD = new System.Windows.Forms.FolderBrowserDialog();
             this.btn_CreateExcel = new System.Windows.Forms.Button();
             this.btn_certificateSyncing = new System.Windows.Forms.Button();
+            this.serviceToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.proofingDGV)).BeginInit();
             this.SuspendLayout();
@@ -77,7 +78,8 @@
             this.fensterwechselToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.eigenbelegeToolStripMenuItem,
             this.protokollierungToolStripMenuItem,
-            this.protokollierungToolStripMenuItem1});
+            this.protokollierungToolStripMenuItem1,
+            this.serviceToolStripMenuItem});
             this.fensterwechselToolStripMenuItem.Image = global::EigenbelegToolAlpha.Properties.Resources.windowsvg;
             this.fensterwechselToolStripMenuItem.Name = "fensterwechselToolStripMenuItem";
             this.fensterwechselToolStripMenuItem.Size = new System.Drawing.Size(115, 20);
@@ -324,6 +326,13 @@
             this.btn_certificateSyncing.UseVisualStyleBackColor = false;
             this.btn_certificateSyncing.Click += new System.EventHandler(this.btn_certificateSyncing_Click);
             // 
+            // serviceToolStripMenuItem
+            // 
+            this.serviceToolStripMenuItem.Name = "serviceToolStripMenuItem";
+            this.serviceToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.serviceToolStripMenuItem.Text = "Service";
+            this.serviceToolStripMenuItem.Click += new System.EventHandler(this.serviceToolStripMenuItem_Click);
+            // 
             // Proofing
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -392,5 +401,6 @@
         private System.Windows.Forms.Button btn_certificateSyncing;
         private System.Windows.Forms.ToolStripMenuItem auswertungenToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem sucheToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem serviceToolStripMenuItem;
     }
 }

@@ -642,5 +642,12 @@ namespace EigenbelegToolAlpha
                 }
             }
         }
+
+        private void serviceToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Service window = new Service();
+            window.Show();
+            this.Hide();
+        }
     }
 }

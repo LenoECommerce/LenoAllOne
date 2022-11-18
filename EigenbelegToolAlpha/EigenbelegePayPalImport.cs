@@ -25,19 +25,34 @@ namespace EigenbelegToolAlpha
             {
                 xlApp = new Microsoft.Office.Interop.Excel.Application();
                 xlWorkbook = xlApp.Workbooks.Open(chosenFile);
-                xlWorksheet = xlWorkbook.Worksheets["Download"];
+                xlWorksheet = xlWorkbook.Worksheets["Worksheet"];
                 xlRange = xlWorksheet.UsedRange;
 
-                for (xlrow = 1; xlrow <= xlRange.Rows.Count; xlrow++)
+                for (xlrow = 2; xlrow <= xlRange.Rows.Count; xlrow++)
                 {
                     string tempSeller = xlRange.Cells[xlrow, 4].Text;
                     var doesSellerExist = CRUDQueries.ExecuteQueryWithResult("Eigenbelege", "Id", "Verkaeufername", tempSeller);
                     string transactionText = xlRange.Cells[xlrow, 17].Text;
                     string tempSenderMail = xlRange.Cells[xlrow, 11].Text;
-                    if (doesSellerExist == 0 && transactionText.Contains("Ebay") && tempSenderMail == "dange.businessebay@gmail.com")
+                    if (transactionText.Contains("Ebay") && tempSenderMail == "dange.businessebay@gmail.com" && !tempSeller.Contains("@"))
                     {
+                        if (doesSellerExist == 0)
+                        {
+
+                        }
+                        else
+                        {
+                            double tempValue = Convert.ToDouble(xlRange.Cells[xlrow, 8].Text) * (-1);
+                            string referToAmount = tempValue.ToString();
+                            string compareAmount = CheckEuroSign(CRUDQueries.ExecuteQueryWithResultString("Eigenbelege", "Kaufbetrag", "Id", doesSellerExist.ToString()));
+                            if (referToAmount == compareAmount)
+                            {
+                                break;
+                            }
+                        }
                         string tempDate = xlRange.Cells[xlrow, 1].Text;
-                        string tempAmount = Convert.ToInt32(xlRange.Cells[xlrow, 8].Text) * (-1) + "€";
+                        double tempAmountAdpation = Convert.ToDouble(xlRange.Cells[xlrow, 8].Text) * (-1);
+                        string tempAmount = tempAmountAdpation.ToString() + "€";
                         string tempFullTransactionText = xlRange.Cells[xlrow, 17].Text;
                         string tempMail = xlRange.Cells[xlrow, 12].Text;
                         string tempPlatform = CheckPlatform(tempFullTransactionText);
@@ -63,6 +78,15 @@ namespace EigenbelegToolAlpha
             }
         }
 
+        public string CheckEuroSign(string checkValue)
+        {
+            if (checkValue.Contains("€"))
+            {
+                var length = checkValue.Length;
+                checkValue = checkValue.Substring(0,length-1);
+            }
+            return checkValue;
+        }
         public string CheckPlatform (string checkValue)
         {
             string platform = "";
@@ -77,6 +101,10 @@ namespace EigenbelegToolAlpha
             else if (checkValue.Contains("BackMarket"))
             {
                 platform = "BackMarket";
+            }
+            else if (checkValue.Contains("Ankaufanzeige"))
+            {
+                platform = "Ebay Kleinanzeigen Ankaufanzeige";
             }
             return platform;
         }

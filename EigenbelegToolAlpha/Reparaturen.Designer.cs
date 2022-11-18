@@ -55,6 +55,7 @@
             this.btn_WorkWithSpecificReparatur = new System.Windows.Forms.Button();
             this.button3 = new System.Windows.Forms.Button();
             this.openFD = new System.Windows.Forms.OpenFileDialog();
+            this.serviceToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             ((System.ComponentModel.ISupportInitialize)(this.reparaturenDGV)).BeginInit();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
@@ -202,7 +203,8 @@
             this.fensterwechselToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.eigenbelegeToolStripMenuItem,
             this.protokollierungToolStripMenuItem,
-            this.proofingToolStripMenuItem});
+            this.proofingToolStripMenuItem,
+            this.serviceToolStripMenuItem});
             this.fensterwechselToolStripMenuItem.Image = global::EigenbelegToolAlpha.Properties.Resources.windowsvg;
             this.fensterwechselToolStripMenuItem.Name = "fensterwechselToolStripMenuItem";
             this.fensterwechselToolStripMenuItem.Size = new System.Drawing.Size(115, 20);
@@ -211,21 +213,21 @@
             // eigenbelegeToolStripMenuItem
             // 
             this.eigenbelegeToolStripMenuItem.Name = "eigenbelegeToolStripMenuItem";
-            this.eigenbelegeToolStripMenuItem.Size = new System.Drawing.Size(156, 22);
+            this.eigenbelegeToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.eigenbelegeToolStripMenuItem.Text = "Eigenbelege";
             this.eigenbelegeToolStripMenuItem.Click += new System.EventHandler(this.eigenbelegeToolStripMenuItem_Click);
             // 
             // protokollierungToolStripMenuItem
             // 
             this.protokollierungToolStripMenuItem.Name = "protokollierungToolStripMenuItem";
-            this.protokollierungToolStripMenuItem.Size = new System.Drawing.Size(156, 22);
+            this.protokollierungToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.protokollierungToolStripMenuItem.Text = "Protokollierung";
             this.protokollierungToolStripMenuItem.Click += new System.EventHandler(this.protokollierungToolStripMenuItem_Click);
             // 
             // proofingToolStripMenuItem
             // 
             this.proofingToolStripMenuItem.Name = "proofingToolStripMenuItem";
-            this.proofingToolStripMenuItem.Size = new System.Drawing.Size(156, 22);
+            this.proofingToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.proofingToolStripMenuItem.Text = "Proofing";
             this.proofingToolStripMenuItem.Click += new System.EventHandler(this.proofingToolStripMenuItem_Click);
             // 
@@ -346,6 +348,13 @@
             // 
             this.openFD.FileName = "openFileDialog1";
             // 
+            // serviceToolStripMenuItem
+            // 
+            this.serviceToolStripMenuItem.Name = "serviceToolStripMenuItem";
+            this.serviceToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.serviceToolStripMenuItem.Text = "Service";
+            this.serviceToolStripMenuItem.Click += new System.EventHandler(this.serviceToolStripMenuItem_Click);
+            // 
             // Reparaturen
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -410,5 +419,6 @@
         private System.Windows.Forms.ToolStripMenuItem proofingToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem auswertungenToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem sucheToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem serviceToolStripMenuItem;
     }
 }
