@@ -681,5 +681,12 @@ namespace EigenbelegToolAlpha
             window.Show();
             this.Hide();
         }
+
+        private void b2CAnkaufToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            ServiceB2CAnkauf_ProActive window = new ServiceB2CAnkauf_ProActive();
+            window.Show();
+            this.Close();
+        }
     }
 }

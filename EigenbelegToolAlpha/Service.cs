@@ -15,7 +15,7 @@ namespace EigenbelegToolAlpha
     public partial class Service : Form
     {
         public string preFix = "";
-        public string user = ReturnSuffix();
+        public static string user = ReturnSuffix();
         public Service()
         {
             InitializeComponent();
@@ -94,6 +94,12 @@ namespace EigenbelegToolAlpha
         private void Btn_Trustpilot_Click(object sender, EventArgs e)
         {
             BuildMessage("ich melde mich nochmal wegen der netten & problemlosen Abwicklung mit Ihnen.\r\nWir würden uns sehr freuen, wenn Sie unserem Ebay Kleinanzeigen Account folgen und uns in Zukunft kontaktieren, wenn Sie aus dem Bekanntenkreis oder von Freunden von einem (teil)defekten iPhone mitbekommen. Für jegliche Angebote sind wir jederzeit verfügbar.\r\n\r\nWir bieten seit neusten übrigens auch hochqualitative Reparaturen für Apple und Samsung Geräte an. Hier finden Sie unsere Website: [https://leno-repair.de/](https://leno-repair.de/)\r\n\r\nWenn Sie mit der Abwicklung ebenso zufrieden waren, würden wir uns sehr über eine Trustpilot Bewertung freuen:\r\n[https://www.trustpilot.com/review/leno-ecommerce.de](https://www.trustpilot.com/review/leno-ecommerce.de)\r\nEs dauert keine 2 Minuten und Sie würden uns damit sehr unterstützen!");
+        }
+
+        private void Btn_B2CAnkauf_Click(object sender, EventArgs e)
+        {
+            ServiceB2CAnkauf_Selection window = new ServiceB2CAnkauf_Selection();
+            window.Show();
         }
     }
 }

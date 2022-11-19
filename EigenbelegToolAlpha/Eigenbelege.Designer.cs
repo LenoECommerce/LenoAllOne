@@ -60,6 +60,7 @@
             this.btn_buybackPriceAdaptions = new System.Windows.Forms.Button();
             this.lbl_LastPayPalImport = new System.Windows.Forms.Label();
             this.lbl_LastBuyBackSync = new System.Windows.Forms.Label();
+            this.b2CAnkaufToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             ((System.ComponentModel.ISupportInitialize)(this.eigenbelegeDGV)).BeginInit();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
@@ -279,7 +280,8 @@
             this.fensterwechselToolStripMenuItem,
             this.sucheToolStripMenuItem,
             this.filterToolStripMenuItem,
-            this.auswertungenToolStripMenuItem});
+            this.auswertungenToolStripMenuItem,
+            this.b2CAnkaufToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.Size = new System.Drawing.Size(1264, 24);
@@ -400,6 +402,13 @@
             this.lbl_LastBuyBackSync.TabIndex = 52;
             this.lbl_LastBuyBackSync.Text = "Letzter BuyBackSync:";
             // 
+            // b2CAnkaufToolStripMenuItem
+            // 
+            this.b2CAnkaufToolStripMenuItem.Name = "b2CAnkaufToolStripMenuItem";
+            this.b2CAnkaufToolStripMenuItem.Size = new System.Drawing.Size(81, 20);
+            this.b2CAnkaufToolStripMenuItem.Text = "B2C Ankauf";
+            this.b2CAnkaufToolStripMenuItem.Click += new System.EventHandler(this.b2CAnkaufToolStripMenuItem_Click);
+            // 
             // Eigenbelege
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -475,6 +484,7 @@
         private System.Windows.Forms.ToolStripMenuItem serviceToolStripMenuItem;
         private System.Windows.Forms.Label lbl_LastPayPalImport;
         private System.Windows.Forms.Label lbl_LastBuyBackSync;
+        private System.Windows.Forms.ToolStripMenuItem b2CAnkaufToolStripMenuItem;
     }
 }
 

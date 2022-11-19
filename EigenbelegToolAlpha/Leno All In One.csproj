@@ -358,6 +358,48 @@
     <Compile Include="Service.Designer.cs">
       <DependentUpon>Service.cs</DependentUpon>
     </Compile>
+    <Compile Include="ServiceB2CAnkauf_ProActive.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ServiceB2CAnkauf_ProActive.Designer.cs">
+      <DependentUpon>ServiceB2CAnkauf_ProActive.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ServiceB2CAnkauf_ProActive_FirstRequest.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ServiceB2CAnkauf_ProActive_FirstRequest.Designer.cs">
+      <DependentUpon>ServiceB2CAnkauf_ProActive_FirstRequest.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ServiceB2CAnkauf_ProActive_ReachBack.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ServiceB2CAnkauf_ProActive_ReachBack.Designer.cs">
+      <DependentUpon>ServiceB2CAnkauf_ProActive_ReachBack.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ServiceB2CAnkauf_ProActive_ReachBack_FirstFeedback.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ServiceB2CAnkauf_ProActive_ReachBack_FirstFeedback.Designer.cs">
+      <DependentUpon>ServiceB2CAnkauf_ProActive_ReachBack_FirstFeedback.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ServiceB2CAnkauf_ProActive_ReachBack_FirstFeedbackMissingInformation.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ServiceB2CAnkauf_ProActive_ReachBack_FirstFeedbackMissingInformation.Designer.cs">
+      <DependentUpon>ServiceB2CAnkauf_ProActive_ReachBack_FirstFeedbackMissingInformation.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ServiceB2CAnkauf_Request.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ServiceB2CAnkauf_Request.Designer.cs">
+      <DependentUpon>ServiceB2CAnkauf_Request.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ServiceB2CAnkauf_Selection.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ServiceB2CAnkauf_Selection.Designer.cs">
+      <DependentUpon>ServiceB2CAnkauf_Selection.cs</DependentUpon>
+    </Compile>
     <Compile Include="ServicePayPalMessageConfigurator.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -475,6 +517,27 @@
     <EmbeddedResource Include="Service.resx">
       <DependentUpon>Service.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="ServiceB2CAnkauf_ProActive.resx">
+      <DependentUpon>ServiceB2CAnkauf_ProActive.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ServiceB2CAnkauf_ProActive_FirstRequest.resx">
+      <DependentUpon>ServiceB2CAnkauf_ProActive_FirstRequest.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ServiceB2CAnkauf_ProActive_ReachBack.resx">
+      <DependentUpon>ServiceB2CAnkauf_ProActive_ReachBack.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ServiceB2CAnkauf_ProActive_ReachBack_FirstFeedback.resx">
+      <DependentUpon>ServiceB2CAnkauf_ProActive_ReachBack_FirstFeedback.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ServiceB2CAnkauf_ProActive_ReachBack_FirstFeedbackMissingInformation.resx">
+      <DependentUpon>ServiceB2CAnkauf_ProActive_ReachBack_FirstFeedbackMissingInformation.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ServiceB2CAnkauf_Request.resx">
+      <DependentUpon>ServiceB2CAnkauf_Request.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ServiceB2CAnkauf_Selection.resx">
+      <DependentUpon>ServiceB2CAnkauf_Selection.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="ServicePayPalMessageConfigurator.resx">
       <DependentUpon>ServicePayPalMessageConfigurator.cs</DependentUpon>
     </EmbeddedResource>
@@ -551,6 +614,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="leno-favicon.ico" />
+    <None Include="Resources\back.png" />
     <None Include="Resources\Leno E-commerce _flat_MT_05 %282%29 - Kopie.jpg" />
     <None Include="Resources\evaluations.png" />
     <None Include="Resources\windowsvg.png" />

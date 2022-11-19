@@ -122,28 +122,28 @@
             // serviceToolStripMenuItem
             // 
             this.serviceToolStripMenuItem.Name = "serviceToolStripMenuItem";
-            this.serviceToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.serviceToolStripMenuItem.Size = new System.Drawing.Size(156, 22);
             this.serviceToolStripMenuItem.Text = "Eigenbelege";
             this.serviceToolStripMenuItem.Click += new System.EventHandler(this.serviceToolStripMenuItem_Click);
             // 
             // eigenbelegeToolStripMenuItem
             // 
             this.eigenbelegeToolStripMenuItem.Name = "eigenbelegeToolStripMenuItem";
-            this.eigenbelegeToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.eigenbelegeToolStripMenuItem.Size = new System.Drawing.Size(156, 22);
             this.eigenbelegeToolStripMenuItem.Text = "Reparaturen";
             this.eigenbelegeToolStripMenuItem.Click += new System.EventHandler(this.eigenbelegeToolStripMenuItem_Click);
             // 
             // protokollierungToolStripMenuItem
             // 
             this.protokollierungToolStripMenuItem.Name = "protokollierungToolStripMenuItem";
-            this.protokollierungToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.protokollierungToolStripMenuItem.Size = new System.Drawing.Size(156, 22);
             this.protokollierungToolStripMenuItem.Text = "Protokollierung";
             this.protokollierungToolStripMenuItem.Click += new System.EventHandler(this.protokollierungToolStripMenuItem_Click);
             // 
             // proofingToolStripMenuItem
             // 
             this.proofingToolStripMenuItem.Name = "proofingToolStripMenuItem";
-            this.proofingToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.proofingToolStripMenuItem.Size = new System.Drawing.Size(156, 22);
             this.proofingToolStripMenuItem.Text = "Proofing";
             this.proofingToolStripMenuItem.Click += new System.EventHandler(this.proofingToolStripMenuItem_Click);
             // 
@@ -163,6 +163,7 @@
             this.Btn_B2CAnkauf.TabIndex = 50;
             this.Btn_B2CAnkauf.Text = "B2C Ankauf";
             this.Btn_B2CAnkauf.UseVisualStyleBackColor = true;
+            this.Btn_B2CAnkauf.Click += new System.EventHandler(this.Btn_B2CAnkauf_Click);
             // 
             // Btn_CustomerSupport
             // 
