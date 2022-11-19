@@ -7,7 +7,7 @@
     <ProjectGuid>{7985C6EC-93B3-44E2-9D3D-93ADC22EFDAE}</ProjectGuid>
     <OutputType>WinExe</OutputType>
     <RootNamespace>EigenbelegToolAlpha</RootNamespace>
-    <AssemblyName>Leno All In One</AssemblyName>
+    <AssemblyName>EigenbelegToolAlpha</AssemblyName>
     <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
@@ -28,7 +28,7 @@
     <UpdateUrl>https://raw.githubusercontent.com/LenoECommerce/LenoAllOne/main/published/</UpdateUrl>
     <CreateWebPageOnPublish>true</CreateWebPageOnPublish>
     <WebPage>publish.htm</WebPage>
-    <ApplicationRevision>19</ApplicationRevision>
+    <ApplicationRevision>21</ApplicationRevision>
     <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
     <CreateDesktopShortcut>true</CreateDesktopShortcut>
