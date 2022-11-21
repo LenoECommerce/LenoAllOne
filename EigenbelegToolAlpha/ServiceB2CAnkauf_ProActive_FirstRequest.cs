@@ -155,5 +155,27 @@ namespace EigenbelegToolAlpha
                 listBox_Samsung.Visible = true;
             }
         }
+
+        private void ServiceB2CAnkauf_ProActive_FirstRequest_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void Btn_Feedback_Click(object sender, EventArgs e)
+        {
+            ServiceB2CAnkauf_ProActive_ReachBack_FirstFeedback window = new ServiceB2CAnkauf_ProActive_ReachBack_FirstFeedback();
+            window.Show();
+            this.Close();
+        }
+
+        private void Btn_NotInterested_Click(object sender, EventArgs e)
+        {
+            BuildMessage("vielen Dank für die Nachricht und vor allem in Ihr Vertrauen in unser Unternehmen.\r\n\r\nLeider haben wir für den von Ihnen beschriebenen Artikel kein Interesse.\r\n\r\nBei weiteren Rückfragen melden Sie sich gerne, wir bieten neben dem Ankauf Service auch Reparaturen an. Es würde es uns freuen, wenn Sie unserem Ebay Kleinanzeigen Account folgen und uns in Zukunft kontaktieren, wenn Sie aus dem Bekanntenkreis oder von Freunden von einem (teil)defekten iPhone mitbekommen.\r\n\r\nIch freue mich über weitere Rückmeldungen.");
+        }
+
+        private void Btn_Offer_Click(object sender, EventArgs e)
+        {
+            BuildMessage("vielen Dank für die Nachricht und vor allem in Ihr Vertrauen in unser Unternehmen.\r\n\r\nGerne mache ich Ihnen ein Angebot. Da es sich wahrscheinlich um einen Platinenfehler handelt, würde ich "+requestAmount+ "€ + Versandabwicklung vorschlagen. Platinenfehler sind nämlich sehr zeitintensiv. Notfalls kann es auch sein, dass das Gerät als Ersatzteilspender verwendet wird.\r\n\r\nEs gäbe allerdings auch noch eine weitere Möglichkeit, dass Sie das Gerät kostenfrei einsenden und wir es uns dann ansehen und je nachdem mehr anzahlen würden, wenn es ein einfacher Fehler wäre. Dazu würden Sie natürlich ein offiziell rechtliches Dokument erhalten.\r\n\r\nFreue mich über Ihre Rückmeldung.");
+        }
     }
 }

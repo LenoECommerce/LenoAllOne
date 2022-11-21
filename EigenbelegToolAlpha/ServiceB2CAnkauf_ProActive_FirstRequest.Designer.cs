@@ -49,6 +49,10 @@
             this.Btn_AppleRisikokauf = new System.Windows.Forms.Button();
             this.Btn_AppleFaceID = new System.Windows.Forms.Button();
             this.label7 = new System.Windows.Forms.Label();
+            this.label8 = new System.Windows.Forms.Label();
+            this.Btn_NotInterested = new System.Windows.Forms.Button();
+            this.Btn_Offer = new System.Windows.Forms.Button();
+            this.Btn_Feedback = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // Btn_GetBack
@@ -185,6 +189,7 @@
             this.label5.Size = new System.Drawing.Size(66, 20);
             this.label5.TabIndex = 11;
             this.label5.Text = "Fragen";
+
             // 
             // listBox_Apple
             // 
@@ -217,7 +222,7 @@
             // 
             this.Btn_AppleAngebot.Location = new System.Drawing.Point(62, 350);
             this.Btn_AppleAngebot.Name = "Btn_AppleAngebot";
-            this.Btn_AppleAngebot.Size = new System.Drawing.Size(105, 33);
+            this.Btn_AppleAngebot.Size = new System.Drawing.Size(126, 33);
             this.Btn_AppleAngebot.TabIndex = 14;
             this.Btn_AppleAngebot.Text = "Angebot";
             this.Btn_AppleAngebot.UseVisualStyleBackColor = true;
@@ -236,7 +241,7 @@
             // 
             // Btn_AppleDisplay
             // 
-            this.Btn_AppleDisplay.Location = new System.Drawing.Point(187, 350);
+            this.Btn_AppleDisplay.Location = new System.Drawing.Point(227, 350);
             this.Btn_AppleDisplay.Name = "Btn_AppleDisplay";
             this.Btn_AppleDisplay.Size = new System.Drawing.Size(126, 33);
             this.Btn_AppleDisplay.TabIndex = 16;
@@ -246,7 +251,7 @@
             // 
             // Btn_AppleRisikokauf
             // 
-            this.Btn_AppleRisikokauf.Location = new System.Drawing.Point(331, 350);
+            this.Btn_AppleRisikokauf.Location = new System.Drawing.Point(62, 389);
             this.Btn_AppleRisikokauf.Name = "Btn_AppleRisikokauf";
             this.Btn_AppleRisikokauf.Size = new System.Drawing.Size(126, 33);
             this.Btn_AppleRisikokauf.TabIndex = 17;
@@ -256,7 +261,7 @@
             // 
             // Btn_AppleFaceID
             // 
-            this.Btn_AppleFaceID.Location = new System.Drawing.Point(473, 350);
+            this.Btn_AppleFaceID.Location = new System.Drawing.Point(227, 389);
             this.Btn_AppleFaceID.Name = "Btn_AppleFaceID";
             this.Btn_AppleFaceID.Size = new System.Drawing.Size(126, 33);
             this.Btn_AppleFaceID.TabIndex = 18;
@@ -275,12 +280,57 @@
             this.label7.Text = "_________________________________________________________________________________" +
     "_______________________________________";
             // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label8.ForeColor = System.Drawing.SystemColors.ButtonFace;
+            this.label8.Location = new System.Drawing.Point(426, 309);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(135, 20);
+            this.label8.TabIndex = 20;
+            this.label8.Text = "Ankauf Anfrage";
+            // 
+            // Btn_NotInterested
+            // 
+            this.Btn_NotInterested.Location = new System.Drawing.Point(430, 350);
+            this.Btn_NotInterested.Name = "Btn_NotInterested";
+            this.Btn_NotInterested.Size = new System.Drawing.Size(126, 33);
+            this.Btn_NotInterested.TabIndex = 21;
+            this.Btn_NotInterested.Text = "Kein Interesse";
+            this.Btn_NotInterested.UseVisualStyleBackColor = true;
+            this.Btn_NotInterested.Click += new System.EventHandler(this.Btn_NotInterested_Click);
+            // 
+            // Btn_Offer
+            // 
+            this.Btn_Offer.Location = new System.Drawing.Point(589, 350);
+            this.Btn_Offer.Name = "Btn_Offer";
+            this.Btn_Offer.Size = new System.Drawing.Size(126, 33);
+            this.Btn_Offer.TabIndex = 22;
+            this.Btn_Offer.Text = "Angebot";
+            this.Btn_Offer.UseVisualStyleBackColor = true;
+            this.Btn_Offer.Click += new System.EventHandler(this.Btn_Offer_Click);
+            // 
+            // Btn_Feedback
+            // 
+            this.Btn_Feedback.Location = new System.Drawing.Point(430, 389);
+            this.Btn_Feedback.Name = "Btn_Feedback";
+            this.Btn_Feedback.Size = new System.Drawing.Size(126, 33);
+            this.Btn_Feedback.TabIndex = 23;
+            this.Btn_Feedback.Text = "Rückmeldung";
+            this.Btn_Feedback.UseVisualStyleBackColor = true;
+            this.Btn_Feedback.Click += new System.EventHandler(this.Btn_Feedback_Click);
+            // 
             // ServiceB2CAnkauf_ProActive_FirstRequest
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.ClientSize = new System.Drawing.Size(792, 444);
+            this.Controls.Add(this.Btn_Feedback);
+            this.Controls.Add(this.Btn_Offer);
+            this.Controls.Add(this.Btn_NotInterested);
+            this.Controls.Add(this.label8);
             this.Controls.Add(this.label7);
             this.Controls.Add(this.Btn_AppleFaceID);
             this.Controls.Add(this.Btn_AppleRisikokauf);
@@ -307,6 +357,7 @@
             this.Name = "ServiceB2CAnkauf_ProActive_FirstRequest";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Erste Anfrage konfigurieren";
+            this.Load += new System.EventHandler(this.ServiceB2CAnkauf_ProActive_FirstRequest_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -334,5 +385,9 @@
         private System.Windows.Forms.Button Btn_AppleRisikokauf;
         private System.Windows.Forms.Button Btn_AppleFaceID;
         private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.Label label8;
+        private System.Windows.Forms.Button Btn_NotInterested;
+        private System.Windows.Forms.Button Btn_Offer;
+        private System.Windows.Forms.Button Btn_Feedback;
     }
 }

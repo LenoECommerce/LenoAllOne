@@ -42,5 +42,12 @@ namespace EigenbelegToolAlpha
             window.Show();
             this.Close();
         }
+
+        private void Btn_CommonQuestions_Click(object sender, EventArgs e)
+        {
+            ServiceB2CAnkauf_Questions window = new ServiceB2CAnkauf_Questions();
+            window.Show();
+            this.Close();
+        }
     }
 }

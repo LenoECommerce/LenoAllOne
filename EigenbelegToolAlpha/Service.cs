@@ -101,5 +101,10 @@ namespace EigenbelegToolAlpha
             ServiceB2CAnkauf_Selection window = new ServiceB2CAnkauf_Selection();
             window.Show();
         }
+
+        private void Btn_EbayPurchaseMessage_Click(object sender, EventArgs e)
+        {
+            BuildMessage("könnten Sie bitte die Bestellnummer auf die Außenseiten des Pakets schreiben, damit es bei Ankunft besser zuordnen. \r\nDas würde mich sehr freuen.\r\nDankeschön!");
+        }
     }
 }

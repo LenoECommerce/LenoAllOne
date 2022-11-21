@@ -28,7 +28,7 @@
     <UpdateUrl>https://raw.githubusercontent.com/LenoECommerce/LenoAllOne/main/published/</UpdateUrl>
     <CreateWebPageOnPublish>true</CreateWebPageOnPublish>
     <WebPage>publish.htm</WebPage>
-    <ApplicationRevision>21</ApplicationRevision>
+    <ApplicationRevision>22</ApplicationRevision>
     <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
     <CreateDesktopShortcut>true</CreateDesktopShortcut>
@@ -388,11 +388,17 @@
     <Compile Include="ServiceB2CAnkauf_ProActive_ReachBack_FirstFeedbackMissingInformation.Designer.cs">
       <DependentUpon>ServiceB2CAnkauf_ProActive_ReachBack_FirstFeedbackMissingInformation.cs</DependentUpon>
     </Compile>
-    <Compile Include="ServiceB2CAnkauf_Request.cs">
+    <Compile Include="ServiceB2CAnkauf_ProblemContact.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="ServiceB2CAnkauf_Request.Designer.cs">
-      <DependentUpon>ServiceB2CAnkauf_Request.cs</DependentUpon>
+    <Compile Include="ServiceB2CAnkauf_ProblemContact.Designer.cs">
+      <DependentUpon>ServiceB2CAnkauf_ProblemContact.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ServiceB2CAnkauf_Questions.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ServiceB2CAnkauf_Questions.Designer.cs">
+      <DependentUpon>ServiceB2CAnkauf_Questions.cs</DependentUpon>
     </Compile>
     <Compile Include="ServiceB2CAnkauf_Selection.cs">
       <SubType>Form</SubType>
@@ -532,8 +538,11 @@
     <EmbeddedResource Include="ServiceB2CAnkauf_ProActive_ReachBack_FirstFeedbackMissingInformation.resx">
       <DependentUpon>ServiceB2CAnkauf_ProActive_ReachBack_FirstFeedbackMissingInformation.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="ServiceB2CAnkauf_Request.resx">
-      <DependentUpon>ServiceB2CAnkauf_Request.cs</DependentUpon>
+    <EmbeddedResource Include="ServiceB2CAnkauf_ProblemContact.resx">
+      <DependentUpon>ServiceB2CAnkauf_ProblemContact.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ServiceB2CAnkauf_Questions.resx">
+      <DependentUpon>ServiceB2CAnkauf_Questions.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="ServiceB2CAnkauf_Selection.resx">
       <DependentUpon>ServiceB2CAnkauf_Selection.cs</DependentUpon>

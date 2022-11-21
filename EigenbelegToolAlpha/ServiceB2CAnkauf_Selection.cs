@@ -28,11 +28,17 @@ namespace EigenbelegToolAlpha
 
         private void Btn_B2CAnkauf_Request_Click(object sender, EventArgs e)
         {
-            ServiceB2CAnkauf_Request window = new ServiceB2CAnkauf_Request();
+            ServiceB2CAnkauf_ProActive_FirstRequest window = new ServiceB2CAnkauf_ProActive_FirstRequest();
             this.Hide();
             window.Show();
             Service obj = (Service)Application.OpenForms["Service"];
             obj.Close();
+        }
+
+        private void Btn_ContactProblem_Click(object sender, EventArgs e)
+        {
+            ServiceB2CAnkauf_ProblemContact window = new ServiceB2CAnkauf_ProblemContact();
+            window.Show();
         }
     }
 }

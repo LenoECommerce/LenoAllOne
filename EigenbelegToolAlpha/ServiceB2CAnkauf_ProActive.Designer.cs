@@ -76,6 +76,7 @@
             this.Btn_CommonQuestions.TabIndex = 3;
             this.Btn_CommonQuestions.Text = "Häufige Rückfragen";
             this.Btn_CommonQuestions.UseVisualStyleBackColor = true;
+            this.Btn_CommonQuestions.Click += new System.EventHandler(this.Btn_CommonQuestions_Click);
             // 
             // ServiceB2CAnkauf_ProActive
             // 

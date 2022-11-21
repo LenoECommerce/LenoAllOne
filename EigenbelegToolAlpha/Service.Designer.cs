@@ -46,6 +46,7 @@
             this.Btn_RepairChat = new System.Windows.Forms.Button();
             this.label3 = new System.Windows.Forms.Label();
             this.Btn_Trustpilot = new System.Windows.Forms.Button();
+            this.Btn_EbayPurchaseMessage = new System.Windows.Forms.Button();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -215,9 +216,19 @@
             this.Btn_Trustpilot.Name = "Btn_Trustpilot";
             this.Btn_Trustpilot.Size = new System.Drawing.Size(207, 41);
             this.Btn_Trustpilot.TabIndex = 55;
-            this.Btn_Trustpilot.Text = "Trustpilot ";
+            this.Btn_Trustpilot.Text = "Trustpilot \r\n(nach erfolgreicher Abwicklung)";
             this.Btn_Trustpilot.UseVisualStyleBackColor = true;
             this.Btn_Trustpilot.Click += new System.EventHandler(this.Btn_Trustpilot_Click);
+            // 
+            // Btn_EbayPurchaseMessage
+            // 
+            this.Btn_EbayPurchaseMessage.Location = new System.Drawing.Point(598, 328);
+            this.Btn_EbayPurchaseMessage.Name = "Btn_EbayPurchaseMessage";
+            this.Btn_EbayPurchaseMessage.Size = new System.Drawing.Size(207, 41);
+            this.Btn_EbayPurchaseMessage.TabIndex = 56;
+            this.Btn_EbayPurchaseMessage.Text = "Ebay Kauf \r\n(Bestellnummer auf Paket)";
+            this.Btn_EbayPurchaseMessage.UseVisualStyleBackColor = true;
+            this.Btn_EbayPurchaseMessage.Click += new System.EventHandler(this.Btn_EbayPurchaseMessage_Click);
             // 
             // Service
             // 
@@ -225,6 +236,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
             this.ClientSize = new System.Drawing.Size(1264, 657);
+            this.Controls.Add(this.Btn_EbayPurchaseMessage);
             this.Controls.Add(this.Btn_Trustpilot);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.Btn_RepairChat);
@@ -269,5 +281,6 @@
         private System.Windows.Forms.Button Btn_RepairChat;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Button Btn_Trustpilot;
+        private System.Windows.Forms.Button Btn_EbayPurchaseMessage;
     }
 }
