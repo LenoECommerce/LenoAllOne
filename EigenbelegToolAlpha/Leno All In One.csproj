@@ -28,7 +28,7 @@
     <UpdateUrl>https://raw.githubusercontent.com/LenoECommerce/LenoAllOne/main/published/</UpdateUrl>
     <CreateWebPageOnPublish>true</CreateWebPageOnPublish>
     <WebPage>publish.htm</WebPage>
-    <ApplicationRevision>22</ApplicationRevision>
+    <ApplicationRevision>23</ApplicationRevision>
     <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
     <CreateDesktopShortcut>true</CreateDesktopShortcut>
@@ -188,6 +188,24 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="B2B.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="B2B.Designer.cs">
+      <DependentUpon>B2B.cs</DependentUpon>
+    </Compile>
+    <Compile Include="B2BCreate.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="B2BCreate.Designer.cs">
+      <DependentUpon>B2BCreate.cs</DependentUpon>
+    </Compile>
+    <Compile Include="B2BEdit.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="B2BEdit.Designer.cs">
+      <DependentUpon>B2BEdit.cs</DependentUpon>
+    </Compile>
     <Compile Include="CRUDQueries.cs" />
     <Compile Include="EigenbelegBuyBackPriceCalculation.cs">
       <SubType>Form</SubType>
@@ -432,6 +450,15 @@
     <Compile Include="WorkWithSpecificRep.Designer.cs">
       <DependentUpon>WorkWithSpecificRep.cs</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="B2B.resx">
+      <DependentUpon>B2B.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="B2BCreate.resx">
+      <DependentUpon>B2BCreate.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="B2BEdit.resx">
+      <DependentUpon>B2BEdit.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="EigenbelegBuyBackPriceCalculation.resx">
       <DependentUpon>EigenbelegBuyBackPriceCalculation.cs</DependentUpon>
     </EmbeddedResource>

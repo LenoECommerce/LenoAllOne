@@ -46,6 +46,7 @@ namespace EigenbelegToolAlpha
         public static string condition = "";
         public static string donorMonth = "";
         public static string fiveG = "";
+        public static string externalCostsDiff = "";
 
         public Reparaturen()
         {
@@ -72,8 +73,8 @@ namespace EigenbelegToolAlpha
             reparaturenDGV.DataSource = dataSet.Tables[0];
             //Column verstecken
             reparaturenDGV.Columns[0].Visible = false;
-            reparaturenDGV.Columns[22].Visible = false;
             reparaturenDGV.Columns[23].Visible = false;
+            reparaturenDGV.Columns[24].Visible = false;
             //Sortierte Ansicht
             reparaturenDGV.Sort(reparaturenDGV.Columns[1], ListSortDirection.Descending);
             conn.Close();
@@ -98,17 +99,19 @@ namespace EigenbelegToolAlpha
             reparaturenDGV.DataSource = dataSet.Tables[0];
             //Column verstecken
             reparaturenDGV.Columns[0].Visible = false;
-            reparaturenDGV.Columns[22].Visible = false;
+            reparaturenDGV.Columns[23].Visible = false;
+            reparaturenDGV.Columns[24].Visible = false;
             //Sortierte Ansicht
             reparaturenDGV.Sort(reparaturenDGV.Columns[1], ListSortDirection.Descending);
             //Filtern
-            for (int i = 1; i < reparaturenDGV.RowCount; i++)
+            reparaturenDGV.CurrentCell = null;
+            for (int i = 0; i < reparaturenDGV.RowCount; i++)
             {
                 if (filterValueModel.Contains(reparaturenDGV.Rows[i].Cells[3].Value.ToString()) == true)
                 {
-                    if (filterValueSource.Contains(reparaturenDGV.Rows[i].Cells[18].Value.ToString()) == true)
+                    if (filterValueSource.Contains(reparaturenDGV.Rows[i].Cells[19].Value.ToString()) == true)
                     {
-                        if (filterValueRepairState.Contains(reparaturenDGV.Rows[i].Cells[17].Value.ToString()) == true)
+                        if (filterValueRepairState.Contains(reparaturenDGV.Rows[i].Cells[18].Value.ToString()) == true)
                         {
                             reparaturenDGV.Rows[i].Visible = true;
                         }
@@ -201,7 +204,7 @@ namespace EigenbelegToolAlpha
             int rowIndex = -1;
             foreach (DataGridViewRow row in reparaturenDGV.Rows)
             {
-                if (row.Cells[21].Value.Equals(relatedNumber))
+                if (row.Cells[22].Value.Equals(relatedNumber))
                 {
                     rowIndex = row.Index;
                 }   
@@ -224,15 +227,16 @@ namespace EigenbelegToolAlpha
                 defect = reparaturenDGV.Rows[rowIndex].Cells[11].Value.ToString();
                 maindefects = reparaturenDGV.Rows[rowIndex].Cells[12].Value.ToString();
                 externalCosts = reparaturenDGV.Rows[rowIndex].Cells[13].Value.ToString();
-                comment = reparaturenDGV.Rows[rowIndex].Cells[14].Value.ToString();
-                notifications = reparaturenDGV.Rows[rowIndex].Cells[15].Value.ToString();
-                tested = reparaturenDGV.Rows[rowIndex].Cells[16].Value.ToString();
-                state = reparaturenDGV.Rows[rowIndex].Cells[17].Value.ToString();
-                source = reparaturenDGV.Rows[rowIndex].Cells[18].Value.ToString();
-                riskLevel = reparaturenDGV.Rows[rowIndex].Cells[19].Value.ToString();
-                worthIt = reparaturenDGV.Rows[rowIndex].Cells[20].Value.ToString();
-                referenceToEB = reparaturenDGV.Rows[rowIndex].Cells[21].Value.ToString();
-                fiveG = reparaturenDGV.Rows[rowIndex].Cells[23].Value.ToString();
+                externalCostsDiff = reparaturenDGV.Rows[rowIndex].Cells[14].Value.ToString();
+                comment = reparaturenDGV.Rows[rowIndex].Cells[15].Value.ToString();
+                notifications = reparaturenDGV.Rows[rowIndex].Cells[16].Value.ToString();
+                tested = reparaturenDGV.Rows[rowIndex].Cells[17].Value.ToString();
+                state = reparaturenDGV.Rows[rowIndex].Cells[18].Value.ToString();
+                source = reparaturenDGV.Rows[rowIndex].Cells[19].Value.ToString();
+                riskLevel = reparaturenDGV.Rows[rowIndex].Cells[20].Value.ToString();
+                worthIt = reparaturenDGV.Rows[rowIndex].Cells[21].Value.ToString();
+                referenceToEB = reparaturenDGV.Rows[rowIndex].Cells[22].Value.ToString();
+                fiveG = reparaturenDGV.Rows[rowIndex].Cells[24].Value.ToString();
                 lastSelectedProductKey = (int)reparaturenDGV.Rows[rowIndex].Cells[0].Value;
                 using (var form = new ReparaturenEdit())
                 {
@@ -268,16 +272,17 @@ namespace EigenbelegToolAlpha
             defect = reparaturenDGV.SelectedRows[0].Cells[11].Value.ToString();
             maindefects = reparaturenDGV.SelectedRows[0].Cells[12].Value.ToString();
             externalCosts = reparaturenDGV.SelectedRows[0].Cells[13].Value.ToString();
-            comment = reparaturenDGV.SelectedRows[0].Cells[14].Value.ToString();
-            notifications = reparaturenDGV.SelectedRows[0].Cells[15].Value.ToString();
-            tested = reparaturenDGV.SelectedRows[0].Cells[16].Value.ToString();
-            state = reparaturenDGV.SelectedRows[0].Cells[17].Value.ToString();
-            source = reparaturenDGV.SelectedRows[0].Cells[18].Value.ToString();
-            riskLevel = reparaturenDGV.SelectedRows[0].Cells[19].Value.ToString();
-            worthIt = reparaturenDGV.SelectedRows[0].Cells[20].Value.ToString();
-            referenceToEB = reparaturenDGV.SelectedRows[0].Cells[21].Value.ToString();
-            donorMonth = reparaturenDGV.SelectedRows[0].Cells[22].Value.ToString();
-            fiveG = reparaturenDGV.SelectedRows[0].Cells[23].Value.ToString();
+            externalCostsDiff = reparaturenDGV.SelectedRows[0].Cells[14].Value.ToString();
+            comment = reparaturenDGV.SelectedRows[0].Cells[15].Value.ToString();
+            notifications = reparaturenDGV.SelectedRows[0].Cells[16].Value.ToString();
+            tested = reparaturenDGV.SelectedRows[0].Cells[17].Value.ToString();
+            state = reparaturenDGV.SelectedRows[0].Cells[18].Value.ToString();
+            source = reparaturenDGV.SelectedRows[0].Cells[19].Value.ToString();
+            riskLevel = reparaturenDGV.SelectedRows[0].Cells[20].Value.ToString();
+            worthIt = reparaturenDGV.SelectedRows[0].Cells[21].Value.ToString();
+            referenceToEB = reparaturenDGV.SelectedRows[0].Cells[22].Value.ToString();
+            donorMonth = reparaturenDGV.SelectedRows[0].Cells[23].Value.ToString();
+            fiveG = reparaturenDGV.SelectedRows[0].Cells[24].Value.ToString();
 
             lastSelectedProductKey = (int)reparaturenDGV.SelectedRows[0].Cells[0].Value;
 
@@ -498,15 +503,18 @@ namespace EigenbelegToolAlpha
                         condition = reparaturenDGV.Rows[rowIndex].Cells[10].Value.ToString();
                         defect = reparaturenDGV.Rows[rowIndex].Cells[11].Value.ToString();
                         maindefects = reparaturenDGV.Rows[rowIndex].Cells[12].Value.ToString();
-                        externalCosts = reparaturenDGV.Rows[rowIndex].Cells[13].Value.ToString();
-                        comment = reparaturenDGV.Rows[rowIndex].Cells[14].Value.ToString();
-                        notifications = reparaturenDGV.Rows[rowIndex].Cells[15].Value.ToString();
-                        tested = reparaturenDGV.Rows[rowIndex].Cells[16].Value.ToString();
-                        state = reparaturenDGV.Rows[rowIndex].Cells[17].Value.ToString();
-                        source = reparaturenDGV.Rows[rowIndex].Cells[18].Value.ToString();
-                        riskLevel = reparaturenDGV.Rows[rowIndex].Cells[19].Value.ToString();
-                        worthIt = reparaturenDGV.Rows[rowIndex].Cells[20].Value.ToString();
-                        referenceToEB = reparaturenDGV.Rows[rowIndex].Cells[21].Value.ToString();
+                        externalCosts = reparaturenDGV.SelectedRows[0].Cells[13].Value.ToString();
+                        externalCostsDiff = reparaturenDGV.SelectedRows[0].Cells[14].Value.ToString();
+                        comment = reparaturenDGV.SelectedRows[0].Cells[15].Value.ToString();
+                        notifications = reparaturenDGV.SelectedRows[0].Cells[16].Value.ToString();
+                        tested = reparaturenDGV.SelectedRows[0].Cells[17].Value.ToString();
+                        state = reparaturenDGV.SelectedRows[0].Cells[18].Value.ToString();
+                        source = reparaturenDGV.SelectedRows[0].Cells[19].Value.ToString();
+                        riskLevel = reparaturenDGV.SelectedRows[0].Cells[20].Value.ToString();
+                        worthIt = reparaturenDGV.SelectedRows[0].Cells[21].Value.ToString();
+                        referenceToEB = reparaturenDGV.SelectedRows[0].Cells[22].Value.ToString();
+                        donorMonth = reparaturenDGV.SelectedRows[0].Cells[23].Value.ToString();
+                        fiveG = reparaturenDGV.SelectedRows[0].Cells[24].Value.ToString();
                         lastSelectedProductKey = (int)reparaturenDGV.Rows[rowIndex].Cells[0].Value;
                         using (var form2 = new ReparaturenEdit())
                         {
@@ -530,22 +538,7 @@ namespace EigenbelegToolAlpha
 
         }
 
-        private void button3_Click(object sender, EventArgs e)
-        {
-            string taxUpdate = "Regelbesteuerung";
-            string tempintern = "";
-            for (int i = 278; i <= 280 ; i++)
-            {
-                tempintern = i.ToString();
-                string query = "UPDATE `Reparaturen` SET `Besteuerung` = '" + taxUpdate + "' WHERE `Intern` = '" + tempintern + "'";
-                ExecuteQuery(query);
-            }
-
-            ShowReparaturen();
-
-            
-        }
-
+        
         private void button4_Click(object sender, EventArgs e)
         {
             string query = "";
@@ -648,6 +641,13 @@ namespace EigenbelegToolAlpha
             Service window = new Service();
             window.Show();
             this.Hide();
+        }
+
+        private void b2BToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            B2B window = new B2B();
+            window.Show();
+            this.Close();
         }
     }
 }

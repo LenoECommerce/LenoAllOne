@@ -48,47 +48,31 @@ namespace EigenbelegToolAlpha
 
             }
             //Find the matching internal numbers from the order ids
-            Matching match = new Matching();
             int counter = 0;
-            foreach (DataGridViewRow row in match.matchingDGV.Rows)
+            foreach (var item in orderIds)
             {
-                foreach (var item in orderIds)
+                if (item != null)
                 {
-                    if (item != null)
-                    {
-                        if (row.Cells[1].Value.ToString() == item.ToString())
-                        {
-                            matchingInternalNumbers[counter] = row.Cells[3].Value.ToString();
-                            counter++;
-                        }
-                    }
+                    var getInternal = CRUDQueries.ExecuteQueryWithResultString("Protokollierung", "Intern", "Bestellnummer",item.ToString());
+                    matchingInternalNumbers[counter] = getInternal.ToString();
+                    counter++;
                 }
-
             }
             //Get the proofing data via internal number
             Proofing proof = new Proofing();
             foreach (var item in matchingInternalNumbers)
             {
-                foreach (DataGridViewRow row in proof.proofingDGV.Rows)
+                if (item != null)
                 {
-                    string videolink = "";
-                    string nsysTest = "";
-                    string imei = "";
-                    if (item != null)
-                    {
-                        if (item.ToString() == row.Cells[1].Value.ToString())
-                        {
-                            imei = row.Cells[2].Value.ToString();
-                            videolink = row.Cells[3].Value.ToString();
-                            nsysTest = row.Cells[4].Value.ToString();
-                            collectedIMEI[elementCounter] = imei;
-                            collectedTechnicalCertificate[elementCounter] = nsysTest;
-                            collectedVideoLink[elementCounter] = videolink;
-                            elementCounter++;
-                        }
-                    }
-                }
+                    string getIMEI = CRUDQueries.ExecuteQueryWithResultString("Proofing", "IMEI", "Intern", item.ToString());
+                    string getNsys = CRUDQueries.ExecuteQueryWithResultString("Proofing", "NSYS-Zertifikat", "Intern", item.ToString());
+                    string getVideoLink = CRUDQueries.ExecuteQueryWithResultString("Proofing", "Video", "Intern", item.ToString());
+                    collectedIMEI[elementCounter] = getIMEI;
+                    collectedTechnicalCertificate[elementCounter] = getNsys;
+                    collectedVideoLink[elementCounter] = getVideoLink;
+                    elementCounter++;
 
+                }
             }
             //revert the order of ArrayOrderID
             int counterNewArray = 0;

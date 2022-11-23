@@ -56,11 +56,12 @@
             this.sucheToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.filterToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.auswertungenToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.b2CAnkaufToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.btn_folderInstaCreate = new System.Windows.Forms.Button();
             this.btn_buybackPriceAdaptions = new System.Windows.Forms.Button();
             this.lbl_LastPayPalImport = new System.Windows.Forms.Label();
             this.lbl_LastBuyBackSync = new System.Windows.Forms.Label();
-            this.b2CAnkaufToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.b2BToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             ((System.ComponentModel.ISupportInitialize)(this.eigenbelegeDGV)).BeginInit();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
@@ -281,7 +282,8 @@
             this.sucheToolStripMenuItem,
             this.filterToolStripMenuItem,
             this.auswertungenToolStripMenuItem,
-            this.b2CAnkaufToolStripMenuItem});
+            this.b2CAnkaufToolStripMenuItem,
+            this.b2BToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.Size = new System.Drawing.Size(1264, 24);
@@ -303,28 +305,28 @@
             // eigenbelegeToolStripMenuItem
             // 
             this.eigenbelegeToolStripMenuItem.Name = "eigenbelegeToolStripMenuItem";
-            this.eigenbelegeToolStripMenuItem.Size = new System.Drawing.Size(156, 22);
+            this.eigenbelegeToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.eigenbelegeToolStripMenuItem.Text = "Reparaturen";
             this.eigenbelegeToolStripMenuItem.Click += new System.EventHandler(this.eigenbelegeToolStripMenuItem_Click);
             // 
             // protokollierungToolStripMenuItem
             // 
             this.protokollierungToolStripMenuItem.Name = "protokollierungToolStripMenuItem";
-            this.protokollierungToolStripMenuItem.Size = new System.Drawing.Size(156, 22);
+            this.protokollierungToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.protokollierungToolStripMenuItem.Text = "Protokollierung";
             this.protokollierungToolStripMenuItem.Click += new System.EventHandler(this.protokollierungToolStripMenuItem_Click);
             // 
             // proofingToolStripMenuItem
             // 
             this.proofingToolStripMenuItem.Name = "proofingToolStripMenuItem";
-            this.proofingToolStripMenuItem.Size = new System.Drawing.Size(156, 22);
+            this.proofingToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.proofingToolStripMenuItem.Text = "Proofing";
             this.proofingToolStripMenuItem.Click += new System.EventHandler(this.proofingToolStripMenuItem_Click);
             // 
             // serviceToolStripMenuItem
             // 
             this.serviceToolStripMenuItem.Name = "serviceToolStripMenuItem";
-            this.serviceToolStripMenuItem.Size = new System.Drawing.Size(156, 22);
+            this.serviceToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.serviceToolStripMenuItem.Text = "Service";
             this.serviceToolStripMenuItem.Click += new System.EventHandler(this.serviceToolStripMenuItem_Click);
             // 
@@ -351,6 +353,13 @@
             this.auswertungenToolStripMenuItem.Size = new System.Drawing.Size(112, 20);
             this.auswertungenToolStripMenuItem.Text = "Auswertungen";
             this.auswertungenToolStripMenuItem.Click += new System.EventHandler(this.auswertungenToolStripMenuItem_Click);
+            // 
+            // b2CAnkaufToolStripMenuItem
+            // 
+            this.b2CAnkaufToolStripMenuItem.Name = "b2CAnkaufToolStripMenuItem";
+            this.b2CAnkaufToolStripMenuItem.Size = new System.Drawing.Size(81, 20);
+            this.b2CAnkaufToolStripMenuItem.Text = "B2C Ankauf";
+            this.b2CAnkaufToolStripMenuItem.Click += new System.EventHandler(this.b2CAnkaufToolStripMenuItem_Click);
             // 
             // btn_folderInstaCreate
             // 
@@ -402,12 +411,12 @@
             this.lbl_LastBuyBackSync.TabIndex = 52;
             this.lbl_LastBuyBackSync.Text = "Letzter BuyBackSync:";
             // 
-            // b2CAnkaufToolStripMenuItem
+            // b2BToolStripMenuItem
             // 
-            this.b2CAnkaufToolStripMenuItem.Name = "b2CAnkaufToolStripMenuItem";
-            this.b2CAnkaufToolStripMenuItem.Size = new System.Drawing.Size(81, 20);
-            this.b2CAnkaufToolStripMenuItem.Text = "B2C Ankauf";
-            this.b2CAnkaufToolStripMenuItem.Click += new System.EventHandler(this.b2CAnkaufToolStripMenuItem_Click);
+            this.b2BToolStripMenuItem.Name = "b2BToolStripMenuItem";
+            this.b2BToolStripMenuItem.Size = new System.Drawing.Size(39, 20);
+            this.b2BToolStripMenuItem.Text = "B2B";
+            this.b2BToolStripMenuItem.Click += new System.EventHandler(this.b2BToolStripMenuItem_Click);
             // 
             // Eigenbelege
             // 
@@ -485,6 +494,7 @@
         private System.Windows.Forms.Label lbl_LastPayPalImport;
         private System.Windows.Forms.Label lbl_LastBuyBackSync;
         private System.Windows.Forms.ToolStripMenuItem b2CAnkaufToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem b2BToolStripMenuItem;
     }
 }
 

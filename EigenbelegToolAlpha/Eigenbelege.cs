@@ -127,7 +127,8 @@ namespace EigenbelegToolAlpha
             //Sortierte Ansicht
             eigenbelegeDGV.Sort(eigenbelegeDGV.Columns[1], ListSortDirection.Descending);
             //Filtern
-            for (int i = 1; i < eigenbelegeDGV.RowCount; i++)
+            eigenbelegeDGV.CurrentCell = null;
+            for (int i = 0; i < eigenbelegeDGV.RowCount; i++)
             {
                 if (filterValueModel.Contains(eigenbelegeDGV.Rows[i].Cells[4].Value.ToString()) == true)
                 {
@@ -151,7 +152,6 @@ namespace EigenbelegToolAlpha
                 {
                     eigenbelegeDGV.Rows[i].Visible = false;
                 }
-                
             }
 
             conn.Close();
@@ -686,7 +686,14 @@ namespace EigenbelegToolAlpha
         {
             ServiceB2CAnkauf_ProActive window = new ServiceB2CAnkauf_ProActive();
             window.Show();
-            this.Close();
+            this.Hide();
+        }
+
+        private void b2BToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            B2B window = new B2B();
+            window.Show();
+            this.Hide();
         }
     }
 }

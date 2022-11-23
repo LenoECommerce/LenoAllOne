@@ -43,19 +43,19 @@
             this.eigenbelegeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.protokollierungToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.proofingToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.serviceToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.etikettenToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.hauptetikettToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.xHauptetikettToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.sucheToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.filterToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.auswertungenToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.b2BToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.btn_WorkWithSpecificReparatur = new System.Windows.Forms.Button();
-            this.button3 = new System.Windows.Forms.Button();
             this.openFD = new System.Windows.Forms.OpenFileDialog();
-            this.serviceToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             ((System.ComponentModel.ISupportInitialize)(this.reparaturenDGV)).BeginInit();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
@@ -191,7 +191,8 @@
             this.etikettenToolStripMenuItem,
             this.sucheToolStripMenuItem,
             this.filterToolStripMenuItem,
-            this.auswertungenToolStripMenuItem});
+            this.auswertungenToolStripMenuItem,
+            this.b2BToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.Size = new System.Drawing.Size(1264, 24);
@@ -213,23 +214,30 @@
             // eigenbelegeToolStripMenuItem
             // 
             this.eigenbelegeToolStripMenuItem.Name = "eigenbelegeToolStripMenuItem";
-            this.eigenbelegeToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.eigenbelegeToolStripMenuItem.Size = new System.Drawing.Size(156, 22);
             this.eigenbelegeToolStripMenuItem.Text = "Eigenbelege";
             this.eigenbelegeToolStripMenuItem.Click += new System.EventHandler(this.eigenbelegeToolStripMenuItem_Click);
             // 
             // protokollierungToolStripMenuItem
             // 
             this.protokollierungToolStripMenuItem.Name = "protokollierungToolStripMenuItem";
-            this.protokollierungToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.protokollierungToolStripMenuItem.Size = new System.Drawing.Size(156, 22);
             this.protokollierungToolStripMenuItem.Text = "Protokollierung";
             this.protokollierungToolStripMenuItem.Click += new System.EventHandler(this.protokollierungToolStripMenuItem_Click);
             // 
             // proofingToolStripMenuItem
             // 
             this.proofingToolStripMenuItem.Name = "proofingToolStripMenuItem";
-            this.proofingToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.proofingToolStripMenuItem.Size = new System.Drawing.Size(156, 22);
             this.proofingToolStripMenuItem.Text = "Proofing";
             this.proofingToolStripMenuItem.Click += new System.EventHandler(this.proofingToolStripMenuItem_Click);
+            // 
+            // serviceToolStripMenuItem
+            // 
+            this.serviceToolStripMenuItem.Name = "serviceToolStripMenuItem";
+            this.serviceToolStripMenuItem.Size = new System.Drawing.Size(156, 22);
+            this.serviceToolStripMenuItem.Text = "Service";
+            this.serviceToolStripMenuItem.Click += new System.EventHandler(this.serviceToolStripMenuItem_Click);
             // 
             // etikettenToolStripMenuItem
             // 
@@ -282,6 +290,13 @@
             this.auswertungenToolStripMenuItem.Text = "Auswertungen";
             this.auswertungenToolStripMenuItem.Click += new System.EventHandler(this.auswertungenToolStripMenuItem_Click);
             // 
+            // b2BToolStripMenuItem
+            // 
+            this.b2BToolStripMenuItem.Name = "b2BToolStripMenuItem";
+            this.b2BToolStripMenuItem.Size = new System.Drawing.Size(39, 20);
+            this.b2BToolStripMenuItem.Text = "B2B";
+            this.b2BToolStripMenuItem.Click += new System.EventHandler(this.b2BToolStripMenuItem_Click);
+            // 
             // label1
             // 
             this.label1.AutoSize = true;
@@ -331,29 +346,9 @@
             this.btn_WorkWithSpecificReparatur.UseVisualStyleBackColor = false;
             this.btn_WorkWithSpecificReparatur.Click += new System.EventHandler(this.btn_WorkWithSpecificReparatur_Click);
             // 
-            // button3
-            // 
-            this.button3.BackColor = System.Drawing.SystemColors.ActiveCaption;
-            this.button3.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button3.ForeColor = System.Drawing.Color.Black;
-            this.button3.Location = new System.Drawing.Point(1042, 776);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(165, 26);
-            this.button3.TabIndex = 46;
-            this.button3.Text = "Manueller Datenimport";
-            this.button3.UseVisualStyleBackColor = false;
-            this.button3.Click += new System.EventHandler(this.button3_Click);
-            // 
             // openFD
             // 
             this.openFD.FileName = "openFileDialog1";
-            // 
-            // serviceToolStripMenuItem
-            // 
-            this.serviceToolStripMenuItem.Name = "serviceToolStripMenuItem";
-            this.serviceToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-            this.serviceToolStripMenuItem.Text = "Service";
-            this.serviceToolStripMenuItem.Click += new System.EventHandler(this.serviceToolStripMenuItem_Click);
             // 
             // Reparaturen
             // 
@@ -361,7 +356,6 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
             this.ClientSize = new System.Drawing.Size(1264, 814);
-            this.Controls.Add(this.button3);
             this.Controls.Add(this.btn_WorkWithSpecificReparatur);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
@@ -409,7 +403,6 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Button btn_WorkWithSpecificReparatur;
-        private System.Windows.Forms.Button button3;
         private System.Windows.Forms.OpenFileDialog openFD;
         private System.Windows.Forms.ToolStripMenuItem fensterwechselToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem eigenbelegeToolStripMenuItem;
@@ -420,5 +413,6 @@
         private System.Windows.Forms.ToolStripMenuItem auswertungenToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem sucheToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem serviceToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem b2BToolStripMenuItem;
     }
 }
