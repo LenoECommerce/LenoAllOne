@@ -78,6 +78,8 @@
             this.textBox_orderID.Name = "textBox_orderID";
             this.textBox_orderID.Size = new System.Drawing.Size(194, 20);
             this.textBox_orderID.TabIndex = 4;
+            this.textBox_orderID.TextChanged += new System.EventHandler(this.textBox_orderID_TextChanged);
+            this.textBox_orderID.Enter += new System.EventHandler(this.textBox_orderID_Enter);
             // 
             // ProtokollierungScan
             // 

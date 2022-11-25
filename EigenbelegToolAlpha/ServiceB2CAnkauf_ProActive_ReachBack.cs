@@ -64,5 +64,10 @@ namespace EigenbelegToolAlpha
             ServiceB2CAnkauf_ProActive_ReachBack_FirstFeedback window = new ServiceB2CAnkauf_ProActive_ReachBack_FirstFeedback();
             window.Show();
         }
+
+        private void Btn_BurnIn_Click(object sender, EventArgs e)
+        {
+            BuildMessage("Letzte Nachfrage noch:\r\nWir mussten in letzter Zeit mehrfach folgenden Fehler feststellen. Bei einigen Samsung Modellen kommt es mit der Zeit der Nutzung zu einem so genannten „Burn In“, ein so genannter Pixelfehler. Dies äußert sich, indem man bei einem weißen Hintergrund bestimmte Pixel sehr deutlich erkennt. \r\n(siehe Beispielbilder hier: https://drive.google.com/drive/folders/1Cxh-5atSUTq8-2lfMA7ppkNe7TeIR4fz?usp=sharing)\r\nWir möchten unseren Kunden nur die beste Qualität anbieten, weshalb wir Sie bitten würden, das Gerät einmal auf dieses Fehlerbild zu prüfen, damit keine Unstimmigkeiten im Nachgang entstehen.\r\nAm besten erkennt man dies bei leichtem Kippen des Geräts.\r\nFreue mich über Rückmeldung.\r\n");
+        }
     }
 }

@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using SautinSoft.Document;
 using PdfSharp.Pdf;
+using PdfSharp.Pdf.IO;
 using PdfSharp.Drawing;
 using System.Diagnostics;
 using System.IO;

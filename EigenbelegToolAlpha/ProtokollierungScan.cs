@@ -29,6 +29,17 @@ namespace EigenbelegToolAlpha
 
         private void textBox_scanField_TextChanged(object sender, EventArgs e)
         {
+            SendKeys.Send("{TAB}");
+            SendKeys.Send("{TAB}");
+        }
+
+        private void textBox_orderID_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void textBox_orderID_Enter(object sender, EventArgs e)
+        {
             
         }
     }

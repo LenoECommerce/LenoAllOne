@@ -22,12 +22,12 @@ namespace EigenbelegToolAlpha
         public EvaluationCalculation()
         {
             InitializeComponent();
-            string tempNumber = EvaluationThirdForm.RunningCostsSum.ToString();
-            lbl_RunningCostsSum.Text = RoundNumber(tempNumber);
-            string tempNumber2 = EvaluationThirdForm.RunningCostsTaxGetBack.ToString();
-            lbl_RunningCostsTaxGetBack.Text = RoundNumber(tempNumber2);
-            string tempNumber3 = EvaluationThirdForm.RunningCostsFinal.ToString();
-            lbl_RunningCostsAtAll.Text = RoundNumber(tempNumber3);
+            //string tempNumber = EvaluationThirdForm.RunningCostsSum.ToString();
+            //lbl_RunningCostsSum.Text = RoundNumber(tempNumber);
+            //string tempNumber2 = EvaluationThirdForm.RunningCostsTaxGetBack.ToString();
+            //lbl_RunningCostsTaxGetBack.Text = RoundNumber(tempNumber2);
+            //string tempNumber3 = EvaluationThirdForm.RunningCostsFinal.ToString();
+            //lbl_RunningCostsAtAll.Text = RoundNumber(tempNumber3);
         }
         public static double backMarketGrossSalesVolumeMarginalVat = 0;
         public static double backMarketGrossSalesVolumeNormalVat = 0;
@@ -135,7 +135,6 @@ namespace EigenbelegToolAlpha
             Protokollierung prot = new Protokollierung();
             Reparaturen rep = new Reparaturen();
             Matching match = new Matching();
-
             string searchIntern = "";
             string importNewIMEI = "";
             string searchOrderID = "";
@@ -186,44 +185,22 @@ namespace EigenbelegToolAlpha
                 //Überprüfen ob der Datensatz schon in Matching vorhanden ist + Ob Monat relevant ist + ob Intern schon vorhanden ist!
                 if (resultExistsInMatching == 0 && newMonth == month && resultExistsInternInMatching == 0)
                 {
-                        //Data Pull aus Protokollierung
-                        searchOrderID = row3.Cells[1].Value.ToString();
-                        newIMEI = row3.Cells[2].Value.ToString();
-                        marketplace = row3.Cells[4].Value.ToString();
-                        related = "Ja";
-                        //Data Pull aus Reparaturen
-                        var id = CRUDQueries.ExecuteQueryWithResult("Reparaturen", "Id", "Intern", searchIntern);
-                        //Unterscheidung ob € Zeichen vorhanden ist.
-                        string tempAmount = CRUDQueries.ExecuteQueryWithResultString("Reparaturen", "Kaufbetrag", "Id", id.ToString());
-                        string tempExternalCosts = CRUDQueries.ExecuteQueryWithResultString("Reparaturen", "ExterneKosten", "Id", id.ToString());
-                        if (tempExternalCosts == "")
-                        {
-                            tempExternalCosts = "0";
-                        }
-                        if (tempAmount.Contains("€"))
-                        {
-                            var length = tempAmount.Length;
-                            newAmount = Convert.ToDouble(tempAmount.Substring(0, length - 1));
-                        }
-                        else
-                        {
-                            newAmount = Convert.ToDouble(tempAmount);
-                        }
-                        if (tempExternalCosts.Contains("€"))
-                        {
-                            var length = tempExternalCosts.Length;
-                            newExternalCosts = Convert.ToDouble(tempExternalCosts.Substring(0, length - 1));
-                        }
-                        else
-                        {
-                            newExternalCosts = Convert.ToDouble(tempExternalCosts);
-                        }
-                        taxes = CRUDQueries.ExecuteQueryWithResultString("Reparaturen", "Besteuerung", "Id", id.ToString());
-
-                        string query2 = String.Format("INSERT INTO `Matching`(`Bestellnummer`,`IMEI`,`Intern`,`Kaufbetrag`,`Externe Kosten`,`Marktplatz`,`Besteuerung`,`Monat`,`Zugeordnet?`) VALUES ('{0}','{1}','{2}','{3}','{4}','{5}','{6}','{7}','{8}')"
-                                        , searchOrderID, newIMEI, searchIntern, newAmount.ToString(), newExternalCosts.ToString(), marketplace, taxes, newMonth, related);
-                        addedRows++;
-                        CRUDQueries.ExecuteQuery(query2);
+                    //Data Pull aus Protokollierung
+                    searchOrderID = row3.Cells[1].Value.ToString();
+                    newIMEI = row3.Cells[2].Value.ToString();
+                    marketplace = row3.Cells[4].Value.ToString();
+                    related = "Ja";
+                    //Data Pull aus Reparaturen
+                    var id = CRUDQueries.ExecuteQueryWithResult("Reparaturen", "Id", "Intern", searchIntern);
+                    //Unterscheidung ob € Zeichen vorhanden ist.
+                    string tempAmount = AdaptNumber(CRUDQueries.ExecuteQueryWithResultString("Reparaturen", "Kaufbetrag", "Id", id.ToString()));
+                    string tempExternalCosts = AdaptNumber(CRUDQueries.ExecuteQueryWithResultString("Reparaturen", "ExterneKosten", "Id", id.ToString()));
+                    string tempExternalCostsDiff = AdaptNumber(CRUDQueries.ExecuteQueryWithResultString("Reparaturen", "ExterneKostenDIFF", "Id", id.ToString()));
+                    taxes = CRUDQueries.ExecuteQueryWithResultString("Reparaturen", "Besteuerung", "Id", id.ToString());
+                    string query2 = String.Format("INSERT INTO `Matching`(`Bestellnummer`,`IMEI`,`Intern`,`Kaufbetrag`,`Externe Kosten``ExterneKostenDIFF`,`Marktplatz`,`Besteuerung`,`Monat`,`Zugeordnet?`) VALUES ('{0}','{1}','{2}','{3}','{4}','{5}','{6}','{7}','{8}','{9}')"
+                                    , searchOrderID, newIMEI, searchIntern, tempAmount, tempExternalCosts,tempExternalCostsDiff, marketplace, taxes, newMonth, related);
+                    addedRows++;
+                    CRUDQueries.ExecuteQuery(query2);
                 }
                 else if (newMonth != month)
                 {
@@ -237,6 +214,20 @@ namespace EigenbelegToolAlpha
             }
             checkValueAddedDevicesToMatching = addedRows;
             MessageBox.Show("Der Matching Algorithmus wurde mit folgendem Ergebnis ausgeführt: \r\n- Einträge insgesamt: "+rowsInTotal+"\r\n- Durchlaufen: "+approvedRows+ "\r\n- Passende Einträge: " + addedRows+ "\r\n- Bereits existierende Aufträge: " + alreadyExistsCounter + "\r\n- Bereits existierende Aufträge (Monat matcht): "+alreadyExistsCounterButMatchingMonth);
+        }
+        private string AdaptNumber(string checkValue)
+        {
+            string amount = "";
+            if (checkValue == "")
+            {
+                amount = "0";
+            }
+            if (checkValue.Contains("€"))
+            {
+                var length = checkValue.Length;
+                amount = checkValue.Substring(0, length - 1);
+            }
+            return amount;
         }
         private void BackMarketInvoicesChecking ()
         {
@@ -853,55 +844,57 @@ namespace EigenbelegToolAlpha
 
         private void btn_ExecuteAllAlgorithms_Click(object sender, EventArgs e)
         {
-            try
-            {
-                MatchingAlgorithm();
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Der Matching Algorithmus hat ein Problem: " + ex.Message);
-            }
-            try
-            {
-                CalculateInputAlgorithm();
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Der Algorithmus für die Berechnung des Einsatzes hat ein Problem: " + ex.Message);
-            }
-            MessageBox.Show("Zwischenüberprüfung: \r\n- Zu Matching hinzugefügte Einträge: "+checkValueAddedDevicesToMatching + "\r\n- Anzahl der Geräte Input gezählt: "+checkValueDevicesCountedInput + "\r\nDiese Werte müssen übereinstimmen, ansonsten ist ein Fehler unterlaufen.");
-            try
-            {
-                BackMarketInvoicesChecking();
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Der BackMarket Algorithmus hat ein Problem: " + ex.Message);
-            }
-            try
-            {
-                TaxCalculationAlgorithm();
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Der Steuerberechnung Algorithmus hat ein Problem: " + ex.Message);
-            }
-            try
-            {
-                DonorDevicesAlgorithm();
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Der Spendergeräte Algorithmus hat ein Problem: " + ex.Message);
-            }
-            try
-            {
-                DevicesPerMonthAlgorithm();
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Der Geräte pro Monat Algorithmus hat ein Problem: " + ex.Message);
-            }
+            OrderRelationPDF orderRelationPDF = new OrderRelationPDF();
+            orderRelationPDF.Main();
+            //try
+            //{
+            //    MatchingAlgorithm();
+            //}
+            //catch (Exception ex)
+            //{
+            //    MessageBox.Show("Der Matching Algorithmus hat ein Problem: " + ex.Message);
+            //}
+            //try
+            //{
+            //    CalculateInputAlgorithm();
+            //}
+            //catch (Exception ex)
+            //{
+            //    MessageBox.Show("Der Algorithmus für die Berechnung des Einsatzes hat ein Problem: " + ex.Message);
+            //}
+            //MessageBox.Show("Zwischenüberprüfung: \r\n- Zu Matching hinzugefügte Einträge: "+checkValueAddedDevicesToMatching + "\r\n- Anzahl der Geräte Input gezählt: "+checkValueDevicesCountedInput + "\r\nDiese Werte müssen übereinstimmen, ansonsten ist ein Fehler unterlaufen.");
+            //try
+            //{
+            //    BackMarketInvoicesChecking();
+            //}
+            //catch (Exception ex)
+            //{
+            //    MessageBox.Show("Der BackMarket Algorithmus hat ein Problem: " + ex.Message);
+            //}
+            //try
+            //{
+            //    TaxCalculationAlgorithm();
+            //}
+            //catch (Exception ex)
+            //{
+            //    MessageBox.Show("Der Steuerberechnung Algorithmus hat ein Problem: " + ex.Message);
+            //}
+            //try
+            //{
+            //    DonorDevicesAlgorithm();
+            //}
+            //catch (Exception ex)
+            //{
+            //    MessageBox.Show("Der Spendergeräte Algorithmus hat ein Problem: " + ex.Message);
+            //}
+            //try
+            //{
+            //    DevicesPerMonthAlgorithm();
+            //}
+            //catch (Exception ex)
+            //{
+            //    MessageBox.Show("Der Geräte pro Monat Algorithmus hat ein Problem: " + ex.Message);
+            //}
         }
     }
 }

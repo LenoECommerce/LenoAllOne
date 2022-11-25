@@ -37,6 +37,7 @@
             this.Btn_ShipmentLabelRequestForAddress = new System.Windows.Forms.Button();
             this.Btn_ShipmentLabelSentIt = new System.Windows.Forms.Button();
             this.Btn_GetBack = new System.Windows.Forms.Button();
+            this.Btn_BurnIn = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // button1
@@ -127,12 +128,26 @@
             this.Btn_GetBack.UseVisualStyleBackColor = true;
             this.Btn_GetBack.Click += new System.EventHandler(this.Btn_GetBack_Click);
             // 
+            // Btn_BurnIn
+            // 
+            this.Btn_BurnIn.BackColor = System.Drawing.Color.Red;
+            this.Btn_BurnIn.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Btn_BurnIn.ForeColor = System.Drawing.SystemColors.ButtonFace;
+            this.Btn_BurnIn.Location = new System.Drawing.Point(486, 215);
+            this.Btn_BurnIn.Name = "Btn_BurnIn";
+            this.Btn_BurnIn.Size = new System.Drawing.Size(161, 37);
+            this.Btn_BurnIn.TabIndex = 62;
+            this.Btn_BurnIn.Text = "Burn In Samsung";
+            this.Btn_BurnIn.UseVisualStyleBackColor = false;
+            this.Btn_BurnIn.Click += new System.EventHandler(this.Btn_BurnIn_Click);
+            // 
             // ServiceB2CAnkauf_ProActive_ReachBack
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.ClientSize = new System.Drawing.Size(728, 378);
+            this.Controls.Add(this.Btn_BurnIn);
             this.Controls.Add(this.Btn_GetBack);
             this.Controls.Add(this.Btn_ShipmentLabelSentIt);
             this.Controls.Add(this.Btn_ShipmentLabelRequestForAddress);
@@ -163,5 +178,6 @@
         private System.Windows.Forms.Button Btn_ShipmentLabelRequestForAddress;
         private System.Windows.Forms.Button Btn_ShipmentLabelSentIt;
         private System.Windows.Forms.Button Btn_GetBack;
+        private System.Windows.Forms.Button Btn_BurnIn;
     }
 }

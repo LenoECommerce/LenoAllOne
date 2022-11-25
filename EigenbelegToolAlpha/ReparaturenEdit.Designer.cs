@@ -82,6 +82,8 @@
             this.comboBox_SamsungDevices = new System.Windows.Forms.ComboBox();
             this.comboBox_FiveG = new System.Windows.Forms.ComboBox();
             this.label25 = new System.Windows.Forms.Label();
+            this.label26 = new System.Windows.Forms.Label();
+            this.textBox_ExternalCostsDiff = new System.Windows.Forms.TextBox();
             this.SuspendLayout();
             // 
             // label1
@@ -165,7 +167,7 @@
             // 
             this.label9.AutoSize = true;
             this.label9.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label9.Location = new System.Drawing.Point(444, 357);
+            this.label9.Location = new System.Drawing.Point(444, 379);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(56, 18);
             this.label9.TabIndex = 8;
@@ -209,7 +211,7 @@
             // 
             this.label13.AutoSize = true;
             this.label13.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label13.Location = new System.Drawing.Point(444, 412);
+            this.label13.Location = new System.Drawing.Point(444, 434);
             this.label13.Name = "label13";
             this.label13.Size = new System.Drawing.Size(86, 18);
             this.label13.TabIndex = 12;
@@ -220,7 +222,7 @@
             // 
             this.label14.AutoSize = true;
             this.label14.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label14.Location = new System.Drawing.Point(443, 384);
+            this.label14.Location = new System.Drawing.Point(443, 406);
             this.label14.Name = "label14";
             this.label14.Size = new System.Drawing.Size(93, 18);
             this.label14.TabIndex = 13;
@@ -231,7 +233,7 @@
             // 
             this.label15.AutoSize = true;
             this.label15.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label15.Location = new System.Drawing.Point(444, 439);
+            this.label15.Location = new System.Drawing.Point(444, 461);
             this.label15.Name = "label15";
             this.label15.Size = new System.Drawing.Size(98, 18);
             this.label15.TabIndex = 14;
@@ -297,7 +299,7 @@
             // 
             // textBox_reparaturenSource
             // 
-            this.textBox_reparaturenSource.Location = new System.Drawing.Point(590, 357);
+            this.textBox_reparaturenSource.Location = new System.Drawing.Point(590, 379);
             this.textBox_reparaturenSource.Name = "textBox_reparaturenSource";
             this.textBox_reparaturenSource.Size = new System.Drawing.Size(256, 20);
             this.textBox_reparaturenSource.TabIndex = 24;
@@ -305,7 +307,7 @@
             // 
             // textBox_reparaturenRiskLevel
             // 
-            this.textBox_reparaturenRiskLevel.Location = new System.Drawing.Point(590, 382);
+            this.textBox_reparaturenRiskLevel.Location = new System.Drawing.Point(590, 404);
             this.textBox_reparaturenRiskLevel.Name = "textBox_reparaturenRiskLevel";
             this.textBox_reparaturenRiskLevel.Size = new System.Drawing.Size(256, 20);
             this.textBox_reparaturenRiskLevel.TabIndex = 25;
@@ -313,7 +315,7 @@
             // 
             // textBox_reparaturenWorthIt
             // 
-            this.textBox_reparaturenWorthIt.Location = new System.Drawing.Point(590, 410);
+            this.textBox_reparaturenWorthIt.Location = new System.Drawing.Point(590, 432);
             this.textBox_reparaturenWorthIt.Name = "textBox_reparaturenWorthIt";
             this.textBox_reparaturenWorthIt.Size = new System.Drawing.Size(256, 20);
             this.textBox_reparaturenWorthIt.TabIndex = 26;
@@ -321,7 +323,7 @@
             // 
             // textBox_reparaturenReferenceToEB
             // 
-            this.textBox_reparaturenReferenceToEB.Location = new System.Drawing.Point(590, 440);
+            this.textBox_reparaturenReferenceToEB.Location = new System.Drawing.Point(590, 462);
             this.textBox_reparaturenReferenceToEB.Name = "textBox_reparaturenReferenceToEB";
             this.textBox_reparaturenReferenceToEB.Size = new System.Drawing.Size(256, 20);
             this.textBox_reparaturenReferenceToEB.TabIndex = 27;
@@ -358,7 +360,7 @@
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(693, 531);
+            this.button1.Location = new System.Drawing.Point(693, 553);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(152, 29);
             this.button1.TabIndex = 31;
@@ -400,7 +402,7 @@
             this.comboBox_ReparaturenMeldungen.Items.AddRange(new object[] {
             "Ja",
             "Nein"});
-            this.comboBox_ReparaturenMeldungen.Location = new System.Drawing.Point(159, 358);
+            this.comboBox_ReparaturenMeldungen.Location = new System.Drawing.Point(159, 380);
             this.comboBox_ReparaturenMeldungen.Name = "comboBox_ReparaturenMeldungen";
             this.comboBox_ReparaturenMeldungen.Size = new System.Drawing.Size(256, 21);
             this.comboBox_ReparaturenMeldungen.TabIndex = 73;
@@ -412,7 +414,7 @@
             "Ja",
             "Nein",
             "Ja, einzelne fehlen noch."});
-            this.comboBox_ReparaturenGetestet.Location = new System.Drawing.Point(159, 392);
+            this.comboBox_ReparaturenGetestet.Location = new System.Drawing.Point(159, 414);
             this.comboBox_ReparaturenGetestet.Name = "comboBox_ReparaturenGetestet";
             this.comboBox_ReparaturenGetestet.Size = new System.Drawing.Size(256, 21);
             this.comboBox_ReparaturenGetestet.TabIndex = 72;
@@ -421,7 +423,7 @@
             // 
             this.label17.AutoSize = true;
             this.label17.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label17.Location = new System.Drawing.Point(12, 392);
+            this.label17.Location = new System.Drawing.Point(12, 414);
             this.label17.Name = "label17";
             this.label17.Size = new System.Drawing.Size(81, 18);
             this.label17.TabIndex = 71;
@@ -431,7 +433,7 @@
             // 
             this.label18.AutoSize = true;
             this.label18.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label18.Location = new System.Drawing.Point(12, 361);
+            this.label18.Location = new System.Drawing.Point(12, 383);
             this.label18.Name = "label18";
             this.label18.Size = new System.Drawing.Size(98, 18);
             this.label18.TabIndex = 70;
@@ -441,7 +443,7 @@
             // 
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.Location = new System.Drawing.Point(12, 425);
+            this.label5.Location = new System.Drawing.Point(12, 447);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(83, 18);
             this.label5.TabIndex = 74;
@@ -458,7 +460,7 @@
             "Akku",
             "BC Glas",
             "BC komplett"});
-            this.listBox_ReparaturenEditMainParts.Location = new System.Drawing.Point(159, 425);
+            this.listBox_ReparaturenEditMainParts.Location = new System.Drawing.Point(159, 447);
             this.listBox_ReparaturenEditMainParts.Name = "listBox_ReparaturenEditMainParts";
             this.listBox_ReparaturenEditMainParts.SelectionMode = System.Windows.Forms.SelectionMode.MultiSimple;
             this.listBox_ReparaturenEditMainParts.Size = new System.Drawing.Size(137, 94);
@@ -467,7 +469,7 @@
             // 
             // button2
             // 
-            this.button2.Location = new System.Drawing.Point(318, 425);
+            this.button2.Location = new System.Drawing.Point(318, 447);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(97, 21);
             this.button2.TabIndex = 76;
@@ -510,7 +512,7 @@
             // 
             // btn_reparaturenAddNewExternalCosts
             // 
-            this.btn_reparaturenAddNewExternalCosts.Location = new System.Drawing.Point(749, 471);
+            this.btn_reparaturenAddNewExternalCosts.Location = new System.Drawing.Point(749, 493);
             this.btn_reparaturenAddNewExternalCosts.Name = "btn_reparaturenAddNewExternalCosts";
             this.btn_reparaturenAddNewExternalCosts.Size = new System.Drawing.Size(97, 21);
             this.btn_reparaturenAddNewExternalCosts.TabIndex = 78;
@@ -522,7 +524,7 @@
             // 
             this.label19.AutoSize = true;
             this.label19.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label19.Location = new System.Drawing.Point(447, 474);
+            this.label19.Location = new System.Drawing.Point(447, 496);
             this.label19.Name = "label19";
             this.label19.Size = new System.Drawing.Size(107, 18);
             this.label19.TabIndex = 79;
@@ -530,7 +532,7 @@
             // 
             // textBox_ReparaturEditAddNewExternalCosts
             // 
-            this.textBox_ReparaturEditAddNewExternalCosts.Location = new System.Drawing.Point(590, 472);
+            this.textBox_ReparaturEditAddNewExternalCosts.Location = new System.Drawing.Point(590, 494);
             this.textBox_ReparaturEditAddNewExternalCosts.Name = "textBox_ReparaturEditAddNewExternalCosts";
             this.textBox_ReparaturEditAddNewExternalCosts.Size = new System.Drawing.Size(153, 20);
             this.textBox_ReparaturEditAddNewExternalCosts.TabIndex = 80;
@@ -551,7 +553,7 @@
             this.label21.AutoSize = true;
             this.label21.Font = new System.Drawing.Font("Arial Narrow", 18F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label21.ForeColor = System.Drawing.Color.DodgerBlue;
-            this.label21.Location = new System.Drawing.Point(12, 318);
+            this.label21.Location = new System.Drawing.Point(12, 340);
             this.label21.Name = "label21";
             this.label21.Size = new System.Drawing.Size(92, 29);
             this.label21.TabIndex = 82;
@@ -683,11 +685,30 @@
             this.label25.Text = "5G";
             this.label25.Visible = false;
             // 
+            // label26
+            // 
+            this.label26.AutoSize = true;
+            this.label26.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label26.Location = new System.Drawing.Point(10, 304);
+            this.label26.Name = "label26";
+            this.label26.Size = new System.Drawing.Size(123, 36);
+            this.label26.TabIndex = 100;
+            this.label26.Text = "Externe Kosten\r\nDIFF";
+            // 
+            // textBox_ExternalCostsDiff
+            // 
+            this.textBox_ExternalCostsDiff.Location = new System.Drawing.Point(158, 305);
+            this.textBox_ExternalCostsDiff.Name = "textBox_ExternalCostsDiff";
+            this.textBox_ExternalCostsDiff.Size = new System.Drawing.Size(256, 20);
+            this.textBox_ExternalCostsDiff.TabIndex = 101;
+            // 
             // ReparaturenEdit
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(868, 600);
+            this.Controls.Add(this.textBox_ExternalCostsDiff);
+            this.Controls.Add(this.label26);
             this.Controls.Add(this.comboBox_FiveG);
             this.Controls.Add(this.label25);
             this.Controls.Add(this.comboBox_SamsungDevices);
@@ -807,5 +828,7 @@
         private System.Windows.Forms.ComboBox comboBox_SamsungDevices;
         private System.Windows.Forms.ComboBox comboBox_FiveG;
         private System.Windows.Forms.Label label25;
+        private System.Windows.Forms.Label label26;
+        private System.Windows.Forms.TextBox textBox_ExternalCostsDiff;
     }
 }

@@ -22,6 +22,7 @@ namespace EigenbelegToolAlpha
 
             CRUDQueries window = new CRUDQueries();
             StartMenu window2 = new StartMenu();
+            //Application.Run(new EvaluationCalculation());
             if (window2.CheckUser() == false)
             {
                 Application.Run(new StartMenu());

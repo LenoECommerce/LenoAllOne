@@ -695,5 +695,11 @@ namespace EigenbelegToolAlpha
             window.Show();
             this.Hide();
         }
+
+        private void lieferscheineMergeToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            folderBrowserDialog1.ShowDialog();
+            MergeShippingDocuments merge = new MergeShippingDocuments(folderBrowserDialog1.SelectedPath);
+        }
     }
 }

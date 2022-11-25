@@ -44,6 +44,7 @@ namespace EigenbelegToolAlpha
             string condition = comboBox_ReparaturEditCondition.Text;
             string taxes = comboBox_ReparaturEditTaxes.Text;
             string fiveG = comboBox_FiveG.Text;
+            string externalCostsDiff = textBox_ExternalCostsDiff.Text;
 
             if (comboBox_SamsungDevices.Text != "")
             {
@@ -74,8 +75,8 @@ namespace EigenbelegToolAlpha
             {
                 try
                 {
-                    string query = string.Format("UPDATE `Reparaturen` SET `Intern` = '{0}',`Kaufdatum` = '{1}', `Geraet` = '{2}', `Kaufbetrag` = '{3}', `IMEI` = '{4}', `Marke` = '{5}', `Speicher` = '{6}', `Defekt` = '{7}', `ExterneKosten` = '{8}', `Kommentar` = '{9}', `Meldungen?` = '{10}', `Getestet?` = '{11}', `Reparaturstatus` = '{12}', `Quelle` = '{13}', `Risikostufe` = '{14}', `LohntSich?` = '{15}', `EBReferenz` = '{16}' , `Hauptteile` = '{17}', `Farbe` = '{18}', `Besteuerung` = '{19}', `Zustand` = '{20}', `Spendermonat` = '{21}', `5G` = '{22}' WHERE `Id` = {23}"
-                , internalNumber, dateBought, device, transactionAmount, imei, make, storage, defect, externalCosts, comment, notifications, tested, state, source, riskLevel, worthIt, referenceToEB, maindefects, color, taxes, condition, donorMonth, fiveG, Reparaturen.lastSelectedProductKey);
+                    string query = string.Format("UPDATE `Reparaturen` SET `Intern` = '{0}',`Kaufdatum` = '{1}', `Geraet` = '{2}', `Kaufbetrag` = '{3}', `IMEI` = '{4}', `Marke` = '{5}', `Speicher` = '{6}', `Defekt` = '{7}', `ExterneKosten` = '{8}', `Kommentar` = '{9}', `Meldungen?` = '{10}', `Getestet?` = '{11}', `Reparaturstatus` = '{12}', `Quelle` = '{13}', `Risikostufe` = '{14}', `LohntSich?` = '{15}', `EBReferenz` = '{16}' , `Hauptteile` = '{17}', `Farbe` = '{18}', `Besteuerung` = '{19}', `Zustand` = '{20}', `Spendermonat` = '{21}', `5G` = '{22}', `ExterneKostenDIFF` = '{23}' WHERE `Id` = {24}"
+                , internalNumber, dateBought, device, transactionAmount, imei, make, storage, defect, externalCosts, comment, notifications, tested, state, source, riskLevel, worthIt, referenceToEB, maindefects, color, taxes, condition, donorMonth, fiveG, externalCostsDiff, Reparaturen.lastSelectedProductKey);
                     Reparaturen.ExecuteQuery(query);
                 }
                 catch (Exception ex)
@@ -112,6 +113,7 @@ namespace EigenbelegToolAlpha
             comboBox_ReparaturEditCondition.Text = Reparaturen.condition;
             lbl_donorMonth.Text = Reparaturen.donorMonth;
             comboBox_FiveG.Text = Reparaturen.fiveG;
+            textBox_ExternalCostsDiff.Text = Reparaturen.externalCostsDiff;
 
             string tempCheckDevice = Reparaturen.device;
             if (comboBox_reparaturenEditDevice.Items.Contains(tempCheckDevice))
