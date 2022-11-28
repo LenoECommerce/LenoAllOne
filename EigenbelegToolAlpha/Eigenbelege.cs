@@ -699,7 +699,13 @@ namespace EigenbelegToolAlpha
         private void lieferscheineMergeToolStripMenuItem_Click(object sender, EventArgs e)
         {
             folderBrowserDialog1.ShowDialog();
-            MergeShippingDocuments merge = new MergeShippingDocuments(folderBrowserDialog1.SelectedPath);
+            MergeShippingDocuments merge = new MergeShippingDocuments(folderBrowserDialog1.SelectedPath, "DeliveryNote");
+        }
+
+        private void etikettenMergeToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            folderBrowserDialog1.ShowDialog();
+            MergeShippingDocuments merge = new MergeShippingDocuments(folderBrowserDialog1.SelectedPath, "Label");
         }
     }
 }

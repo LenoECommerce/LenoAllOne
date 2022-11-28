@@ -58,11 +58,12 @@
             this.auswertungenToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.b2CAnkaufToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.b2BToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.lieferscheineMergeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.btn_folderInstaCreate = new System.Windows.Forms.Button();
             this.btn_buybackPriceAdaptions = new System.Windows.Forms.Button();
             this.lbl_LastPayPalImport = new System.Windows.Forms.Label();
             this.lbl_LastBuyBackSync = new System.Windows.Forms.Label();
-            this.lieferscheineMergeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.etikettenMergeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             ((System.ComponentModel.ISupportInitialize)(this.eigenbelegeDGV)).BeginInit();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
@@ -285,7 +286,8 @@
             this.auswertungenToolStripMenuItem,
             this.b2CAnkaufToolStripMenuItem,
             this.b2BToolStripMenuItem,
-            this.lieferscheineMergeToolStripMenuItem});
+            this.lieferscheineMergeToolStripMenuItem,
+            this.etikettenMergeToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.Size = new System.Drawing.Size(1264, 24);
@@ -370,6 +372,13 @@
             this.b2BToolStripMenuItem.Text = "B2B";
             this.b2BToolStripMenuItem.Click += new System.EventHandler(this.b2BToolStripMenuItem_Click);
             // 
+            // lieferscheineMergeToolStripMenuItem
+            // 
+            this.lieferscheineMergeToolStripMenuItem.Name = "lieferscheineMergeToolStripMenuItem";
+            this.lieferscheineMergeToolStripMenuItem.Size = new System.Drawing.Size(125, 20);
+            this.lieferscheineMergeToolStripMenuItem.Text = "Lieferscheine Merge";
+            this.lieferscheineMergeToolStripMenuItem.Click += new System.EventHandler(this.lieferscheineMergeToolStripMenuItem_Click);
+            // 
             // btn_folderInstaCreate
             // 
             this.btn_folderInstaCreate.BackColor = System.Drawing.SystemColors.ActiveCaption;
@@ -420,12 +429,12 @@
             this.lbl_LastBuyBackSync.TabIndex = 52;
             this.lbl_LastBuyBackSync.Text = "Letzter BuyBackSync:";
             // 
-            // lieferscheineMergeToolStripMenuItem
+            // etikettenMergeToolStripMenuItem
             // 
-            this.lieferscheineMergeToolStripMenuItem.Name = "lieferscheineMergeToolStripMenuItem";
-            this.lieferscheineMergeToolStripMenuItem.Size = new System.Drawing.Size(125, 20);
-            this.lieferscheineMergeToolStripMenuItem.Text = "Lieferscheine Merge";
-            this.lieferscheineMergeToolStripMenuItem.Click += new System.EventHandler(this.lieferscheineMergeToolStripMenuItem_Click);
+            this.etikettenMergeToolStripMenuItem.Name = "etikettenMergeToolStripMenuItem";
+            this.etikettenMergeToolStripMenuItem.Size = new System.Drawing.Size(102, 20);
+            this.etikettenMergeToolStripMenuItem.Text = "Etiketten Merge";
+            this.etikettenMergeToolStripMenuItem.Click += new System.EventHandler(this.etikettenMergeToolStripMenuItem_Click);
             // 
             // Eigenbelege
             // 
@@ -505,6 +514,7 @@
         private System.Windows.Forms.ToolStripMenuItem b2CAnkaufToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem b2BToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem lieferscheineMergeToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem etikettenMergeToolStripMenuItem;
     }
 }
 

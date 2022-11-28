@@ -286,6 +286,7 @@
     <Compile Include="Evaluations.Designer.cs">
       <DependentUpon>Evaluations.cs</DependentUpon>
     </Compile>
+    <Compile Include="EvaluationsBackMarketPDF.cs" />
     <Compile Include="EvaluationSecondForm.cs">
       <SubType>Form</SubType>
     </Compile>

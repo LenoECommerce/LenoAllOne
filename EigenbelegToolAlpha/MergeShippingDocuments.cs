@@ -28,22 +28,30 @@ namespace EigenbelegToolAlpha
     {
         public static string folderPath = "";
         public static string desktopPath = Environment.GetFolderPath(Environment.SpecialFolder.Desktop) + @"\";
-        public string savePath = desktopPath + "output.pdf";
+        public static string date = DateTime.Now.ToString().Substring(0,10);
+        public string savePath = desktopPath + "output"+date+".pdf";
         public string barcodePath = folderPath + "barcode";
         public string text = "";
         public int counter = 0;
         public string[] languages = new string[8] {"Pedido n° ","Bestellnr. ","Ordine n° ","Order no. ","Tilausnumero ", "N.º de encomenda ", "Commande n°", "Bestelnr. " };
 
-        public MergeShippingDocuments(string folderValue)
+        public MergeShippingDocuments(string folderValue, string type)
         {
             folderPath = folderValue;
-            MainAlgorithm();
+            if (type == "Label")
+            {
+                MainAlgorithm2();
+            }
+            else if (type == "DeliveryNote")
+            {
+                MainAlgorithm();
+            }
             GoogleDrive drive = new GoogleDrive(savePath, "pdf");
             MessageBox.Show("Datei wurde erfolgreich hochgeladen.");
             DeleteFiles();
         }
 
-        public async void MainAlgorithm()
+        public void MainAlgorithm()
         {
             try
             {
@@ -56,7 +64,18 @@ namespace EigenbelegToolAlpha
             {
                 MessageBox.Show(e.Message);
             }
-
+        }
+        public void MainAlgorithm2()
+        {
+            try
+            {
+                string[] filesInDir = Directory.GetFiles(folderPath);
+                MergeFiles(filesInDir);
+            }
+            catch (Exception e)
+            {
+                MessageBox.Show(e.Message);
+            }
         }
         private void DeleteFiles()
         {

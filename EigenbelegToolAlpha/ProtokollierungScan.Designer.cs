@@ -52,6 +52,7 @@
             this.textBox_scanField.Size = new System.Drawing.Size(194, 20);
             this.textBox_scanField.TabIndex = 1;
             this.textBox_scanField.TextChanged += new System.EventHandler(this.textBox_scanField_TextChanged);
+            this.textBox_scanField.KeyDown += new System.Windows.Forms.KeyEventHandler(this.OnKeyDownHandler);
             // 
             // button1
             // 
@@ -80,6 +81,7 @@
             this.textBox_orderID.TabIndex = 4;
             this.textBox_orderID.TextChanged += new System.EventHandler(this.textBox_orderID_TextChanged);
             this.textBox_orderID.Enter += new System.EventHandler(this.textBox_orderID_Enter);
+            this.textBox_orderID.KeyDown += new System.Windows.Forms.KeyEventHandler(this.OnKeyDownHandlerAndEnter);
             // 
             // ProtokollierungScan
             // 

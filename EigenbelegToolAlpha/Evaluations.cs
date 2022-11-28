@@ -21,10 +21,11 @@ namespace EigenbelegToolAlpha
         public EvaluationsFirstPage()
         {
             InitializeComponent();
+            CreateConfigTXTFirstTime();
             month = lineSearchAndGetValue("Monat:", 6);
             year = lineSearchAndGetValue("Jahr:", 5);
         }
-        public string fileName = "Evaluation_config.txt";
+        public string basePath = Environment.CurrentDirectory + @"\Evaluation_config.txt";
         public string newPath = "";
         string result = "";
         public string month = "";
@@ -47,15 +48,24 @@ namespace EigenbelegToolAlpha
         }
         public void CreateConfigTXT()
         {
-            string path = "Evaluation_config.txt";
-            FileStream stream = File.Create(path);
-            stream.Close();
-            File.WriteAllText(path, "\r\nBackMarket normal 1: kein Wert\r\nBackMarket normal 2: kein Wert\r\nBackMarket normal 3: kein Wert\r\nBackMarket PayPal 1: kein Wert\r\nBackMarket PayPal 2: kein Wert\r\nBackMarket PayPal 3: kein Wert\r\nEbay Report: kein Wert\r\nEbay Rechnung: kein Wert\r\nMonat: kein Wert\r\nJahr: kein Wert");
-            
+            if (!File.Exists(basePath))
+            {
+                FileStream fs = new FileStream(basePath,FileMode.Create);
+                fs.Close();
+            }
+            File.WriteAllText(basePath, "\r\nBackMarket normal 1: kein Wert\r\nBackMarket normal 2: kein Wert\r\nBackMarket normal 3: kein Wert\r\nBackMarket PayPal 1: kein Wert\r\nBackMarket PayPal 2: kein Wert\r\nBackMarket PayPal 3: kein Wert\r\nEbay Report: kein Wert\r\nEbay Rechnung: kein Wert\r\nMonat: kein Wert\r\nJahr: kein Wert");
+        }
+        public void CreateConfigTXTFirstTime()
+        {
+            if (!File.Exists(basePath))
+            {
+                FileStream fs = new FileStream(basePath, FileMode.Create);
+                fs.Close();
+            }
         }
         public void lineSearchAndInsert(string searchValue)
         {
-            string[] lines = File.ReadAllLines(fileName);
+            string[] lines = File.ReadAllLines(basePath);
             int lineToEdit = 2;
             string lineToWrite = newPath;
             
@@ -69,7 +79,7 @@ namespace EigenbelegToolAlpha
 
             //Neuen Path eintragen
             string line = null;
-            using (StreamWriter writer = new StreamWriter(fileName))
+            using (StreamWriter writer = new StreamWriter(basePath))
             {
                 for (int currentLine = 1; currentLine <= lines.Length; ++currentLine)
                 {
@@ -88,7 +98,7 @@ namespace EigenbelegToolAlpha
 
         public void LineSearchAndInsertFixValue(string searchValue)
         {
-            string[] lines = File.ReadAllLines(fileName);
+            string[] lines = File.ReadAllLines(basePath);
             int lineToEdit = 2;
             string lineToWrite = month;
 
@@ -102,7 +112,7 @@ namespace EigenbelegToolAlpha
 
             //Neuen Path eintragen
             string line = null;
-            using (StreamWriter writer = new StreamWriter(fileName))
+            using (StreamWriter writer = new StreamWriter(basePath))
             {
                 for (int currentLine = 1; currentLine <= lines.Length; ++currentLine)
                 {
@@ -120,7 +130,7 @@ namespace EigenbelegToolAlpha
         }
         public void LineSearchAndInsertFixValue2(string searchValue)
         {
-            string[] lines = File.ReadAllLines(fileName);
+            string[] lines = File.ReadAllLines(basePath);
             int lineToEdit = 2;
             string lineToWrite = year;
 
@@ -134,7 +144,7 @@ namespace EigenbelegToolAlpha
 
             //Neuen Path eintragen
             string line = null;
-            using (StreamWriter writer = new StreamWriter(fileName))
+            using (StreamWriter writer = new StreamWriter(basePath))
             {
                 for (int currentLine = 1; currentLine <= lines.Length; ++currentLine)
                 {
@@ -153,7 +163,7 @@ namespace EigenbelegToolAlpha
 
         public string lineSearchAndGetValue(string searchValue, int charCount)
         {
-            string[] lines = File.ReadAllLines(fileName);
+            string[] lines = File.ReadAllLines(basePath);
             foreach (string line in lines)
             {
                 if (line.Contains(searchValue))
@@ -290,8 +300,15 @@ namespace EigenbelegToolAlpha
 
         private void btn_ContinueWithEvaluation2_Click(object sender, EventArgs e)
         {
-            EbayPDFAlgorithm();
-            EbayPDFInvoiceAlgorithm();
+            try
+            {
+                EbayPDFAlgorithm();
+                EbayPDFInvoiceAlgorithm();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
             EvaluationSecondForm frm = new EvaluationSecondForm();
             frm.Show();
             this.Hide();

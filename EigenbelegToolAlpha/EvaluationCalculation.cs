@@ -19,16 +19,6 @@ namespace EigenbelegToolAlpha
 {
     public partial class EvaluationCalculation : Form
     {
-        public EvaluationCalculation()
-        {
-            InitializeComponent();
-            //string tempNumber = EvaluationThirdForm.RunningCostsSum.ToString();
-            //lbl_RunningCostsSum.Text = RoundNumber(tempNumber);
-            //string tempNumber2 = EvaluationThirdForm.RunningCostsTaxGetBack.ToString();
-            //lbl_RunningCostsTaxGetBack.Text = RoundNumber(tempNumber2);
-            //string tempNumber3 = EvaluationThirdForm.RunningCostsFinal.ToString();
-            //lbl_RunningCostsAtAll.Text = RoundNumber(tempNumber3);
-        }
         public static double backMarketGrossSalesVolumeMarginalVat = 0;
         public static double backMarketGrossSalesVolumeNormalVat = 0;
         public static double backMarketReturnsMarginalVat = 0;
@@ -66,75 +56,73 @@ namespace EigenbelegToolAlpha
         public static int kpiSourceCounterBackMarket = 0;
         public static int checkValueAddedDevicesToMatching = 0;
         public static int checkValueDevicesCountedInput = 0;
-        private void DonorDevicesAlgorithm()
+
+        public string[] dataSetOrder = new string[10];
+        //Data Set variables
+        public string orderID = "";
+        public string internalNumber = "";
+        public string amount = "";
+        public string externalCosts = "";
+        public string externalCostsDIFF = "";
+        public string taxesType = "";
+        public string taxesAmount = "";
+        public string marketplaceFees = "";
+        public string revenue = "";
+        public string margin = "";
+
+        Protokollierung prot = new Protokollierung();
+        Reparaturen rep = new Reparaturen();
+        Matching match = new Matching();
+        EvaluationsFirstPage eval = new EvaluationsFirstPage();
+        OrderRelationPDF orderRelationPDF = new OrderRelationPDF();
+        public string month = "";
+        public EvaluationCalculation()
         {
-            Reparaturen rep = new Reparaturen();
-            EvaluationsFirstPage eval = new EvaluationsFirstPage();
-            string month = eval.lineSearchAndGetValue("Monat:", 6);
-            foreach (DataGridViewRow row in rep.reparaturenDGV.Rows)
-            {
-                string testingMonth = row.Cells[22].Value.ToString();
-                if (testingMonth == month)
-                {
-                    double tempAmountDevice = Convert.ToDouble(row.Cells[4].Value);
-                    donorDevicesAmount += tempAmountDevice;
-                    donorDevicesCounter++;
-                }
-            }
-            MessageBox.Show("Der Spender Algorithmus wurde mit folgendem Ergebnis ausgeführt: \r\n- Betrag insgesamt: " + donorDevicesAmount + "\r\n- Geräte insgesamt: " + donorDevicesCounter);
+            InitializeComponent();
+            month = eval.lineSearchAndGetValue("Monat:", 6);
         }
-        private void CalculateInputAlgorithm()
+        
+        public void GetFullDataSetOrder ()
         {
-            progressBar1.Value = 0;
-            Matching match = new Matching();
-            EvaluationsFirstPage eval = new EvaluationsFirstPage();
-            string month = eval.lineSearchAndGetValue("Monat:", 6);
-            int arrayIndex = 0;
-            double rowsInTotal = match.matchingDGV.RowCount;
-            double approvedRows = 0;
             foreach (DataGridViewRow row in match.matchingDGV.Rows)
             {
-                approvedRows++;
-                double progress = approvedRows / rowsInTotal * 100;
-                progressBar1.Value = Convert.ToInt32(progress);
-                string monthOfMatching = row.Cells[8].Value.ToString();
-                string tempIntern = row.Cells[3].Value.ToString();
-                if (monthOfMatching == month)
+                // check if month is relevant
+                string monthCheck = row.Cells[9].Value.ToString();
+                string orderIDCheck = row.Cells[1].Value.ToString();
+                if (monthCheck == month)
                 {
-                        arrayIndex++;
-                        string checkValue = row.Cells[5].Value.ToString();
-                        if (checkValue == "")
-                        {
-                            inputOfExternalCosts += 0;
-                        }
-                        else
-                        {
-                            inputOfExternalCosts += Convert.ToDouble(EuroCheck(checkValue));
-                        }
-                        string checkTaxValue = Convert.ToString(row.Cells[7].Value);
-                        if (CheckTaxesForInputs(checkTaxValue) == true)
-                        {
-                            string checkValue2 = row.Cells[4].Value.ToString();
-                            inputOfGoodsDIFF += Convert.ToDouble(EuroCheck(checkValue2));
-                        }
-                        else
-                        {
-                            string checkValue3 = row.Cells[4].Value.ToString();
-                            inputOfGoodsREG += Convert.ToDouble(EuroCheck(checkValue3));
-                        }
+                    var id = CRUDQueries.ExecuteQueryWithResult("Matching","Id","Bestellnummer",orderIDCheck);
+                    FetchDataFromMatching(id);
+                    orderRelationPDF.Main(orderID,internalNumber, amount, externalCosts, externalCostsDIFF,taxesType);
                 }
             }
-            lbl_inputOfExternalCosts.Text = inputOfExternalCosts.ToString();
-            lbl_inputOfGoodsDIFF.Text = inputOfGoodsDIFF.ToString();
-            lbl_inputOfGoodsREG.Text = inputOfGoodsREG.ToString();
-            checkValueDevicesCountedInput = arrayIndex;
-            MessageBox.Show("Der Einsatz Algorithmus wurde mit folgendem Ergebnis ausgeführt: \r\n- Einträge insgesamt: " + rowsInTotal + "\r\n- Durchlaufen: " + approvedRows + "\r\n- Passende Einträge: " + arrayIndex);
         }
+        private void FetchDataFromMatching(int id)
+        {
+            orderID = CRUDQueries.ExecuteQueryWithResultString("Matching", "Bestellnummer", "Id", id.ToString());
+            internalNumber = CRUDQueries.ExecuteQueryWithResultString("Matching", "Intern", "Id", id.ToString());
+            amount = AdaptNumber(CRUDQueries.ExecuteQueryWithResultString("Matching", "Kaufbetrag", "Id", id.ToString()));
+            externalCosts = AdaptNumber(CRUDQueries.ExecuteQueryWithResultString("Matching", "Externe Kosten", "Id", id.ToString()));
+            externalCostsDIFF = AdaptNumber(CRUDQueries.ExecuteQueryWithResultString("Matching", "ExterneKostenDIFF", "Id", id.ToString()));
+            taxesType = CRUDQueries.ExecuteQueryWithResultString("Matching", "Besteuerung", "Id", id.ToString());
+            if (taxesType.Contains("Diff"))
+            {
+                taxesType = "DIFF";
+            }
+            else if (taxesType.Contains("Reg"))
+            {
+                taxesType = "REG";
+            }
+        }
+
+   
+
+
+
+
+
         private void MatchingAlgorithm ()
         {
-            Protokollierung prot = new Protokollierung();
-            Reparaturen rep = new Reparaturen();
-            Matching match = new Matching();
             string searchIntern = "";
             string importNewIMEI = "";
             string searchOrderID = "";
@@ -217,7 +205,7 @@ namespace EigenbelegToolAlpha
         }
         private string AdaptNumber(string checkValue)
         {
-            string amount = "";
+            string amount = checkValue;
             if (checkValue == "")
             {
                 amount = "0";
@@ -228,6 +216,69 @@ namespace EigenbelegToolAlpha
                 amount = checkValue.Substring(0, length - 1);
             }
             return amount;
+        }
+
+        //old algorithms;
+        private void DonorDevicesAlgorithm()
+        {
+            foreach (DataGridViewRow row in rep.reparaturenDGV.Rows)
+            {
+                string testingMonth = row.Cells[22].Value.ToString();
+                if (testingMonth == month)
+                {
+                    double tempAmountDevice = Convert.ToDouble(row.Cells[4].Value);
+                    donorDevicesAmount += tempAmountDevice;
+                    donorDevicesCounter++;
+                }
+            }
+            MessageBox.Show("Der Spender Algorithmus wurde mit folgendem Ergebnis ausgeführt: \r\n- Betrag insgesamt: " + donorDevicesAmount + "\r\n- Geräte insgesamt: " + donorDevicesCounter);
+        }
+        private void CalculateInputAlgorithm()
+        {
+            progressBar1.Value = 0;
+            Matching match = new Matching();
+            EvaluationsFirstPage eval = new EvaluationsFirstPage();
+            string month = eval.lineSearchAndGetValue("Monat:", 6);
+            int arrayIndex = 0;
+            double rowsInTotal = match.matchingDGV.RowCount;
+            double approvedRows = 0;
+            foreach (DataGridViewRow row in match.matchingDGV.Rows)
+            {
+                approvedRows++;
+                double progress = approvedRows / rowsInTotal * 100;
+                progressBar1.Value = Convert.ToInt32(progress);
+                string monthOfMatching = row.Cells[8].Value.ToString();
+                string tempIntern = row.Cells[3].Value.ToString();
+                if (monthOfMatching == month)
+                {
+                    arrayIndex++;
+                    string checkValue = row.Cells[5].Value.ToString();
+                    if (checkValue == "")
+                    {
+                        inputOfExternalCosts += 0;
+                    }
+                    else
+                    {
+                        inputOfExternalCosts += Convert.ToDouble(EuroCheck(checkValue));
+                    }
+                    string checkTaxValue = Convert.ToString(row.Cells[7].Value);
+                    if (CheckTaxesForInputs(checkTaxValue) == true)
+                    {
+                        string checkValue2 = row.Cells[4].Value.ToString();
+                        inputOfGoodsDIFF += Convert.ToDouble(EuroCheck(checkValue2));
+                    }
+                    else
+                    {
+                        string checkValue3 = row.Cells[4].Value.ToString();
+                        inputOfGoodsREG += Convert.ToDouble(EuroCheck(checkValue3));
+                    }
+                }
+            }
+            lbl_inputOfExternalCosts.Text = inputOfExternalCosts.ToString();
+            lbl_inputOfGoodsDIFF.Text = inputOfGoodsDIFF.ToString();
+            lbl_inputOfGoodsREG.Text = inputOfGoodsREG.ToString();
+            checkValueDevicesCountedInput = arrayIndex;
+            MessageBox.Show("Der Einsatz Algorithmus wurde mit folgendem Ergebnis ausgeführt: \r\n- Einträge insgesamt: " + rowsInTotal + "\r\n- Durchlaufen: " + approvedRows + "\r\n- Passende Einträge: " + arrayIndex);
         }
         private void BackMarketInvoicesChecking ()
         {
@@ -844,8 +895,7 @@ namespace EigenbelegToolAlpha
 
         private void btn_ExecuteAllAlgorithms_Click(object sender, EventArgs e)
         {
-            OrderRelationPDF orderRelationPDF = new OrderRelationPDF();
-            orderRelationPDF.Main();
+            GetFullDataSetOrder();
             //try
             //{
             //    MatchingAlgorithm();
