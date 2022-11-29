@@ -13,48 +13,158 @@ namespace EigenbelegToolAlpha
 {
     public class EvaluationsBackMarketPDF
     {
-        private void Main()
+        public void Main()
         {
             BuildTextFiles("Normal","BackMarket normal ");
             BuildTextFiles("PayPal", "BackMarket PayPal ");
         }
-        private string FindPDFViaOrderNumber (string orderID)
+        public string GetSalesVolume (string orderID, string pdf)
+        {
+            return "N/A";
+        }
+        public string FindPDFViaOrderNumber (string orderID)
         {
             string[] numbers = new string[3] { "1", "2", "3" };
             string pathPreset = "BackmarketNormal";
+            string searchValueForGrossSalesList = " 1 ";
+            string searchValueForGrossSalesList2 = " 2 ";
             string searchValueHeadingGrossSalesList = "MONTANT DES COMMANDES EXPEDIÉES DU";
-            int arrayIndexer = 0;
+            int arrayIndexerPDF = 0;
+            int arrayIndexerSales = 0;
             foreach (string number in numbers)
             {
-                string buildPath = pathPreset + numbers[arrayIndexer] + ".txt";
-                arrayIndexer++;
+                string buildPath = pathPreset + numbers[arrayIndexerPDF] + ".txt";
+                arrayIndexerPDF++;
+                string[] salesList = new string[1000];
                 string[] allLines = File.ReadAllLines(buildPath);
                 int indexGrossSalesList = findLine(allLines, searchValueHeadingGrossSalesList);
-                // hier abfragen ob die hauptorder vorhanden ist
-                foreach (string line in allLines)
+                //Alle Orders in Array auflisten | sozusagen ein Filter von allLines[]
+                for (int i = indexGrossSalesList + 1; i < allLines.Count(); i++)
                 {
-                    if (line.Contains(orderID))
+                    if (allLines[i].Contains(searchValueForGrossSalesList) || allLines[i].Contains(searchValueForGrossSalesList2))
                     {
-                        return buildPath;
+                        salesList[arrayIndexerSales] = allLines[i];
+                        arrayIndexerSales++;
+                    }
+                    else
+                    {
+                        break;
+                    }
+                }
+                // hier abfragen ob die hauptorder vorhanden ist
+                foreach (string line in salesList)
+                {
+                    if (line != null)
+                    {
+                        if (line.Contains(orderID))
+                        {
+                            return buildPath;
+                        }
                     }
                 }
             }
-
-
-            //hier nochmal anpassen!!
+            //PayPal
             string[] numbers2 = new string[3] { "1", "2", "3" };
             string pathPreset2 = "BackmarketPayPal";
-            int arrayIndexer2 = 0;
-            foreach (string number in numbers2)
+            int arrayIndexerPDF2 = 0;
+            foreach (string number in numbers)
             {
-                string buildPath2 = pathPreset2 + numbers2[arrayIndexer2] + ".txt";
-                arrayIndexer2++;
-                if (File.ReadAllText(buildPath2).Contains(orderID))
+                string buildPath = pathPreset2 + numbers2[arrayIndexerPDF2] + ".txt";
+                arrayIndexerPDF2++;
+                string[] salesList = new string[1000];
+                string[] allLines = File.ReadAllLines(buildPath);
+                int indexGrossSalesList = findLine(allLines, searchValueHeadingGrossSalesList);
+                //Alle Orders in Array auflisten | sozusagen ein Filter von allLines[]
+                for (int i = indexGrossSalesList + 1; i < allLines.Count(); i++)
                 {
-                    return buildPath2;
+                    if (allLines[i].Contains(searchValueForGrossSalesList) || allLines[i].Contains(searchValueForGrossSalesList2))
+                    {
+                        salesList[arrayIndexerSales] = allLines[i];
+                        arrayIndexerSales++;
+                    }
+                    else
+                    {
+                        break;
+                    }
+                }
+                // hier abfragen ob die hauptorder vorhanden ist
+                foreach (string line in salesList)
+                {
+                    if (line != null)
+                    {
+                        if (line.Contains(orderID))
+                        {
+                            return buildPath;
+                        }
+                    }
                 }
             }
-            return "";
+            return "N/A";
+
+        }
+        public double getValueOfOneLine(int index, string[] array, int lengthOfTheFirstPos, string firstPos, string secondPos)
+        {
+            string newValue = "";
+            string tempSave = array[index].ToString();
+            var fullLength = tempSave.Length;
+            var posFirst = tempSave.IndexOf(firstPos);
+            var posSecond = tempSave.IndexOf(secondPos);
+            string tempValue = tempSave.Substring(posFirst + lengthOfTheFirstPos, posSecond - posFirst - lengthOfTheFirstPos - 1);
+            //Erweiterung für Tausenderbeträge mit Leerzeichen
+            if (checkSpaceSign(tempValue) == true)
+            {
+                if (checkMinusSign(tempValue) == true)
+                {
+                    var posSpace = tempValue.IndexOf(" ");
+                    var length = tempValue.Length;
+                    string temp1 = tempValue.Substring(1, 1);
+                    string temp2 = tempValue.Substring(posSpace + 1, length - posSpace - 1);
+                    tempValue = temp1 + temp2;
+                }
+                else
+                {
+                    var posSpace = tempValue.IndexOf(" ");
+                    var length = tempValue.Length;
+                    string temp1 = tempValue.Substring(0, 1);
+                    string temp2 = tempValue.Substring(posSpace + 1, length - posSpace - 1);
+                    tempValue = temp1 + temp2;
+                }
+            }
+            if (checkMinusSign(tempValue) == true)
+            {
+                var length2 = tempValue.Length;
+                tempValue = tempValue.Substring(0, length2 - 1);
+            }
+            if (tempValue == "0,00")
+            {
+                tempValue = "0";
+            }
+
+            newValue = tempValue;
+            double value = Convert.ToDouble(newValue);
+            return value;
+        }
+        public bool checkMinusSign(string tempValue)
+        {
+            if (tempValue.Contains("-"))
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
+        public bool checkSpaceSign(string tempValue)
+        {
+            if (tempValue.Contains(" "))
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
         }
         public int findLine(string[] array, string searchValue)
         {

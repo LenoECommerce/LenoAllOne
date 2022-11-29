@@ -18,6 +18,8 @@ namespace EigenbelegToolAlpha
 {
     public class OrderRelationPDF
     {
+        EvaluationsBackMarketPDF evaluationsBackMarketPDF = new EvaluationsBackMarketPDF();
+
         public static string desktopPath = Environment.GetFolderPath(Environment.SpecialFolder.Desktop) + @"\";
         public string fullPath = desktopPath + "test.pdf";
         public double headingPosY = 30;
@@ -26,6 +28,7 @@ namespace EigenbelegToolAlpha
 
         public void Main (string orderId, string internalNumber, string amount, string externalCosts, string externalCostsDiff, string taxesType)
         {
+            string pdfTest = "";
             if (File.Exists(fullPath))
             {
                 //add new entry
@@ -35,7 +38,10 @@ namespace EigenbelegToolAlpha
                 XFont heading = new XFont("Arial", 20);
                 XFont main = new XFont("Arial", 14);
                 XFont subFont = new XFont("Arial", 11);
-                
+
+                //fetch order id
+                pdfTest = evaluationsBackMarketPDF.FindPDFViaOrderNumber(orderId);
+                //rest
                 double subBegin = headingPosY + 20 + entriesAdded * 10;
                 gfx.DrawString(orderId, subFont, XBrushes.Black, new XPoint(10, subBegin));
                 gfx.DrawString(internalNumber, subFont, XBrushes.Black, new XPoint(110, subBegin));
@@ -43,6 +49,7 @@ namespace EigenbelegToolAlpha
                 gfx.DrawString(externalCosts, subFont, XBrushes.Black, new XPoint(240, subBegin));
                 gfx.DrawString(externalCostsDiff, subFont, XBrushes.Black, new XPoint(290, subBegin));
                 gfx.DrawString(taxesType, subFont, XBrushes.Black, new XPoint(340, subBegin));
+                gfx.DrawString(pdfTest, subFont, XBrushes.Black, new XPoint(390, subBegin));
                 document.Save(fullPath);
                 entriesAdded++;
             }
@@ -56,7 +63,6 @@ namespace EigenbelegToolAlpha
                 XFont heading = new XFont("Arial", 20);
                 XFont main = new XFont("Arial", 14);
                 XFont subFont = new XFont("Arial", 11);
-
                 //Zeilenüberschriften
                 gfx.DrawString("Orderübersicht", main, XBrushes.Black, new XPoint(10, 10));
                 gfx.DrawString("Bestellnummer", main, XBrushes.Black, new XPoint(10, headingPosY));
@@ -84,6 +90,7 @@ namespace EigenbelegToolAlpha
                 //Horizontale Linien
                 gfx.DrawLine(new XPen(XColor.FromArgb(0, 0, 0)), new XPoint(0, 35), new XPoint(1000, 35));
                 //Insert Values
+                evaluationsBackMarketPDF.Main();
                 double subBegin = headingPosY + 20;
                 gfx.DrawString(orderId, subFont, XBrushes.Black, new XPoint(10, subBegin));
                 gfx.DrawString(internalNumber, subFont, XBrushes.Black, new XPoint(110, subBegin));

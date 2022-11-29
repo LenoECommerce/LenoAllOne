@@ -22,18 +22,18 @@ namespace EigenbelegToolAlpha
 
             CRUDQueries window = new CRUDQueries();
             StartMenu window2 = new StartMenu();
-            Application.Run(new Eigenbelege());
-            //if (window2.CheckUser() == false)
-            //{
-            //    Application.Run(new StartMenu());
-            //}
-            //else
-            //{
-            //    currentUser = ReturnCurrentUser();
-            //    string preferedWindow = CRUDQueries.ExecuteQueryWithResultString("ConfigUser", "Standardfenster", "Nutzer", currentUser).ToString();
-            //    RunWindow(preferedWindow);
-            //}
-            //window.Backup();
+            //Application.Run(new EvaluationsFirstPage());
+            if (window2.CheckUser() == false)
+            {
+                Application.Run(new StartMenu());
+            }
+            else
+            {
+                currentUser = ReturnCurrentUser();
+                string preferedWindow = CRUDQueries.ExecuteQueryWithResultString("ConfigUser", "Standardfenster", "Nutzer", currentUser).ToString();
+                RunWindow(preferedWindow);
+            }
+            window.Backup();
         }
         private static void RunWindow (string window)
         {

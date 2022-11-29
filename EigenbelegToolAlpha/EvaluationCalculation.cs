@@ -96,6 +96,7 @@ namespace EigenbelegToolAlpha
                     orderRelationPDF.Main(orderID,internalNumber, amount, externalCosts, externalCostsDIFF,taxesType);
                 }
             }
+            MessageBox.Show("Ausgeführt.");
         }
         private void FetchDataFromMatching(int id)
         {
