@@ -18,8 +18,105 @@ namespace EigenbelegToolAlpha
             BuildTextFiles("Normal","BackMarket normal ");
             BuildTextFiles("PayPal", "BackMarket PayPal ");
         }
+        public string CollectMarketPlaceFess(string salesVolume)
+        {
+            double marketPlaceFeesInTotal = 0;
+            marketPlaceFeesInTotal += RoundOneDigit(CalculateSellerCommission(salesVolume));
+
+
+            return marketPlaceFeesInTotal.ToString();
+        }
+        public double CalculateSellerCommission(string salesVolume)
+        {
+            if (salesVolume == "N/A")
+            {
+                return 0;
+            }
+            double sellerCommission = Convert.ToDouble(salesVolume)*0.1;
+            return sellerCommission;
+        }
+        public double CollectPaymentFees()
+        {
+            double sumup = 0;
+            string[] numbers = new string[3] { "1", "2", "3" };
+            string pathPreset = "BackmarketNormal";
+            string searchValue1 = "Frais Paiement en x fois";
+            string searchValue2 = "Frais Paiement Klarna";
+            string searchValueBegin = "Montant des commandes expédiées par le marchand";
+            int arrayIndexerPDF = 0;
+            double internationalFees = 0;
+            double klarnaFees = 0;
+            foreach (string number in numbers)
+            {
+                string buildPath = pathPreset + numbers[arrayIndexerPDF] + ".txt";
+                string[] allLines = File.ReadAllLines(buildPath);
+                arrayIndexerPDF++;
+                int indexBegin = findLine(allLines,searchValueBegin);
+                int index1 = FindLineWithSpecificBegin(allLines, searchValue1, indexBegin)-1;
+                int index2 = FindLineWithSpecificBegin(allLines, searchValue2, indexBegin)-1;
+                if (index1 != -1)
+                {
+                    internationalFees = getValueOfOneLine(index1, allLines, 5, "fois", "€");
+                }
+                if (index2 != -1)
+                {
+                    klarnaFees = getValueOfOneLine(index2, allLines, 7, "Klarna", "€");
+                }
+                sumup += internationalFees + klarnaFees;
+            }
+            return sumup;
+        }
+        public double RoundOneDigit (double adaptValue)
+        {
+            string tempValue = adaptValue.ToString();
+            if (tempValue.Contains(","))
+            {
+                var pos = tempValue.IndexOf(",");
+                tempValue = tempValue.Substring(0, pos+2);
+                adaptValue = Convert.ToDouble(tempValue);
+            }
+            return adaptValue;
+        }
         public string GetSalesVolume (string orderID, string pdf)
         {
+            if (pdf == "N/A")
+            {
+                return "N/A";
+            }
+            string[] salesList = new string[1000];
+            string[] allLines = File.ReadAllLines(pdf);
+            string searchValueForGrossSalesList = " 1 ";
+            string searchValueForGrossSalesList2 = " 2 ";
+            string searchValueHeadingGrossSalesList = "MONTANT DES COMMANDES EXPEDIÉES DU";
+            int indexGrossSalesList = findLine(allLines, searchValueHeadingGrossSalesList);
+            int arrayIndexerSales = 0;
+            //Alle Orders in Array auflisten | sozusagen ein Filter von allLines[]
+            for (int i = indexGrossSalesList + 1; i < allLines.Count(); i++)
+            {
+                if (allLines[i].Contains(searchValueForGrossSalesList) || allLines[i].Contains(searchValueForGrossSalesList2))
+                {
+                    salesList[arrayIndexerSales] = allLines[i];
+                    arrayIndexerSales++;
+                }
+                else
+                {
+                    break;
+                }
+            }
+            //Umsatz holen
+            int lineCounter = 0;
+            foreach(string line in salesList)
+            {
+                if (line != null)
+                {
+                    if (line.Contains(orderID))
+                    {
+                        string salesVolume = getValueOfOneLine(lineCounter, salesList, 3, searchValueForGrossSalesList, "€").ToString();
+                        return salesVolume;
+                    }
+                }
+                lineCounter++;
+            }
             return "N/A";
         }
         public string FindPDFViaOrderNumber (string orderID)
@@ -170,6 +267,19 @@ namespace EigenbelegToolAlpha
         {
             int backValue = 0;
             for (int i = 1; i < array.Count(); i++)
+            {
+                if (array[i].Contains(searchValue))
+                {
+                    backValue = i + 1;
+                    break;
+                }
+            }
+            return backValue;
+        }
+        public int FindLineWithSpecificBegin(string[] array, string searchValue, int beginIndex)
+        {
+            int backValue = 0;
+            for (int i = beginIndex; i < array.Count(); i++)
             {
                 if (array[i].Contains(searchValue))
                 {

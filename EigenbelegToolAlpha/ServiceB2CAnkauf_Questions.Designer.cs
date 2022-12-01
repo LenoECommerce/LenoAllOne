@@ -34,7 +34,7 @@
             this.Btn_ExplanationBusinessModel = new System.Windows.Forms.Button();
             this.Btn_NoInterests = new System.Windows.Forms.Button();
             this.button7 = new System.Windows.Forms.Button();
-            this.button8 = new System.Windows.Forms.Button();
+            this.Btn_PayPalMoneyHoldExplanation = new System.Windows.Forms.Button();
             this.Btn_ExplainShippingProcess = new System.Windows.Forms.Button();
             this.button4 = new System.Windows.Forms.Button();
             this.button5 = new System.Windows.Forms.Button();
@@ -90,14 +90,15 @@
             this.button7.Text = "-";
             this.button7.UseVisualStyleBackColor = true;
             // 
-            // button8
+            // Btn_PayPalMoneyHoldExplanation
             // 
-            this.button8.Location = new System.Drawing.Point(288, 161);
-            this.button8.Name = "button8";
-            this.button8.Size = new System.Drawing.Size(217, 51);
-            this.button8.TabIndex = 9;
-            this.button8.Text = "-";
-            this.button8.UseVisualStyleBackColor = true;
+            this.Btn_PayPalMoneyHoldExplanation.Location = new System.Drawing.Point(288, 161);
+            this.Btn_PayPalMoneyHoldExplanation.Name = "Btn_PayPalMoneyHoldExplanation";
+            this.Btn_PayPalMoneyHoldExplanation.Size = new System.Drawing.Size(217, 51);
+            this.Btn_PayPalMoneyHoldExplanation.TabIndex = 9;
+            this.Btn_PayPalMoneyHoldExplanation.Text = "PayPal Geld Offen Erklärung";
+            this.Btn_PayPalMoneyHoldExplanation.UseVisualStyleBackColor = true;
+            this.Btn_PayPalMoneyHoldExplanation.Click += new System.EventHandler(this.Btn_PayPalMoneyHoldExplanation_Click);
             // 
             // Btn_ExplainShippingProcess
             // 
@@ -146,7 +147,7 @@
             this.Controls.Add(this.button5);
             this.Controls.Add(this.button6);
             this.Controls.Add(this.button7);
-            this.Controls.Add(this.button8);
+            this.Controls.Add(this.Btn_PayPalMoneyHoldExplanation);
             this.Controls.Add(this.Btn_ExplainShippingProcess);
             this.Controls.Add(this.Btn_NoInterests);
             this.Controls.Add(this.Btn_ExplanationBusinessModel);
@@ -170,7 +171,7 @@
         private System.Windows.Forms.Button Btn_ExplanationBusinessModel;
         private System.Windows.Forms.Button Btn_NoInterests;
         private System.Windows.Forms.Button button7;
-        private System.Windows.Forms.Button button8;
+        private System.Windows.Forms.Button Btn_PayPalMoneyHoldExplanation;
         private System.Windows.Forms.Button Btn_ExplainShippingProcess;
         private System.Windows.Forms.Button button4;
         private System.Windows.Forms.Button button5;

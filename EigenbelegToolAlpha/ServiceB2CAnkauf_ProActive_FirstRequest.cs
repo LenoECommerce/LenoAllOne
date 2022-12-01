@@ -39,14 +39,14 @@ namespace EigenbelegToolAlpha
         private void BuildMessage(string insertValue)
         {
             prefix = comboBox_Anrede.Text;
-            string message = prefix + ",\r\n\r\n"+insertValue+ "\r\n\r\nBei Rückfragen stehe ich Ihnen sehr gerne jederzeit zur Verfügung\r\n\r\nMfG " + user+" von Leno Repair";
+            string message = prefix + ",\r\n"+insertValue+ "\r\nBei Rückfragen stehe ich Ihnen sehr gerne jederzeit zur Verfügung\n\rMfG " + user+" von Leno Repair";
             Clipboard.SetText(message);
             MessageBox.Show("Deine Nachricht wurde erfolgreich erstellt.");
         }
         private void BuildMessageWithPhoneNumber(string insertValue)
         {
             prefix = comboBox_Anrede.Text;
-            string message = prefix + ",\r\n\r\n" + insertValue + "\r\n\r\nBei Rückfragen stehe ich Ihnen sehr gerne jederzeit zur Verfügung, auch telefonisch oder per WhatsApp (015110792661).\r\n\r\nMfG " + user + " von Leno Repair";
+            string message = prefix + ",\r\n" + insertValue + "\r\nBei Rückfragen stehe ich Ihnen sehr gerne jederzeit zur Verfügung, auch telefonisch oder per WhatsApp (015110792661).\r\nMfG " + user + " von Leno Repair";
             Clipboard.SetText(message);
             MessageBox.Show("Deine Nachricht wurde erfolgreich erstellt.");
         }
@@ -62,7 +62,7 @@ namespace EigenbelegToolAlpha
                 hauptfragen = "- Funktioniert sonst technisch alles? Vor allem die Face ID ist die wichtigste Funktion, wären Ihnen daher dankbar, wenn Sie diese einmal zum Test einrichten können.\nIch kann Ihnen die App 'Phone Doctor' empfehlen, womit Sie innerhalb kürzester Zeit alle Funktionen des Geräts testen können. Würde mich auch freuen, wenn Sie kurz schauen könnten, ob die Außenkamera Flecken hat.\r\n\r\n- Hat das Gerät nicht-originale Teile verbaut bzw. erscheint eine Fehlermeldung? Dies ist erkennbar unter Einstellungen/Allgemein/Info. \r\n\r\n";
             }
             hauptfragen = ListBoxAlgorithm();
-            string message = prefix + ",\r\n\r\ngerne würden wir Ihnen "+requestAmount+ "€ inkl. Versandabwicklung anbieten. Wir sind ein junges Unternehmen, das sich auf die Reparatur von defekten Smartphones spezialisiert hat und können Ihnen gerne ein für Sie kostenloses Versandetikett erstellen. \r\nHätte noch paar Fragen, ich würde mich freuen, wenn Sie mir da behilflich sein würden:\r\n\r\n" + hauptfragen+ "\r\n\r\nBei Rückfragen stehe ich Ihnen sehr gerne jederzeit zur Verfügung, auch telefonisch oder per WhatsApp (015110792661).\r\n\r\nMfG " + user + " von Leno Repair";
+            string message = prefix + ",\r\ngerne würden wir Ihnen "+requestAmount+ "€ inkl. Versandabwicklung anbieten. Wir sind ein junges Unternehmen, das sich auf die Reparatur von defekten Smartphones spezialisiert hat und können Ihnen gerne ein für Sie kostenloses Versandetikett erstellen. \r\nHätte noch paar Fragen, ich würde mich freuen, wenn Sie mir da behilflich sein würden:\r\n\r\n" + hauptfragen+ "\r\nBei Rückfragen stehe ich Ihnen sehr gerne jederzeit zur Verfügung, auch telefonisch oder per WhatsApp (015110792661).\r\nMfG " + user + " von Leno Repair";
             Clipboard.SetText(message);
             MessageBox.Show("Deine Nachricht wurde erfolgreich erstellt.");
         }

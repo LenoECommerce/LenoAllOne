@@ -28,7 +28,10 @@ namespace EigenbelegToolAlpha
 
         public void Main (string orderId, string internalNumber, string amount, string externalCosts, string externalCostsDiff, string taxesType)
         {
-            string pdfTest = "";
+            string pdfFound = "";
+            string salesVolume = "";
+            string marketplaceFees = "";
+            string testValue = "";
             if (File.Exists(fullPath))
             {
                 //add new entry
@@ -39,8 +42,12 @@ namespace EigenbelegToolAlpha
                 XFont main = new XFont("Arial", 14);
                 XFont subFont = new XFont("Arial", 11);
 
-                //fetch order id
-                pdfTest = evaluationsBackMarketPDF.FindPDFViaOrderNumber(orderId);
+                //fetch order id etc.
+                pdfFound = evaluationsBackMarketPDF.FindPDFViaOrderNumber(orderId);
+                //Umsatz! BM
+                salesVolume = evaluationsBackMarketPDF.GetSalesVolume(orderId, pdfFound);
+                marketplaceFees = evaluationsBackMarketPDF.CollectMarketPlaceFess(salesVolume);
+                testValue = evaluationsBackMarketPDF.CollectPaymentFees().ToString();
                 //rest
                 double subBegin = headingPosY + 20 + entriesAdded * 10;
                 gfx.DrawString(orderId, subFont, XBrushes.Black, new XPoint(10, subBegin));
@@ -49,7 +56,9 @@ namespace EigenbelegToolAlpha
                 gfx.DrawString(externalCosts, subFont, XBrushes.Black, new XPoint(240, subBegin));
                 gfx.DrawString(externalCostsDiff, subFont, XBrushes.Black, new XPoint(290, subBegin));
                 gfx.DrawString(taxesType, subFont, XBrushes.Black, new XPoint(340, subBegin));
-                gfx.DrawString(pdfTest, subFont, XBrushes.Black, new XPoint(390, subBegin));
+                gfx.DrawString(salesVolume, subFont, XBrushes.Black, new XPoint(390, subBegin));
+                gfx.DrawString(testValue, subFont, XBrushes.Black, new XPoint(450, subBegin));
+                gfx.DrawString(marketplaceFees, subFont, XBrushes.Black, new XPoint(530, subBegin));
                 document.Save(fullPath);
                 entriesAdded++;
             }

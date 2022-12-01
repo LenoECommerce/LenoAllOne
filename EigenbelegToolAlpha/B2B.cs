@@ -202,6 +202,11 @@ namespace EigenbelegToolAlpha
             fs.Close();
             foreach (DataGridViewRow row in b2bDGV.SelectedRows)
             {
+                if (b2bDGV.SelectedRows.Count == 1)
+                {
+                    File.AppendAllText(fileName, "\r\nAngebot " + offerNumber + " für " + sellPrice + "€\r\n- Angebotsform: " + offerType + "\r\n- Modell: " + model + "\r\n- Speicher: " + storage + "\r\n- Zustand: " + condition + "\r\n- Originalität: " + original + "\r\n- Defekt: " + defect + "\r\n- Akkuzustand: " + battery + "\r\n- iCloud: " + icloudLock + "\r\n- OVP?: " + packaging + "\r\n- Besteuerung: " + taxing + "\r\n____________");
+                    break;
+                }
                 offerNumber = b2bDGV.SelectedRows[row.Index].Cells[1].Value.ToString();
                 offerType = b2bDGV.SelectedRows[row.Index].Cells[2].Value.ToString();
                 model = b2bDGV.SelectedRows[row.Index].Cells[3].Value.ToString();

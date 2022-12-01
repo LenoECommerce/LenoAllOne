@@ -36,7 +36,7 @@ namespace EigenbelegToolAlpha
             string buyprice = textBox_BuyPrice.Text;
             string sellprice = textBox_SellPrice.Text;
 
-            string query = string.Format("INSERT INTO `B2B`(`Angebotsnummer`,`Angebotsform`,`Modell`,`Ankaufspreis`,`Angebotspreis`,`Referenz`,`Speicher`,`Zustand`,`Originalitaet`,`Defekt`,`Akkustand`,`iCloud`,`OVP?`,`Besteuerung`) VALUES ('{0}','{1}','{2}','{3}','{4}','{5}','{6}','{7}','{8}','{9}','{10}','{11}','{12}','{13}')"
+            string query = string.Format("INSERT INTO `B2B`(`Angebotsnummer`,`Angebotsform`,`Modell`,`Ankaufpreis`,`Angebotspreis`,`Referenz`,`Speicher`,`Zustand`,`Originalitaet`,`Defekt`,`Akkustand`,`iCloud`,`OVP?`,`Besteuerung`) VALUES ('{0}','{1}','{2}','{3}','{4}','{5}','{6}','{7}','{8}','{9}','{10}','{11}','{12}','{13}')"
             , offerNumber, offerType, model, buyprice, sellprice, reference, storage, condition, original, defect, battery, icloud, packaging, taxing);
             CRUDQueries.ExecuteQuery("UPDATE `Config` SET `Nummer` = '" + newNumber + "' WHERE `Typ` = 'B2BNumber'");
             CRUDQueries.ExecuteQuery(query);

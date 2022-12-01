@@ -56,5 +56,10 @@ namespace EigenbelegToolAlpha
         {
             BuildMessage("Bei unserem Ankaufservice erstellen wir Ihnen ein voll umfänglich versichertes DHL Etikett. Dabei ist der Absender logischerweise auf Ihren Namen und das Etikett ist direkt zu uns adressiert.\r\nDer Hintergrund hinter diesem Service ist, dass wir unseren Kunden damit so wenig Aufwand und Kosten wie möglich bieten möchten.");
         }
+
+        private void Btn_PayPalMoneyHoldExplanation_Click(object sender, EventArgs e)
+        {
+            BuildMessage("Keine Sorge, das ist eine Vorsichtsmaßnahme von PayPal. Das machen dir zurzeit anscheinend öfter, um Ihre Nutzer zu schützen.\r\nSoweit ich das kenne, wird das Geld freigeschaltet, sobald das Gerät hier eintrifft. Am besten ist es immer, den Sendungsverfolg zu hinterlegen. Das System erkennt dann die Ankunft. Auf jeden Fall ist Ihr Geld bei PayPal sicher aufgehoben.\r\nBei weiteren Rückfragen hilft bestimmt der PayPal Support.");
+        }
     }
 }
