@@ -360,13 +360,20 @@
             "iPhone 13",
             "iPhone 13 Pro",
             "iPhone 13 Pro Max",
+            "A51",
+            "A71",
             "S10",
             "S10 Plus",
             "S20",
+            "S20 FE",
             "S20 Plus",
             "S20 Ultra",
             "S21",
-            "S21 Ultra"});
+            "S21 Plus",
+            "S21 Ultra",
+            "S22",
+            "S22 Plus",
+            "S22 Ultra"});
             this.comboBox_eigenbelegeEditDevice.Location = new System.Drawing.Point(169, 111);
             this.comboBox_eigenbelegeEditDevice.Name = "comboBox_eigenbelegeEditDevice";
             this.comboBox_eigenbelegeEditDevice.Size = new System.Drawing.Size(205, 21);

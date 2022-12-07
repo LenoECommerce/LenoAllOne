@@ -46,14 +46,20 @@ namespace EigenbelegToolAlpha
         };
         public static Dictionary<string, string> modelleDictionarySamsung = new Dictionary<string, string>
         {
+            { "A51", "51" },
+            { "A71", "71" },
             { "S10", "10" },
             { "S10 Plus", "10.1" },
             { "S20", "20" },
+            { "S20 FE", "20FE" },
             { "S20 Plus", "20.1" },
             { "S20 Ultra", "20.2" },
             { "S21", "21" },
             { "S21 Plus", "21.1" },
             { "S21 Ultra", "21.2" },
+            { "S22", "22" },
+            { "S22 Plus", "22.1" },
+            { "S22 Ultra", "22.2" },
         };
 
         Dictionary<string, string> conditionsDictionary = new Dictionary<string, string>

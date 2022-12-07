@@ -649,13 +649,20 @@
             // 
             this.comboBox_SamsungDevices.FormattingEnabled = true;
             this.comboBox_SamsungDevices.Items.AddRange(new object[] {
+            "A51",
+            "A71",
             "S10",
             "S10 Plus",
             "S20",
+            "S20 FE",
             "S20 Plus",
             "S20 Ultra",
             "S21",
-            "S21 Ultra"});
+            "S21 Plus",
+            "S21 Ultra",
+            "S22",
+            "S22 Plus",
+            "S22 Ultra"});
             this.comboBox_SamsungDevices.Location = new System.Drawing.Point(159, 146);
             this.comboBox_SamsungDevices.Name = "comboBox_SamsungDevices";
             this.comboBox_SamsungDevices.Size = new System.Drawing.Size(256, 21);

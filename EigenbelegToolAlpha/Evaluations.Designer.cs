@@ -56,6 +56,8 @@
             this.label10 = new System.Windows.Forms.Label();
             this.label14 = new System.Windows.Forms.Label();
             this.comboBox_Years = new System.Windows.Forms.ComboBox();
+            this.label15 = new System.Windows.Forms.Label();
+            this.lbl_backmarketAllOrdersCSV = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // label20
@@ -347,12 +349,35 @@
             this.comboBox_Years.TabIndex = 110;
             this.comboBox_Years.SelectedIndexChanged += new System.EventHandler(this.comboBox_Years_SelectedIndexChanged);
             // 
+            // label15
+            // 
+            this.label15.AutoSize = true;
+            this.label15.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label15.Location = new System.Drawing.Point(30, 181);
+            this.label15.Name = "label15";
+            this.label15.Size = new System.Drawing.Size(113, 18);
+            this.label15.TabIndex = 111;
+            this.label15.Text = "Alle Orders (xls)";
+            // 
+            // lbl_backmarketAllOrdersCSV
+            // 
+            this.lbl_backmarketAllOrdersCSV.AutoSize = true;
+            this.lbl_backmarketAllOrdersCSV.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbl_backmarketAllOrdersCSV.Location = new System.Drawing.Point(221, 181);
+            this.lbl_backmarketAllOrdersCSV.Name = "lbl_backmarketAllOrdersCSV";
+            this.lbl_backmarketAllOrdersCSV.Size = new System.Drawing.Size(195, 18);
+            this.lbl_backmarketAllOrdersCSV.TabIndex = 112;
+            this.lbl_backmarketAllOrdersCSV.Text = "Noch kein Wert eingetragen.";
+            this.lbl_backmarketAllOrdersCSV.Click += new System.EventHandler(this.lbl_backmarketAllOrdersCSV_Click);
+            // 
             // EvaluationsFirstPage
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ButtonHighlight;
             this.ClientSize = new System.Drawing.Size(826, 495);
+            this.Controls.Add(this.lbl_backmarketAllOrdersCSV);
+            this.Controls.Add(this.label15);
             this.Controls.Add(this.comboBox_Years);
             this.Controls.Add(this.label14);
             this.Controls.Add(this.label10);
@@ -418,5 +443,7 @@
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.Label label14;
         private System.Windows.Forms.ComboBox comboBox_Years;
+        private System.Windows.Forms.Label label15;
+        private System.Windows.Forms.Label lbl_backmarketAllOrdersCSV;
     }
 }

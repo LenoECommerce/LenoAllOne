@@ -38,6 +38,7 @@ namespace EigenbelegToolAlpha
             lbl_BackMarketNormal1.Text = lineSearchAndGetValue("BackMarket normal 1:",20);
             lbl_BackMarketNormal2.Text = lineSearchAndGetValue("BackMarket normal 2:", 20);
             lbl_BackMarketNormal3.Text = lineSearchAndGetValue("BackMarket normal 3:", 20);
+            lbl_backmarketAllOrdersCSV.Text = lineSearchAndGetValue("BackMarket XLS:", 15);
             lbl_BackMarketPayPal1.Text = lineSearchAndGetValue("BackMarket PayPal 1:", 20);
             lbl_eetad.Text = lineSearchAndGetValue("BackMarket PayPal 2:", 20);
             lbl_BackMarketPayPal3.Text = lineSearchAndGetValue("BackMarket PayPal 3:", 20);
@@ -53,7 +54,7 @@ namespace EigenbelegToolAlpha
                 FileStream fs = new FileStream(basePath,FileMode.Create);
                 fs.Close();
             }
-            File.WriteAllText(basePath, "\r\nBackMarket normal 1: kein Wert\r\nBackMarket normal 2: kein Wert\r\nBackMarket normal 3: kein Wert\r\nBackMarket PayPal 1: kein Wert\r\nBackMarket PayPal 2: kein Wert\r\nBackMarket PayPal 3: kein Wert\r\nEbay Report: kein Wert\r\nEbay Rechnung: kein Wert\r\nMonat: kein Wert\r\nJahr: kein Wert");
+            File.WriteAllText(basePath, "\r\nBackMarket normal 1: kein Wert\r\nBackMarket normal 2: kein Wert\r\nBackMarket normal 3: kein Wert\r\nBackMarket XLS: kein Wert\r\nBackMarket PayPal 1: kein Wert\r\nBackMarket PayPal 2: kein Wert\r\nBackMarket PayPal 3: kein Wert\r\nEbay Report: kein Wert\r\nEbay Rechnung: kein Wert\r\nMonat: kein Wert\r\nJahr: kein Wert");
         }
         public void CreateConfigTXTFirstTime()
         {
@@ -331,6 +332,13 @@ namespace EigenbelegToolAlpha
         {
             year = comboBox_Years.Text;
             LineSearchAndInsertFixValue2("Jahr:");
+        }
+
+        private void lbl_backmarketAllOrdersCSV_Click(object sender, EventArgs e)
+        {
+            newPath = getOpenFileDialog();
+            lineSearchAndInsert("BackMarket XLS:");
+            lbl_backmarketAllOrdersCSV.Text = newPath;
         }
     }
 }

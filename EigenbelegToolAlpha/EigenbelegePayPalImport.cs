@@ -60,7 +60,7 @@ namespace EigenbelegToolAlpha
             }
             catch (Exception e)
             {
-                MessageBox.Show(e.Message);
+                MessageBox.Show("Es gab einen Fehler in Reihe: " + xlrow +e.Message);
             }
         }
         public void CreateNewEntry()

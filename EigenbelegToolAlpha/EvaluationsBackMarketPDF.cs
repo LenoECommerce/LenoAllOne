@@ -18,13 +18,11 @@ namespace EigenbelegToolAlpha
             BuildTextFiles("Normal","BackMarket normal ");
             BuildTextFiles("PayPal", "BackMarket PayPal ");
         }
-        public string CollectMarketPlaceFess(string salesVolume)
+        public double CollectMarketPlaceFess(string salesVolume)
         {
             double marketPlaceFeesInTotal = 0;
             marketPlaceFeesInTotal += RoundOneDigit(CalculateSellerCommission(salesVolume));
-
-
-            return marketPlaceFeesInTotal.ToString();
+            return marketPlaceFeesInTotal;
         }
         public double CalculateSellerCommission(string salesVolume)
         {
@@ -35,25 +33,30 @@ namespace EigenbelegToolAlpha
             double sellerCommission = Convert.ToDouble(salesVolume)*0.1;
             return sellerCommission;
         }
-        public double CollectPaymentFees()
+        public double CollectPaymentFeesAndBackCare()
         {
             double sumup = 0;
             string[] numbers = new string[3] { "1", "2", "3" };
             string pathPreset = "BackmarketNormal";
             string searchValue1 = "Frais Paiement en x fois";
             string searchValue2 = "Frais Paiement Klarna";
+            string searchValueBackCare1 = "MONTANT DES COMMANDES FACTUREES BACKCARE";
+            string searchValueBackCare2 = "MONTANT DES COMMANDES FACTUREES CCBM";
             string searchValueBegin = "Montant des commandes expédiées par le marchand";
             int arrayIndexerPDF = 0;
-            double internationalFees = 0;
-            double klarnaFees = 0;
             foreach (string number in numbers)
             {
+                //payment fees part
                 string buildPath = pathPreset + numbers[arrayIndexerPDF] + ".txt";
                 string[] allLines = File.ReadAllLines(buildPath);
                 arrayIndexerPDF++;
                 int indexBegin = findLine(allLines,searchValueBegin);
                 int index1 = FindLineWithSpecificBegin(allLines, searchValue1, indexBegin)-1;
                 int index2 = FindLineWithSpecificBegin(allLines, searchValue2, indexBegin)-1;
+                int indexBackCare1 = findLine(allLines, searchValueBackCare1)+3;
+                int indexBackCare2 = findLine(allLines, searchValueBackCare2)+3;
+                double internationalFees = 0;
+                double klarnaFees = 0;
                 if (index1 != -1)
                 {
                     internationalFees = getValueOfOneLine(index1, allLines, 5, "fois", "€");
@@ -63,8 +66,33 @@ namespace EigenbelegToolAlpha
                     klarnaFees = getValueOfOneLine(index2, allLines, 7, "Klarna", "€");
                 }
                 sumup += internationalFees + klarnaFees;
+                //back care fees part
+                if (indexBackCare1 != 3)
+                {
+                    double temp = getValueOfOneLine(indexBackCare1, allLines, 3, " 1 ", "€");
+                    AllocateBackCareFee(number, temp);
+                }
+                if (indexBackCare2 != 3)
+                {
+                    double temp = getValueOfOneLine(indexBackCare2, allLines, 3, " 1 ", "€");
+                }
             }
-            return sumup;
+            return RemoveMinus(sumup);
+        }
+        public void AllocateBackCareFee (string numberPDF, double value)
+        {
+            if (numberPDF == "1")
+            {
+                OrderRelationPDF.backCareFees1 = value;
+            }
+            else if (numberPDF == "2")
+            {
+                OrderRelationPDF.backCareFees2 = value;
+            }
+            else if (numberPDF == "3")
+            {
+                OrderRelationPDF.backCareFees3 = value;
+            }
         }
         public double RoundOneDigit (double adaptValue)
         {
@@ -77,6 +105,11 @@ namespace EigenbelegToolAlpha
             }
             return adaptValue;
         }
+        public double RemoveMinus (double fixValue)
+        {
+            double newValue = -fixValue;
+            return newValue;
+        }
         public string GetSalesVolume (string orderID, string pdf)
         {
             if (pdf == "N/A")
@@ -87,13 +120,14 @@ namespace EigenbelegToolAlpha
             string[] allLines = File.ReadAllLines(pdf);
             string searchValueForGrossSalesList = " 1 ";
             string searchValueForGrossSalesList2 = " 2 ";
+            string searchValueForGrossSalesList3 = "TOTAL";
             string searchValueHeadingGrossSalesList = "MONTANT DES COMMANDES EXPEDIÉES DU";
             int indexGrossSalesList = findLine(allLines, searchValueHeadingGrossSalesList);
             int arrayIndexerSales = 0;
             //Alle Orders in Array auflisten | sozusagen ein Filter von allLines[]
             for (int i = indexGrossSalesList + 1; i < allLines.Count(); i++)
             {
-                if (allLines[i].Contains(searchValueForGrossSalesList) || allLines[i].Contains(searchValueForGrossSalesList2))
+                if (allLines[i].Contains(searchValueForGrossSalesList) || allLines[i].Contains(searchValueForGrossSalesList2) || !allLines[i].Contains(searchValueForGrossSalesList3))
                 {
                     salesList[arrayIndexerSales] = allLines[i];
                     arrayIndexerSales++;
@@ -119,12 +153,14 @@ namespace EigenbelegToolAlpha
             }
             return "N/A";
         }
-        public string FindPDFViaOrderNumber (string orderID)
+        public double CountNotPayPalOrders()
         {
+            int count = 0;
             string[] numbers = new string[3] { "1", "2", "3" };
             string pathPreset = "BackmarketNormal";
             string searchValueForGrossSalesList = " 1 ";
             string searchValueForGrossSalesList2 = " 2 ";
+            string searchValueForGrossSalesList3 = "TOTAL";
             string searchValueHeadingGrossSalesList = "MONTANT DES COMMANDES EXPEDIÉES DU";
             int arrayIndexerPDF = 0;
             int arrayIndexerSales = 0;
@@ -138,7 +174,52 @@ namespace EigenbelegToolAlpha
                 //Alle Orders in Array auflisten | sozusagen ein Filter von allLines[]
                 for (int i = indexGrossSalesList + 1; i < allLines.Count(); i++)
                 {
-                    if (allLines[i].Contains(searchValueForGrossSalesList) || allLines[i].Contains(searchValueForGrossSalesList2))
+                    if (allLines[i].Contains(searchValueForGrossSalesList) || allLines[i].Contains(searchValueForGrossSalesList2) && !allLines[i].Contains(searchValueForGrossSalesList3))
+                    {
+                        salesList[arrayIndexerSales] = allLines[i];
+                        arrayIndexerSales++;
+                        count++;
+                    }
+                    else
+                    {
+                        break;
+                    }
+                }
+            }
+            return count;
+        }
+        public bool CheckPDFTypeIfNormal (string pdfPath)
+        {
+            if (pdfPath.ToLower().Contains("paypal"))
+            {
+                return false;
+            }
+            else
+            {
+                return true;
+            }
+        }
+        public string FindPDFViaOrderNumber (string orderID)
+        {
+            string[] numbers = new string[3] { "1", "2", "3" };
+            string pathPreset = "BackmarketNormal";
+            string searchValueForGrossSalesList = " 1 ";
+            string searchValueForGrossSalesList2 = " 2 ";
+            string searchValueForGrossSalesList3 = "TOTAL";
+            string searchValueHeadingGrossSalesList = "MONTANT DES COMMANDES EXPEDIÉES DU";
+            int arrayIndexerPDF = 0;
+            int arrayIndexerSales = 0;
+            foreach (string number in numbers)
+            {
+                string buildPath = pathPreset + numbers[arrayIndexerPDF] + ".txt";
+                arrayIndexerPDF++;
+                string[] salesList = new string[1000];
+                string[] allLines = File.ReadAllLines(buildPath);
+                int indexGrossSalesList = findLine(allLines, searchValueHeadingGrossSalesList);
+                //Alle Orders in Array auflisten | sozusagen ein Filter von allLines[]
+                for (int i = indexGrossSalesList + 1; i < allLines.Count(); i++)
+                {
+                    if (allLines[i].Contains(searchValueForGrossSalesList) || allLines[i].Contains(searchValueForGrossSalesList2) || !allLines[i].Contains(searchValueForGrossSalesList3))
                     {
                         salesList[arrayIndexerSales] = allLines[i];
                         arrayIndexerSales++;
@@ -155,6 +236,7 @@ namespace EigenbelegToolAlpha
                     {
                         if (line.Contains(orderID))
                         {
+                            AssignFinallyBackCareValue(number);
                             return buildPath;
                         }
                     }
@@ -174,7 +256,7 @@ namespace EigenbelegToolAlpha
                 //Alle Orders in Array auflisten | sozusagen ein Filter von allLines[]
                 for (int i = indexGrossSalesList + 1; i < allLines.Count(); i++)
                 {
-                    if (allLines[i].Contains(searchValueForGrossSalesList) || allLines[i].Contains(searchValueForGrossSalesList2))
+                    if (allLines[i].Contains(searchValueForGrossSalesList) || allLines[i].Contains(searchValueForGrossSalesList2) || !allLines[i].Contains(searchValueForGrossSalesList3))
                     {
                         salesList[arrayIndexerSales] = allLines[i];
                         arrayIndexerSales++;
@@ -191,6 +273,7 @@ namespace EigenbelegToolAlpha
                     {
                         if (line.Contains(orderID))
                         {
+                            AssignFinallyBackCareValue(number);
                             return buildPath;
                         }
                     }
@@ -198,6 +281,21 @@ namespace EigenbelegToolAlpha
             }
             return "N/A";
 
+        }
+        public void AssignFinallyBackCareValue(string numberPDF)
+        {
+            if (numberPDF == "1")
+            {
+                OrderRelationPDF.backCareFee = OrderRelationPDF.backCareFees1;
+            }
+            else if (numberPDF == "2")
+            {
+                OrderRelationPDF.backCareFee = OrderRelationPDF.backCareFees2;
+            }
+            else if (numberPDF == "3")
+            {
+                OrderRelationPDF.backCareFee = OrderRelationPDF.backCareFees3;
+            }
         }
         public double getValueOfOneLine(int index, string[] array, int lengthOfTheFirstPos, string firstPos, string secondPos)
         {
