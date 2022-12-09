@@ -50,9 +50,7 @@
             this.textBox_rateConsumptionCables = new System.Windows.Forms.TextBox();
             this.label14 = new System.Windows.Forms.Label();
             this.label15 = new System.Windows.Forms.Label();
-            this.label16 = new System.Windows.Forms.Label();
-            this.textBox_MoreExternalCostNormalVat = new System.Windows.Forms.TextBox();
-            this.textBox_MoreExternalCostMarginalVat = new System.Windows.Forms.TextBox();
+            this.textBox_MoreExternalCosts = new System.Windows.Forms.TextBox();
             this.SuspendLayout();
             // 
             // label2
@@ -142,6 +140,7 @@
             this.textBox_SparePartsGrossSalesMarginalVa.Name = "textBox_SparePartsGrossSalesMarginalVa";
             this.textBox_SparePartsGrossSalesMarginalVa.Size = new System.Drawing.Size(224, 20);
             this.textBox_SparePartsGrossSalesMarginalVa.TabIndex = 114;
+            this.textBox_SparePartsGrossSalesMarginalVa.Text = "0";
             // 
             // textBox_SparePartsGrossSalesNormalVat
             // 
@@ -149,6 +148,7 @@
             this.textBox_SparePartsGrossSalesNormalVat.Name = "textBox_SparePartsGrossSalesNormalVat";
             this.textBox_SparePartsGrossSalesNormalVat.Size = new System.Drawing.Size(224, 20);
             this.textBox_SparePartsGrossSalesNormalVat.TabIndex = 115;
+            this.textBox_SparePartsGrossSalesNormalVat.Text = "0";
             // 
             // textBox_B2BGrossSales
             // 
@@ -156,6 +156,8 @@
             this.textBox_B2BGrossSales.Name = "textBox_B2BGrossSales";
             this.textBox_B2BGrossSales.Size = new System.Drawing.Size(224, 20);
             this.textBox_B2BGrossSales.TabIndex = 116;
+            this.textBox_B2BGrossSales.Text = "0";
+            this.textBox_B2BGrossSales.TextChanged += new System.EventHandler(this.textBox_B2BGrossSales_TextChanged);
             // 
             // textBox_B2BGrossSalesRevenue
             // 
@@ -163,6 +165,7 @@
             this.textBox_B2BGrossSalesRevenue.Name = "textBox_B2BGrossSalesRevenue";
             this.textBox_B2BGrossSalesRevenue.Size = new System.Drawing.Size(224, 20);
             this.textBox_B2BGrossSalesRevenue.TabIndex = 117;
+            this.textBox_B2BGrossSalesRevenue.Text = "0";
             // 
             // label10
             // 
@@ -210,6 +213,7 @@
             this.textBox_rateConsumptionCartons.Name = "textBox_rateConsumptionCartons";
             this.textBox_rateConsumptionCartons.Size = new System.Drawing.Size(224, 20);
             this.textBox_rateConsumptionCartons.TabIndex = 123;
+            this.textBox_rateConsumptionCartons.Text = "0";
             // 
             // textBox_rateConsumptionNeutralPackages
             // 
@@ -217,6 +221,7 @@
             this.textBox_rateConsumptionNeutralPackages.Name = "textBox_rateConsumptionNeutralPackages";
             this.textBox_rateConsumptionNeutralPackages.Size = new System.Drawing.Size(224, 20);
             this.textBox_rateConsumptionNeutralPackages.TabIndex = 124;
+            this.textBox_rateConsumptionNeutralPackages.Text = "0";
             // 
             // textBox_rateConsumptionCables
             // 
@@ -224,6 +229,7 @@
             this.textBox_rateConsumptionCables.Name = "textBox_rateConsumptionCables";
             this.textBox_rateConsumptionCables.Size = new System.Drawing.Size(224, 20);
             this.textBox_rateConsumptionCables.TabIndex = 125;
+            this.textBox_rateConsumptionCables.Text = "0";
             this.textBox_rateConsumptionCables.TextChanged += new System.EventHandler(this.textBox_rateConsumptionCables_TextChanged);
             // 
             // label14
@@ -242,42 +248,24 @@
             this.label15.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label15.Location = new System.Drawing.Point(29, 317);
             this.label15.Name = "label15";
-            this.label15.Size = new System.Drawing.Size(74, 18);
+            this.label15.Size = new System.Drawing.Size(71, 18);
             this.label15.TabIndex = 127;
-            this.label15.Text = "Mit MwSt.";
+            this.label15.Text = "Full Netto";
             // 
-            // label16
+            // textBox_MoreExternalCosts
             // 
-            this.label16.AutoSize = true;
-            this.label16.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label16.Location = new System.Drawing.Point(29, 345);
-            this.label16.Name = "label16";
-            this.label16.Size = new System.Drawing.Size(90, 18);
-            this.label16.TabIndex = 128;
-            this.label16.Text = "Ohne MwSt.";
-            // 
-            // textBox_MoreExternalCostNormalVat
-            // 
-            this.textBox_MoreExternalCostNormalVat.Location = new System.Drawing.Point(220, 315);
-            this.textBox_MoreExternalCostNormalVat.Name = "textBox_MoreExternalCostNormalVat";
-            this.textBox_MoreExternalCostNormalVat.Size = new System.Drawing.Size(224, 20);
-            this.textBox_MoreExternalCostNormalVat.TabIndex = 129;
-            // 
-            // textBox_MoreExternalCostMarginalVat
-            // 
-            this.textBox_MoreExternalCostMarginalVat.Location = new System.Drawing.Point(220, 343);
-            this.textBox_MoreExternalCostMarginalVat.Name = "textBox_MoreExternalCostMarginalVat";
-            this.textBox_MoreExternalCostMarginalVat.Size = new System.Drawing.Size(224, 20);
-            this.textBox_MoreExternalCostMarginalVat.TabIndex = 130;
+            this.textBox_MoreExternalCosts.Location = new System.Drawing.Point(220, 315);
+            this.textBox_MoreExternalCosts.Name = "textBox_MoreExternalCosts";
+            this.textBox_MoreExternalCosts.Size = new System.Drawing.Size(224, 20);
+            this.textBox_MoreExternalCosts.TabIndex = 129;
+            this.textBox_MoreExternalCosts.Text = "0";
             // 
             // EvaluationSecondForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(547, 618);
-            this.Controls.Add(this.textBox_MoreExternalCostMarginalVat);
-            this.Controls.Add(this.textBox_MoreExternalCostNormalVat);
-            this.Controls.Add(this.label16);
+            this.Controls.Add(this.textBox_MoreExternalCosts);
             this.Controls.Add(this.label15);
             this.Controls.Add(this.label14);
             this.Controls.Add(this.textBox_rateConsumptionCables);
@@ -334,8 +322,6 @@
         private System.Windows.Forms.TextBox textBox_rateConsumptionCables;
         private System.Windows.Forms.Label label14;
         private System.Windows.Forms.Label label15;
-        private System.Windows.Forms.Label label16;
-        private System.Windows.Forms.TextBox textBox_MoreExternalCostNormalVat;
-        private System.Windows.Forms.TextBox textBox_MoreExternalCostMarginalVat;
+        private System.Windows.Forms.TextBox textBox_MoreExternalCosts;
     }
 }

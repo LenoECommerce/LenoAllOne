@@ -44,6 +44,11 @@ namespace EigenbelegToolAlpha
         public static double backCareFees2 = 0;
         public static double backCareFees3 = 0;
 
+        //monthly report sum up values
+        public static double grossSalesEbay = 0;
+        public static double grossSalesBackmarketNormal = 0;
+        public static double grossSalesBackmarketPayPal = 0;
+        public static double revenueTotal = 0;
         public void Main (string orderId, string internalNumber, string amount, string externalCosts, string externalCostsDiff, string taxesType)
         {
             string pdfFound = "";
@@ -78,6 +83,10 @@ namespace EigenbelegToolAlpha
                     {
                         paymentFees = paymentFeesNotPayPalPerOrder;
                         salesVolume = evaluationsBackMarketPDF.GetSalesVolume(orderId, pdfFound);
+                        if(salesVolume != "N/A")
+                        {
+                            grossSalesBackmarketNormal += Convert.ToDouble(salesVolume);
+                        }
                         double marketplaceFeesTemp = RoundOneDigit(evaluationsBackMarketPDF.CollectMarketPlaceFess(salesVolume) + paymentFees + backCareFee + backShipCosts);
                         marketplaceFees = marketplaceFeesTemp.ToString();
                     }
@@ -85,6 +94,10 @@ namespace EigenbelegToolAlpha
                     //PayPal
                     {
                         salesVolume = evaluationsBackMarketPDF.GetSalesVolume(orderId, pdfFound);
+                        if (salesVolume != "N/A")
+                        {
+                            grossSalesBackmarketPayPal += Convert.ToDouble(salesVolume);
+                        }
                         paymentFees = Convert.ToDouble(salesVolume) * 0.029 + 0.39;
                         double marketplaceFeesTemp = RoundOneDigit(evaluationsBackMarketPDF.CollectMarketPlaceFess(salesVolume) + backCareFee +backShipCosts + paymentFees);
                         marketplaceFees = marketplaceFeesTemp.ToString();
@@ -94,15 +107,17 @@ namespace EigenbelegToolAlpha
                 else
                 {
                     salesVolume = evaluationsEbay.GetSalesVolume(orderId);
-                    taxes = Convert.ToDouble(salesVolume);
+                    if (salesVolume != "N/A")
+                    {
+                        grossSalesEbay += Convert.ToDouble(salesVolume);
+                    }
                     marketPlaceFeesEbay = RoundOneDigit(evaluationsEbay.GetSellerCommission(orderId) + (Convert.ToDouble(salesVolume)*0.02));
                     marketplaceFees = marketPlaceFeesEbay.ToString();
-                    revenue = 0;
-                    margin = 0;
                 }
                 taxes = RoundOneDigit(CalcTaxes(taxesType, salesVolume, amount, externalCosts, externalCostsDiff));
                 revenue = RoundOneDigit(CalcRevenue(salesVolume, Convert.ToDouble(amount), Convert.ToDouble(externalCosts), Convert.ToDouble(externalCostsDiff), taxes, Convert.ToDouble(marketplaceFees)));
                 margin = RoundOneDigit(CalcMargin(salesVolume, revenue));
+                revenueTotal += revenue;
                 //drawing part
                 double subBegin = headingPosY + 20 + entriesAdded * 10;
                 gfx.DrawString(orderId, subFont, XBrushes.Black, new XPoint(10, subBegin));
@@ -173,6 +188,10 @@ namespace EigenbelegToolAlpha
                     //Normal
                     {
                         paymentFees = paymentFeesNotPayPalPerOrder;
+                        if (salesVolume != "N/A")
+                        {
+                            grossSalesBackmarketNormal += Convert.ToDouble(salesVolume);
+                        }
                         salesVolume = evaluationsBackMarketPDF.GetSalesVolume(orderId, pdfFound);
                         double marketplaceFeesTemp = RoundOneDigit(evaluationsBackMarketPDF.CollectMarketPlaceFess(salesVolume) + paymentFees + backCareFee + backShipCosts);
                         marketplaceFees = marketplaceFeesTemp.ToString();
@@ -181,6 +200,10 @@ namespace EigenbelegToolAlpha
                     //PayPal
                     {
                         salesVolume = evaluationsBackMarketPDF.GetSalesVolume(orderId, pdfFound);
+                        if (salesVolume != "N/A")
+                        {
+                            grossSalesBackmarketPayPal += Convert.ToDouble(salesVolume);
+                        }
                         paymentFees = Convert.ToDouble(salesVolume) * 0.029 + 0.39;
                         double marketplaceFeesTemp = RoundOneDigit(evaluationsBackMarketPDF.CollectMarketPlaceFess(salesVolume) + backCareFee + backShipCosts + paymentFees);
                         marketplaceFees = marketplaceFeesTemp.ToString();
@@ -190,15 +213,18 @@ namespace EigenbelegToolAlpha
                 else
                 {
                     salesVolume = evaluationsEbay.GetSalesVolume(orderId);
-                    taxes = Convert.ToDouble(salesVolume);
+                    if (salesVolume != "N/A")
+                    {
+                        grossSalesEbay += Convert.ToDouble(salesVolume);
+                    }
                     marketPlaceFeesEbay = RoundOneDigit(evaluationsEbay.GetSellerCommission(orderId) + (Convert.ToDouble(salesVolume) * 0.02));
                     marketplaceFees = marketPlaceFeesEbay.ToString();
-                    revenue = 0;
-                    margin = 0;
+
                 }
                 taxes = RoundOneDigit(CalcTaxes(taxesType, salesVolume, amount, externalCosts, externalCostsDiff));
                 revenue = RoundOneDigit(CalcRevenue(salesVolume, Convert.ToDouble(amount), Convert.ToDouble(externalCosts), Convert.ToDouble(externalCostsDiff), taxes, Convert.ToDouble(marketplaceFees)));
                 margin = RoundOneDigit(CalcMargin(salesVolume, revenue));
+                revenueTotal += revenue;
                 //drawing part
                 double subBegin = headingPosY + 20;
                 gfx.DrawString(orderId, subFont, XBrushes.Black, new XPoint(10, subBegin));

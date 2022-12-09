@@ -222,7 +222,7 @@ namespace EigenbelegToolAlpha
         {
             foreach (DataGridViewRow row in rep.reparaturenDGV.Rows)
             {
-                string testingMonth = row.Cells[22].Value.ToString();
+                string testingMonth = row.Cells[23].Value.ToString();
                 if (testingMonth == month)
                 {
                     double tempAmountDevice = Convert.ToDouble(row.Cells[4].Value);
@@ -404,7 +404,7 @@ namespace EigenbelegToolAlpha
             string month = eval.lineSearchAndGetValue("Monat:", 6);
             foreach (DataGridViewRow row in rep.reparaturenDGV.Rows)
             {
-                string ebReference = row.Cells[21].Value.ToString();
+                string ebReference = row.Cells[22].Value.ToString();
                 string tempValue = row.Cells[2].Value.ToString().Substring(3, 2);
                 string compareMonth = monthOverview[tempValue];
                 var id = CRUDQueries.ExecuteQueryWithResult("Eigenbelege", "Id", "Eigenbelegnummer", ebReference);
@@ -431,7 +431,7 @@ namespace EigenbelegToolAlpha
             //Verkaufte Geräte pro Monat
             foreach (DataGridViewRow row in matching.matchingDGV.Rows)
             {
-                if (row.Cells[8].Value.ToString() == month)
+                if (row.Cells[9].Value.ToString() == month)
                 {
                     kpiDevicesPerMonthSold++;   
                 }
@@ -495,16 +495,6 @@ namespace EigenbelegToolAlpha
         }
         private void btn_ExecuteAllAlgorithms_Click(object sender, EventArgs e)
         {
-            GetFullDataSetOrder();
-            MonthlyReportPDF.CreatePDFFile();
-            //try
-            //{
-            //    UploadPDF();
-            //}
-            //catch (Exception ex)
-            //{
-            //    MessageBox.Show("Der Matching Algorithmus hat ein Problem: " + ex.Message);
-            //}
             //try
             //{
             //    MatchingAlgorithm();
@@ -513,21 +503,32 @@ namespace EigenbelegToolAlpha
             //{
             //    MessageBox.Show("Der Matching Algorithmus hat ein Problem: " + ex.Message);
             //}
+            try
+            {
+                DonorDevicesAlgorithm();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Der Spendergeräte Algorithmus hat ein Problem: " + ex.Message);
+            }
+            try
+            {
+                DevicesPerMonthAlgorithm();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Der Geräte pro Monat Algorithmus hat ein Problem: " + ex.Message);
+            }
+            GetFullDataSetOrder();
+            MonthlyReportPDF.CreatePDFFile();
+
             //try
             //{
-            //    DonorDevicesAlgorithm();
+            //    UploadPDF();
             //}
             //catch (Exception ex)
             //{
-            //    MessageBox.Show("Der Spendergeräte Algorithmus hat ein Problem: " + ex.Message);
-            //}
-            //try
-            //{
-            //    DevicesPerMonthAlgorithm();
-            //}
-            //catch (Exception ex)
-            //{
-            //    MessageBox.Show("Der Geräte pro Monat Algorithmus hat ein Problem: " + ex.Message);
+            //    MessageBox.Show("Der Matching Algorithmus hat ein Problem: " + ex.Message);
             //}
         }
     }

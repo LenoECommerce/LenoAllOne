@@ -23,8 +23,7 @@ namespace EigenbelegToolAlpha
         public static double rateConsumptionNeutralPackages;
         public static double rateConsumptionCartons;
         public static double rateConsumptionTotal;
-        public static double moreExternalCostsMarginalVat;
-        public static double moreExternalCostsNormalVat;
+        public static double moreExternalCosts;
         public EvaluationSecondForm()
         {
             InitializeComponent();
@@ -42,8 +41,7 @@ namespace EigenbelegToolAlpha
                 rateConsumptionNeutralPackages = Convert.ToDouble(textBox_rateConsumptionNeutralPackages.Text)*3;
                 rateConsumptionCartons = Convert.ToDouble(textBox_rateConsumptionCartons.Text)*0.3;
                 rateConsumptionTotal = rateConsumptionCables + rateConsumptionNeutralPackages + rateConsumptionCartons;
-                moreExternalCostsMarginalVat = Convert.ToDouble(textBox_MoreExternalCostMarginalVat.Text);
-                moreExternalCostsNormalVat = Convert.ToDouble(textBox_MoreExternalCostNormalVat.Text);
+                moreExternalCosts = Convert.ToDouble(textBox_MoreExternalCosts.Text);
             }
             catch (Exception ex)
             {
@@ -60,6 +58,11 @@ namespace EigenbelegToolAlpha
         }
 
         private void EvaluationSecondForm_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void textBox_B2BGrossSales_TextChanged(object sender, EventArgs e)
         {
 
         }

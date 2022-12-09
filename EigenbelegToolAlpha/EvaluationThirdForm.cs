@@ -64,11 +64,10 @@ namespace EigenbelegToolAlpha
             restMiete = Convert.ToDouble(textBox_RestMiete.Text);
             restKredit = Convert.ToDouble(textBox_RestKredit.Text);
             restVersandkosten = Convert.ToDouble(textBox_RestVersandkosten.Text);
-            restEbayVorsteuer = Convert.ToDouble(textBox_EbayVorsteuer.Text);
-            //21 Elemente!
+            //20 Elemente!
             RunningCostsSum = digitalToolsBillBee + digitalToolsBitwarden + digitalToolsEbayAbo + digitalToolsFraenk + digitalToolsKleinanzeigen + digitalToolsLexOffice + digitalToolsNsys + digitalToolsPenta
                 + digitalToolsSQLDatabase + digitalToolsZapier + websitesElementorPro + websitesIONOS + websitesSiteground + legalFinanzbuchhaltung + legalRechtskanzlei + legalSteuerberatung + legalVerpackungslizenz
-                + restEbayVorsteuer + restKredit + restMiete + restVersandkosten;
+                + restKredit + restMiete + restVersandkosten;
             RunningCostsTaxGetBack = (RunningCostsSum - restKredit - restMiete - websitesElementorPro - websitesSiteground)/1.19*0.19+(restEbayVorsteuer);
             RunningCostsFinal = RunningCostsSum - RunningCostsTaxGetBack;
 
@@ -99,7 +98,11 @@ namespace EigenbelegToolAlpha
             textBox_RestMiete.Text = "0";
             textBox_RestKredit.Text = "250";
             textBox_RestVersandkosten.Text = "0";
-            textBox_EbayVorsteuer.Text = "0";
+        }
+
+        private void textbox_DigitalToolsEbayAbos_TextChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }

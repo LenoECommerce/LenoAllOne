@@ -50,9 +50,6 @@
             this.lbl_ebayReport = new System.Windows.Forms.Label();
             this.btn_ContinueWithEvaluation2 = new System.Windows.Forms.Button();
             this.comboBox_MonthOfEvaluation = new System.Windows.Forms.ComboBox();
-            this.lbl_ebayInvoice = new System.Windows.Forms.Label();
-            this.label12 = new System.Windows.Forms.Label();
-            this.label13 = new System.Windows.Forms.Label();
             this.label10 = new System.Windows.Forms.Label();
             this.label14 = new System.Windows.Forms.Label();
             this.comboBox_Years = new System.Windows.Forms.ComboBox();
@@ -284,37 +281,6 @@
             this.comboBox_MonthOfEvaluation.TabIndex = 104;
             this.comboBox_MonthOfEvaluation.SelectedIndexChanged += new System.EventHandler(this.comboBox_MonthOfEvaluation_SelectedIndexChanged);
             // 
-            // lbl_ebayInvoice
-            // 
-            this.lbl_ebayInvoice.AutoSize = true;
-            this.lbl_ebayInvoice.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbl_ebayInvoice.Location = new System.Drawing.Point(221, 399);
-            this.lbl_ebayInvoice.Name = "lbl_ebayInvoice";
-            this.lbl_ebayInvoice.Size = new System.Drawing.Size(175, 18);
-            this.lbl_ebayInvoice.TabIndex = 105;
-            this.lbl_ebayInvoice.Text = "Ebay Abrechnungsbericht";
-            this.lbl_ebayInvoice.Click += new System.EventHandler(this.lbl_ebayInvoice_Click);
-            // 
-            // label12
-            // 
-            this.label12.AutoSize = true;
-            this.label12.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label12.Location = new System.Drawing.Point(34, 399);
-            this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(112, 18);
-            this.label12.TabIndex = 106;
-            this.label12.Text = "Ebay Rechnung";
-            // 
-            // label13
-            // 
-            this.label13.AutoSize = true;
-            this.label13.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label13.Location = new System.Drawing.Point(34, 426);
-            this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(202, 13);
-            this.label13.TabIndex = 107;
-            this.label13.Text = "(Zahlungen/Berichte/Zusammenfassung)";
-            // 
             // label10
             // 
             this.label10.AutoSize = true;
@@ -381,9 +347,6 @@
             this.Controls.Add(this.comboBox_Years);
             this.Controls.Add(this.label14);
             this.Controls.Add(this.label10);
-            this.Controls.Add(this.label13);
-            this.Controls.Add(this.label12);
-            this.Controls.Add(this.lbl_ebayInvoice);
             this.Controls.Add(this.comboBox_MonthOfEvaluation);
             this.Controls.Add(this.btn_ContinueWithEvaluation2);
             this.Controls.Add(this.lbl_ebayReport);
@@ -437,9 +400,6 @@
         private System.Windows.Forms.Label lbl_ebayReport;
         private System.Windows.Forms.Button btn_ContinueWithEvaluation2;
         private System.Windows.Forms.ComboBox comboBox_MonthOfEvaluation;
-        private System.Windows.Forms.Label lbl_ebayInvoice;
-        private System.Windows.Forms.Label label12;
-        private System.Windows.Forms.Label label13;
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.Label label14;
         private System.Windows.Forms.ComboBox comboBox_Years;

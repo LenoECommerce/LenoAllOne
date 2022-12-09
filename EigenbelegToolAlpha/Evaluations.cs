@@ -28,7 +28,7 @@ namespace EigenbelegToolAlpha
         public string basePath = Environment.CurrentDirectory + @"\Evaluation_config.txt";
         public string newPath = "";
         string result = "";
-        public string month = "";
+        public static string month = "";
         public string year = "";
         public static double ebayOutCome = 0;
         public static double ebayTaxGetBack = 0;
@@ -43,7 +43,6 @@ namespace EigenbelegToolAlpha
             lbl_eetad.Text = lineSearchAndGetValue("BackMarket PayPal 2:", 20);
             lbl_BackMarketPayPal3.Text = lineSearchAndGetValue("BackMarket PayPal 3:", 20);
             lbl_ebayReport.Text = lineSearchAndGetValue("Ebay Report:", 12);
-            lbl_ebayInvoice.Text = lineSearchAndGetValue("Ebay Rechnung:",14);
             comboBox_MonthOfEvaluation.Text = lineSearchAndGetValue("Monat:", 6);
             comboBox_Years.Text = lineSearchAndGetValue("Jahr:", 5);
         }
@@ -301,15 +300,7 @@ namespace EigenbelegToolAlpha
 
         private void btn_ContinueWithEvaluation2_Click(object sender, EventArgs e)
         {
-            try
-            {
-                EbayPDFAlgorithm();
-                EbayPDFInvoiceAlgorithm();
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message);
-            }
+     
             EvaluationSecondForm frm = new EvaluationSecondForm();
             frm.Show();
             this.Hide();
@@ -321,12 +312,6 @@ namespace EigenbelegToolAlpha
             LineSearchAndInsertFixValue("Monat:");
         }
 
-        private void lbl_ebayInvoice_Click(object sender, EventArgs e)
-        {
-            newPath = getOpenFileDialog();
-            lineSearchAndInsert("Ebay Rechnung:");
-            lbl_ebayInvoice.Text = newPath;
-        }
 
         private void comboBox_Years_SelectedIndexChanged(object sender, EventArgs e)
         {

@@ -69,12 +69,10 @@
             this.textbox_LegalSteuerberatung = new System.Windows.Forms.TextBox();
             this.textbox_LegalFinanzbuchhaltung = new System.Windows.Forms.TextBox();
             this.label22 = new System.Windows.Forms.Label();
-            this.label23 = new System.Windows.Forms.Label();
             this.label24 = new System.Windows.Forms.Label();
             this.label25 = new System.Windows.Forms.Label();
             this.label26 = new System.Windows.Forms.Label();
             this.textBox_RestMiete = new System.Windows.Forms.TextBox();
-            this.textBox_EbayVorsteuer = new System.Windows.Forms.TextBox();
             this.textBox_RestVersandkosten = new System.Windows.Forms.TextBox();
             this.textBox_RestKredit = new System.Windows.Forms.TextBox();
             this.SuspendLayout();
@@ -218,6 +216,7 @@
             this.textbox_DigitalToolsEbayAbos.Name = "textbox_DigitalToolsEbayAbos";
             this.textbox_DigitalToolsEbayAbos.Size = new System.Drawing.Size(224, 20);
             this.textbox_DigitalToolsEbayAbos.TabIndex = 134;
+            this.textbox_DigitalToolsEbayAbos.TextChanged += new System.EventHandler(this.textbox_DigitalToolsEbayAbos_TextChanged);
             // 
             // textbox_DigitalToolsZapier
             // 
@@ -430,16 +429,6 @@
             this.label22.TabIndex = 159;
             this.label22.Text = "Sonstiges";
             // 
-            // label23
-            // 
-            this.label23.AutoSize = true;
-            this.label23.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label23.Location = new System.Drawing.Point(922, 205);
-            this.label23.Name = "label23";
-            this.label23.Size = new System.Drawing.Size(109, 18);
-            this.label23.TabIndex = 160;
-            this.label23.Text = "Ebay Vorsteuer";
-            // 
             // label24
             // 
             this.label24.AutoSize = true;
@@ -478,13 +467,6 @@
             this.textBox_RestMiete.Size = new System.Drawing.Size(224, 20);
             this.textBox_RestMiete.TabIndex = 164;
             // 
-            // textBox_EbayVorsteuer
-            // 
-            this.textBox_EbayVorsteuer.Location = new System.Drawing.Point(1052, 207);
-            this.textBox_EbayVorsteuer.Name = "textBox_EbayVorsteuer";
-            this.textBox_EbayVorsteuer.Size = new System.Drawing.Size(224, 20);
-            this.textBox_EbayVorsteuer.TabIndex = 165;
-            // 
             // textBox_RestVersandkosten
             // 
             this.textBox_RestVersandkosten.Location = new System.Drawing.Point(1052, 175);
@@ -506,12 +488,10 @@
             this.ClientSize = new System.Drawing.Size(1316, 532);
             this.Controls.Add(this.textBox_RestKredit);
             this.Controls.Add(this.textBox_RestVersandkosten);
-            this.Controls.Add(this.textBox_EbayVorsteuer);
             this.Controls.Add(this.textBox_RestMiete);
             this.Controls.Add(this.label26);
             this.Controls.Add(this.label25);
             this.Controls.Add(this.label24);
-            this.Controls.Add(this.label23);
             this.Controls.Add(this.label22);
             this.Controls.Add(this.textbox_LegalFinanzbuchhaltung);
             this.Controls.Add(this.textbox_LegalSteuerberatung);
@@ -606,12 +586,10 @@
         private System.Windows.Forms.TextBox textbox_LegalSteuerberatung;
         private System.Windows.Forms.TextBox textbox_LegalFinanzbuchhaltung;
         private System.Windows.Forms.Label label22;
-        private System.Windows.Forms.Label label23;
         private System.Windows.Forms.Label label24;
         private System.Windows.Forms.Label label25;
         private System.Windows.Forms.Label label26;
         private System.Windows.Forms.TextBox textBox_RestMiete;
-        private System.Windows.Forms.TextBox textBox_EbayVorsteuer;
         private System.Windows.Forms.TextBox textBox_RestVersandkosten;
         private System.Windows.Forms.TextBox textBox_RestKredit;
     }
