@@ -28,7 +28,7 @@
     <UpdateUrl>https://raw.githubusercontent.com/LenoECommerce/LenoAllOne/main/published/</UpdateUrl>
     <CreateWebPageOnPublish>true</CreateWebPageOnPublish>
     <WebPage>publish.htm</WebPage>
-    <ApplicationRevision>36</ApplicationRevision>
+    <ApplicationRevision>37</ApplicationRevision>
     <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
     <CreateDesktopShortcut>true</CreateDesktopShortcut>
@@ -115,9 +115,8 @@
       <HintPath>..\packages\Google.Protobuf.3.21.8\lib\net45\Google.Protobuf.dll</HintPath>
     </Reference>
     <Reference Include="Interop.bpac, Version=1.3.0.0, Culture=neutral, processorArchitecture=AMD64">
-      <SpecificVersion>False</SpecificVersion>
-      <EmbedInteropTypes>True</EmbedInteropTypes>
       <HintPath>bin\Debug\Interop.bpac.dll</HintPath>
+      <SpecificVersion>False</SpecificVersion>
     </Reference>
     <Reference Include="itextsharp, Version=5.5.13.3, Culture=neutral, PublicKeyToken=8354ae6d2174ddca, processorArchitecture=MSIL">
       <HintPath>..\packages\iTextSharp.5.5.13.3\lib\itextsharp.dll</HintPath>
@@ -688,6 +687,7 @@
     <None Include="Resources\Unterschrift.png" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Interop.bpac.dll" />
     <Content Include="leno-favicon.ico" />
     <None Include="Resources\back.png" />
     <None Include="Resources\Leno E-commerce _flat_MT_05 %282%29 - Kopie.jpg" />
