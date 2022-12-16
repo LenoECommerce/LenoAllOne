@@ -1,19 +1,11 @@
-﻿using Google.Apis.Drive.v3.Data;
-using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System;
 using System.Windows.Forms;
 
 namespace EigenbelegToolAlpha
 {
     public partial class ServiceB2CAnkauf_Questions : Form
     {
-        public string user = Service.user; 
+        public string user = Service.user;
 
         public ServiceB2CAnkauf_Questions()
         {
