@@ -90,6 +90,10 @@ namespace EigenbelegToolAlpha
                     string orderID = FindOrderId(text);
                     AddBarcode(orderID);
                     PdfDocument document = PdfReader.Open(item,PdfDocumentOpenMode.Modify);
+                    if(document.PageCount !=1)
+                    {
+                        MessageBox.Show("test");
+                    }
                     PdfPage page = document.Pages[0];
                     XGraphics gfx = XGraphics.FromPdfPage(page);
                     XImage image = XImage.FromFile(barcodePath + counter + ".png");

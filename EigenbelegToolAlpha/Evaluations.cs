@@ -21,7 +21,6 @@ namespace EigenbelegToolAlpha
         public EvaluationsFirstPage()
         {
             InitializeComponent();
-            CreateConfigTXTFirstTime();
             month = lineSearchAndGetValue("Monat:", 6);
             year = lineSearchAndGetValue("Jahr:", 5);
         }
@@ -40,28 +39,38 @@ namespace EigenbelegToolAlpha
             lbl_BackMarketNormal3.Text = lineSearchAndGetValue("BackMarket normal 3:", 20);
             lbl_backmarketAllOrdersCSV.Text = lineSearchAndGetValue("BackMarket XLS:", 15);
             lbl_BackMarketPayPal1.Text = lineSearchAndGetValue("BackMarket PayPal 1:", 20);
-            lbl_eetad.Text = lineSearchAndGetValue("BackMarket PayPal 2:", 20);
+            lbl_paypal2.Text = lineSearchAndGetValue("BackMarket PayPal 2:", 20);
             lbl_BackMarketPayPal3.Text = lineSearchAndGetValue("BackMarket PayPal 3:", 20);
             lbl_ebayReport.Text = lineSearchAndGetValue("Ebay Report:", 12);
             comboBox_MonthOfEvaluation.Text = lineSearchAndGetValue("Monat:", 6);
             comboBox_Years.Text = lineSearchAndGetValue("Jahr:", 5);
+            lbl_ebayInvoice.Text = lineSearchAndGetValue("Ebay Rechnung:", 14);
         }
         public void CreateConfigTXT()
         {
-            if (!File.Exists(basePath))
-            {
-                FileStream fs = new FileStream(basePath,FileMode.Create);
-                fs.Close();
-            }
-            File.WriteAllText(basePath, "\r\nBackMarket normal 1: kein Wert\r\nBackMarket normal 2: kein Wert\r\nBackMarket normal 3: kein Wert\r\nBackMarket XLS: kein Wert\r\nBackMarket PayPal 1: kein Wert\r\nBackMarket PayPal 2: kein Wert\r\nBackMarket PayPal 3: kein Wert\r\nEbay Report: kein Wert\r\nEbay Rechnung: kein Wert\r\nMonat: kein Wert\r\nJahr: kein Wert");
+            FileStream fs = new FileStream(basePath,FileMode.Create);
+            fs.Close();
+            string table = "Evaluations";
+            string whereColumn = "Monat";
+            string backMarketNormal1 = CheckIfClear(CRUDQueries.ExecuteQueryWithResultString(table, "BackMarketNormal1", whereColumn, month));
+            string backMarketNormal2 = CheckIfClear(CRUDQueries.ExecuteQueryWithResultString(table, "BackMarketNormal2", whereColumn, month));
+            string backMarketNormal3 = CheckIfClear(CRUDQueries.ExecuteQueryWithResultString(table, "BackMarketNormal3", whereColumn, month));
+            string backMarketPayPal1 = CheckIfClear(CRUDQueries.ExecuteQueryWithResultString(table, "BackMarketPayPal1", whereColumn, month));
+            string backMarketPayPal2 = CheckIfClear(CRUDQueries.ExecuteQueryWithResultString(table, "BackMarketPayPal2", whereColumn, month));
+            string backMarketPayPal3 = CheckIfClear(CRUDQueries.ExecuteQueryWithResultString(table, "BackMarketPayPal3", whereColumn, month));
+            string backMarketOrders = CheckIfClear(CRUDQueries.ExecuteQueryWithResultString(table, "BackMarketOrders", whereColumn, month));
+            string ebayReport = CheckIfClear(CRUDQueries.ExecuteQueryWithResultString(table, "EbayReport", whereColumn, month));
+            string ebayInvoice = CheckIfClear(CRUDQueries.ExecuteQueryWithResultString(table, "EbayInvoice", whereColumn, month));
+            File.WriteAllText(basePath, "\r\nBackMarket normal 1:"+backMarketNormal1+"\r\nBackMarket normal 2:" + backMarketNormal2 + "\r\nBackMarket normal 3:" + backMarketNormal3 + "\r\nBackMarket XLS:" + backMarketOrders + "\r\nBackMarket PayPal 1:" + backMarketPayPal1 + "\r\nBackMarket PayPal 2:" + backMarketPayPal2 + "\r\nBackMarket PayPal 3:" + backMarketPayPal3 + "\r\nEbay Report:" + ebayReport + "\r\nEbay Rechnung:" + ebayInvoice + "\r\nMonat: kein Wert\r\nJahr: kein Wert");
         }
-        public void CreateConfigTXTFirstTime()
+        public string CheckIfClear(string checkValue)
         {
-            if (!File.Exists(basePath))
+            string returnValue = "Kein Wert hinterlegt.";
+            if (checkValue == "")
             {
-                FileStream fs = new FileStream(basePath, FileMode.Create);
-                fs.Close();
+                return returnValue;
             }
+            return checkValue;
         }
         public void lineSearchAndInsert(string searchValue)
         {
@@ -280,7 +289,7 @@ namespace EigenbelegToolAlpha
         {
             newPath = getOpenFileDialog();
             lineSearchAndInsert("BackMarket PayPal 2:");
-            lbl_eetad.Text = newPath;
+            lbl_paypal2.Text = newPath;
         }
 
         private void lbl_BackMarketPayPal3_Click(object sender, EventArgs e)
@@ -300,7 +309,22 @@ namespace EigenbelegToolAlpha
 
         private void btn_ContinueWithEvaluation2_Click(object sender, EventArgs e)
         {
-     
+            string backMarketNormal123 = lbl_BackMarketNormal1.Text;
+            string backMarketNormal1 = lbl_BackMarketNormal1.Text.Replace(@"\", @"\\");
+            string backMarketNormal2 = lbl_BackMarketNormal2.Text.Replace(@"\", @"\\");
+            string backMarketNormal3 = lbl_BackMarketNormal3.Text.Replace(@"\", @"\\");
+            string backMarketPayPal1 = lbl_BackMarketPayPal1.Text.Replace(@"\", @"\\");
+            string backMarketPayPal2 = lbl_paypal2.Text.Replace(@"\", @"\\");
+            string backMarketPayPal3 = lbl_BackMarketPayPal3.Text.Replace(@"\", @"\\");
+            string backMarketOrders = lbl_backmarketAllOrdersCSV.Text.Replace(@"\", @"\\");
+            string ebayInvoice = lbl_ebayInvoice.Text.Replace(@"\", @"\\");
+            string ebayReport = lbl_ebayReport.Text.Replace(@"\", @"\\");
+
+            string query = string.Format("UPDATE `Evaluations` SET `BackMarketNormal1` = '{0}', `BackMarketNormal2` = '{1}', `BackMarketNormal3` = '{2}', `BackMarketPayPal1` = '{3}', `BackMarketPayPal2` = '{4}', `BackMarketPayPal3` = '{5}', `BackMarketOrders` = '{6}', `EbayReport` = '{7}', `EbayInvoice` = '{8}' WHERE `Monat` = '" + month+"'"
+                                        , backMarketNormal1, backMarketNormal2, backMarketNormal3, backMarketPayPal1, backMarketPayPal2, backMarketPayPal3,backMarketOrders, ebayReport, ebayInvoice);
+            CRUDQueries.ExecuteQuery(query);
+            File.WriteAllText(basePath, "\r\nBackMarket normal 1:" +backMarketNormal1 + "\r\nBackMarket normal 2:" + backMarketNormal2 + "\r\nBackMarket normal 3:" + backMarketNormal3 + "\r\nBackMarket XLS:" + backMarketOrders + "\r\nBackMarket PayPal 1:" + backMarketPayPal1 + "\r\nBackMarket PayPal 2:" + backMarketPayPal2 + "\r\nBackMarket PayPal 3:" + backMarketPayPal3 + "\r\nEbay Report:" + ebayReport + "\r\nEbay Rechnung:" + ebayInvoice + "\r\nMonat:" + month + "\r\nJahr:" + year);
+            EbayPDFInvoiceAlgorithm();
             EvaluationSecondForm frm = new EvaluationSecondForm();
             frm.Show();
             this.Hide();
@@ -310,6 +334,7 @@ namespace EigenbelegToolAlpha
         {
             month = comboBox_MonthOfEvaluation.Text;
             LineSearchAndInsertFixValue("Monat:");
+            EvaluationsFirstPage_Load(sender, e);
         }
 
 
@@ -324,6 +349,13 @@ namespace EigenbelegToolAlpha
             newPath = getOpenFileDialog();
             lineSearchAndInsert("BackMarket XLS:");
             lbl_backmarketAllOrdersCSV.Text = newPath;
+        }
+
+        private void lbl_ebayInvoice_Click(object sender, EventArgs e)
+        {
+            newPath = getOpenFileDialog();
+            lineSearchAndInsert("Ebay Rechnung:");
+            lbl_ebayInvoice.Text = newPath;
         }
     }
 }

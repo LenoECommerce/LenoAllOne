@@ -33,7 +33,7 @@
             this.btn_GetBack = new System.Windows.Forms.Button();
             this.Btn_ExplanationBusinessModel = new System.Windows.Forms.Button();
             this.Btn_NoInterests = new System.Windows.Forms.Button();
-            this.button7 = new System.Windows.Forms.Button();
+            this.Btn_PayPalBlocksMoneyAfterDelivery = new System.Windows.Forms.Button();
             this.Btn_PayPalMoneyHoldExplanation = new System.Windows.Forms.Button();
             this.Btn_ExplainShippingProcess = new System.Windows.Forms.Button();
             this.button4 = new System.Windows.Forms.Button();
@@ -81,14 +81,15 @@
             this.Btn_NoInterests.UseVisualStyleBackColor = true;
             this.Btn_NoInterests.Click += new System.EventHandler(this.Btn_NoInterests_Click);
             // 
-            // button7
+            // Btn_PayPalBlocksMoneyAfterDelivery
             // 
-            this.button7.Location = new System.Drawing.Point(536, 161);
-            this.button7.Name = "button7";
-            this.button7.Size = new System.Drawing.Size(217, 51);
-            this.button7.TabIndex = 10;
-            this.button7.Text = "-";
-            this.button7.UseVisualStyleBackColor = true;
+            this.Btn_PayPalBlocksMoneyAfterDelivery.Location = new System.Drawing.Point(536, 161);
+            this.Btn_PayPalBlocksMoneyAfterDelivery.Name = "Btn_PayPalBlocksMoneyAfterDelivery";
+            this.Btn_PayPalBlocksMoneyAfterDelivery.Size = new System.Drawing.Size(217, 51);
+            this.Btn_PayPalBlocksMoneyAfterDelivery.TabIndex = 10;
+            this.Btn_PayPalBlocksMoneyAfterDelivery.Text = "PayPal Geld Offen nach Lieferung";
+            this.Btn_PayPalBlocksMoneyAfterDelivery.UseVisualStyleBackColor = true;
+            this.Btn_PayPalBlocksMoneyAfterDelivery.Click += new System.EventHandler(this.Btn_PayPalBlocksMoneyAfterDelivery_Click);
             // 
             // Btn_PayPalMoneyHoldExplanation
             // 
@@ -146,7 +147,7 @@
             this.Controls.Add(this.button4);
             this.Controls.Add(this.button5);
             this.Controls.Add(this.button6);
-            this.Controls.Add(this.button7);
+            this.Controls.Add(this.Btn_PayPalBlocksMoneyAfterDelivery);
             this.Controls.Add(this.Btn_PayPalMoneyHoldExplanation);
             this.Controls.Add(this.Btn_ExplainShippingProcess);
             this.Controls.Add(this.Btn_NoInterests);
@@ -170,7 +171,7 @@
         private System.Windows.Forms.Button btn_GetBack;
         private System.Windows.Forms.Button Btn_ExplanationBusinessModel;
         private System.Windows.Forms.Button Btn_NoInterests;
-        private System.Windows.Forms.Button button7;
+        private System.Windows.Forms.Button Btn_PayPalBlocksMoneyAfterDelivery;
         private System.Windows.Forms.Button Btn_PayPalMoneyHoldExplanation;
         private System.Windows.Forms.Button Btn_ExplainShippingProcess;
         private System.Windows.Forms.Button button4;

@@ -62,14 +62,13 @@ namespace EigenbelegToolAlpha
             legalSteuerberatung = Convert.ToDouble(textbox_LegalSteuerberatung.Text);
             legalVerpackungslizenz = Convert.ToDouble(textbox_LegalVerpackungslizenz.Text);
             restMiete = Convert.ToDouble(textBox_RestMiete.Text);
-            restKredit = Convert.ToDouble(textBox_RestKredit.Text);
             restVersandkosten = Convert.ToDouble(textBox_RestVersandkosten.Text);
             //20 Elemente!
             RunningCostsSum = digitalToolsBillBee + digitalToolsBitwarden + digitalToolsEbayAbo + digitalToolsFraenk + digitalToolsKleinanzeigen + digitalToolsLexOffice + digitalToolsNsys + digitalToolsPenta
                 + digitalToolsSQLDatabase + digitalToolsZapier + websitesElementorPro + websitesIONOS + websitesSiteground + legalFinanzbuchhaltung + legalRechtskanzlei + legalSteuerberatung + legalVerpackungslizenz
                 + restKredit + restMiete + restVersandkosten;
-            RunningCostsTaxGetBack = (RunningCostsSum - restKredit - restMiete - websitesElementorPro - websitesSiteground)/1.19*0.19+(restEbayVorsteuer);
-            RunningCostsFinal = RunningCostsSum - RunningCostsTaxGetBack;
+            RunningCostsTaxGetBack = (RunningCostsSum - restMiete - websitesElementorPro - websitesSiteground) / 1.19 * 0.19;
+            RunningCostsFinal = RunningCostsSum - RunningCostsTaxGetBack - EvaluationsFirstPage.ebayTaxGetBack;
 
             EvaluationCalculation window = new EvaluationCalculation();
             window.Show();
@@ -96,7 +95,6 @@ namespace EigenbelegToolAlpha
             textbox_LegalSteuerberatung.Text = "100";
             textbox_LegalFinanzbuchhaltung.Text = "200";
             textBox_RestMiete.Text = "0";
-            textBox_RestKredit.Text = "250";
             textBox_RestVersandkosten.Text = "0";
         }
 

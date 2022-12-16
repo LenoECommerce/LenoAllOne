@@ -97,14 +97,27 @@ namespace EigenbelegToolAlpha
             foreach (DataGridViewRow row in eigenbelegeDGV.Rows)
             {
                 string compareValue = row.Cells[12].Value.ToString();
+                double compareValueAmount = AdaptAmount(row.Cells[6].Value.ToString());
                 if (compareValue == "Nein")
                 {
                     row.DefaultCellStyle.BackColor = Color.Orange;
                 }
+                if (compareValueAmount >= 500)
+                {
+                    row.DefaultCellStyle.BackColor = Color.DeepSkyBlue;
+                }
             }
             conn.Close();
         }
-
+        public double AdaptAmount(string adaptValue)
+        {
+            if (adaptValue.Contains("€"))
+            {
+                int length = adaptValue.Length;
+                return Convert.ToDouble(adaptValue.Substring(0,length-1));
+            }
+            return Convert.ToDouble(adaptValue);
+        }
         public void ShowEigenbelegeFiltered(string [] filterValueModel, string[] filterValueCreated, string[] filterValuePlatform)
         {
             conn = new MySqlConnection();
@@ -706,6 +719,17 @@ namespace EigenbelegToolAlpha
         {
             folderBrowserDialog1.ShowDialog();
             MergeShippingDocuments merge = new MergeShippingDocuments(folderBrowserDialog1.SelectedPath, "Label");
+        }
+
+        private void btn_RegularSalesAlgo_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void regularSalesToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            RegularSalesAlgoOverview window = new RegularSalesAlgoOverview();
+            window.Show();
         }
     }
 }

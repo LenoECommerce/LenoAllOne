@@ -32,7 +32,7 @@ namespace EigenbelegToolAlpha
         public static string monthlyReportFinishedPath = desktopPath + "Monthly Report" + month + ".pdf";
         //some value calcs
         public static double runningCostsTotalNet = RoundOneDigit(EvaluationThirdForm.RunningCostsFinal + EvaluationSecondForm.rateConsumptionTotal);
-        public static double grossSalesTotalB2C = OrderRelationPDF.grossSalesEbay + OrderRelationPDF.grossSalesBackmarketPayPal + OrderRelationPDF.grossSalesBackmarketNormal;
+        public static double grossSalesTotalB2C = OrderRelationPDF.grossSalesEbay + OrderRelationPDF.grossSalesBackmarketPayPal + OrderRelationPDF.grossSalesBackmarketNormal-OrderRelationPDF.returnAmount;
         public static double costsAtAll = runningCostsTotalNet + EvaluationSecondForm.moreExternalCosts + EvaluationCalculation.donorDevicesAmount;
         public static double revenueAfterCosts = RoundOneDigit(OrderRelationPDF.revenueTotal - costsAtAll);
         public static double margin = RoundOneDigit(revenueAfterCosts / grossSalesTotalB2C * 100);
@@ -54,11 +54,6 @@ namespace EigenbelegToolAlpha
             XTextFormatter tf = new XTextFormatter(gfx);
 
 
-            //Text schreiben
-            // XBrushed means color; xPoint sozusagen X und Y
-            // Wichtig!! Position muss absolut sein und nicht dynamisch, mit Algorithmus
-            //Drawline: XColor: Code Werte
-
             gfx.DrawString("Monthly Report "+month, heading, XBrushes.Black, new XPoint(100, 100));
             //Vertikale Line
             gfx.DrawLine(new XPen(XColor.FromArgb(0, 0, 0)), new XPoint(180, 120), new XPoint(180, 1000));
@@ -70,10 +65,12 @@ namespace EigenbelegToolAlpha
             gfx.DrawString("BM Normal", main, XBrushes.Black, new XPoint(200, 200));
             gfx.DrawString("BM PayPal", main, XBrushes.Black, new XPoint(200, 230));
             gfx.DrawString("Ersatzteile", main, XBrushes.Black, new XPoint(200, 260));
+            gfx.DrawString("Erstattungen", main, XBrushes.Black, new XPoint(200, 290));
             gfx.DrawString(OrderRelationPDF.grossSalesEbay.ToString() + "€", subFont, XBrushes.Black, new XPoint(400, 170));
             gfx.DrawString(OrderRelationPDF.grossSalesBackmarketNormal.ToString() + "€", subFont, XBrushes.Black, new XPoint(400, 200));
             gfx.DrawString(OrderRelationPDF.grossSalesBackmarketPayPal.ToString() + "€", subFont, XBrushes.Black, new XPoint(400, 230));
             gfx.DrawString("/" + "€", subFont, XBrushes.Black, new XPoint(400, 260));
+            gfx.DrawString(OrderRelationPDF.returnAmount + "€", subFont, XBrushes.Black, new XPoint(400, 290));
             gfx.DrawLine(new XPen(XColor.FromArgb(0, 0, 0)), new XPoint(0, 310), new XPoint(1000, 310));
             //Sonstiges
             gfx.DrawString("Sonstiges", main, XBrushes.Black, new XPoint(25, 330));
@@ -109,7 +106,7 @@ namespace EigenbelegToolAlpha
             gfx.DrawString("Geräte verkauft", main, XBrushes.Black, new XPoint(200, 790));
             gfx.DrawString(EvaluationCalculation.kpiDevicesPerMonthSold.ToString() + " Geräte", subFont, XBrushes.Black, new XPoint(400, 790));
             gfx.DrawString("Kosten / Auftrag (Misch)", main, XBrushes.Black, new XPoint(200, 820));
-            gfx.DrawString(costsPerOrder.ToString() + " Geräte", subFont, XBrushes.Black, new XPoint(400, 820));
+            gfx.DrawString(costsPerOrder.ToString() + "€", subFont, XBrushes.Black, new XPoint(400, 820));
 
             //Leno Logo
             string imagePath = Path.GetTempPath();

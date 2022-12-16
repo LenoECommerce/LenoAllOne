@@ -39,7 +39,7 @@
             this.lbl_BackMarketNormal2 = new System.Windows.Forms.Label();
             this.openFD = new System.Windows.Forms.OpenFileDialog();
             this.label5 = new System.Windows.Forms.Label();
-            this.lbl_eetad = new System.Windows.Forms.Label();
+            this.lbl_paypal2 = new System.Windows.Forms.Label();
             this.lbl_BackMarketPayPal3 = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
             this.label9 = new System.Windows.Forms.Label();
@@ -55,6 +55,8 @@
             this.comboBox_Years = new System.Windows.Forms.ComboBox();
             this.label15 = new System.Windows.Forms.Label();
             this.lbl_backmarketAllOrdersCSV = new System.Windows.Forms.Label();
+            this.label12 = new System.Windows.Forms.Label();
+            this.lbl_ebayInvoice = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // label20
@@ -155,16 +157,16 @@
             this.label5.TabIndex = 91;
             this.label5.Text = "BackMarket PayPal";
             // 
-            // lbl_eetad
+            // lbl_paypal2
             // 
-            this.lbl_eetad.AutoSize = true;
-            this.lbl_eetad.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbl_eetad.Location = new System.Drawing.Point(221, 262);
-            this.lbl_eetad.Name = "lbl_eetad";
-            this.lbl_eetad.Size = new System.Drawing.Size(195, 18);
-            this.lbl_eetad.TabIndex = 97;
-            this.lbl_eetad.Text = "Noch kein Wert eingetragen.";
-            this.lbl_eetad.Click += new System.EventHandler(this.lbl_BackMarketPayPal2_Click);
+            this.lbl_paypal2.AutoSize = true;
+            this.lbl_paypal2.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbl_paypal2.Location = new System.Drawing.Point(221, 262);
+            this.lbl_paypal2.Name = "lbl_paypal2";
+            this.lbl_paypal2.Size = new System.Drawing.Size(195, 18);
+            this.lbl_paypal2.TabIndex = 97;
+            this.lbl_paypal2.Text = "Noch kein Wert eingetragen.";
+            this.lbl_paypal2.Click += new System.EventHandler(this.lbl_BackMarketPayPal2_Click);
             // 
             // lbl_BackMarketPayPal3
             // 
@@ -336,12 +338,35 @@
             this.lbl_backmarketAllOrdersCSV.Text = "Noch kein Wert eingetragen.";
             this.lbl_backmarketAllOrdersCSV.Click += new System.EventHandler(this.lbl_backmarketAllOrdersCSV_Click);
             // 
+            // label12
+            // 
+            this.label12.AutoSize = true;
+            this.label12.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label12.Location = new System.Drawing.Point(34, 393);
+            this.label12.Name = "label12";
+            this.label12.Size = new System.Drawing.Size(112, 18);
+            this.label12.TabIndex = 113;
+            this.label12.Text = "Ebay Rechnung";
+            // 
+            // lbl_ebayInvoice
+            // 
+            this.lbl_ebayInvoice.AutoSize = true;
+            this.lbl_ebayInvoice.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbl_ebayInvoice.Location = new System.Drawing.Point(221, 393);
+            this.lbl_ebayInvoice.Name = "lbl_ebayInvoice";
+            this.lbl_ebayInvoice.Size = new System.Drawing.Size(195, 18);
+            this.lbl_ebayInvoice.TabIndex = 114;
+            this.lbl_ebayInvoice.Text = "Noch kein Wert eingetragen.";
+            this.lbl_ebayInvoice.Click += new System.EventHandler(this.lbl_ebayInvoice_Click);
+            // 
             // EvaluationsFirstPage
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ButtonHighlight;
             this.ClientSize = new System.Drawing.Size(826, 495);
+            this.Controls.Add(this.lbl_ebayInvoice);
+            this.Controls.Add(this.label12);
             this.Controls.Add(this.lbl_backmarketAllOrdersCSV);
             this.Controls.Add(this.label15);
             this.Controls.Add(this.comboBox_Years);
@@ -352,7 +377,7 @@
             this.Controls.Add(this.lbl_ebayReport);
             this.Controls.Add(this.label7);
             this.Controls.Add(this.label6);
-            this.Controls.Add(this.lbl_eetad);
+            this.Controls.Add(this.lbl_paypal2);
             this.Controls.Add(this.lbl_BackMarketPayPal3);
             this.Controls.Add(this.label8);
             this.Controls.Add(this.label9);
@@ -389,7 +414,7 @@
         private System.Windows.Forms.Label lbl_BackMarketNormal2;
         private System.Windows.Forms.OpenFileDialog openFD;
         private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.Label lbl_eetad;
+        private System.Windows.Forms.Label lbl_paypal2;
         private System.Windows.Forms.Label lbl_BackMarketPayPal3;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.Label label9;
@@ -405,5 +430,7 @@
         private System.Windows.Forms.ComboBox comboBox_Years;
         private System.Windows.Forms.Label label15;
         private System.Windows.Forms.Label lbl_backmarketAllOrdersCSV;
+        private System.Windows.Forms.Label label12;
+        private System.Windows.Forms.Label lbl_ebayInvoice;
     }
 }

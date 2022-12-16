@@ -88,24 +88,26 @@ namespace EigenbelegToolAlpha
             {
                 // check if month is relevant
                 string monthCheck = row.Cells[9].Value.ToString();
-                string orderIDCheck = row.Cells[1].Value.ToString();
+                string orderCheck = row.Cells[1].Value.ToString();
                 if (monthCheck == month)
                 {
-                    var id = CRUDQueries.ExecuteQueryWithResult("Matching","Id","Bestellnummer",orderIDCheck);
+                    var id = CRUDQueries.ExecuteQueryWithResult("Matching","Id","Bestellnummer", orderCheck);
                     FetchDataFromMatching(id);
                     orderRelationPDF.Main(orderID,internalNumber, amount, externalCosts, externalCostsDIFF,taxesType);
                 }
             }
-            MessageBox.Show("Ausgeführt.");
         }
         private void FetchDataFromMatching(int id)
         {
-            orderID = CRUDQueries.ExecuteQueryWithResultString("Matching", "Bestellnummer", "Id", id.ToString());
-            internalNumber = CRUDQueries.ExecuteQueryWithResultString("Matching", "Intern", "Id", id.ToString());
-            amount = AdaptNumber(CRUDQueries.ExecuteQueryWithResultString("Matching", "Kaufbetrag", "Id", id.ToString()));
-            externalCosts = AdaptNumber(CRUDQueries.ExecuteQueryWithResultString("Matching", "Externe Kosten", "Id", id.ToString()));
-            externalCostsDIFF = AdaptNumber(CRUDQueries.ExecuteQueryWithResultString("Matching", "ExterneKostenDIFF", "Id", id.ToString()));
-            taxesType = CRUDQueries.ExecuteQueryWithResultString("Matching", "Besteuerung", "Id", id.ToString());
+            string table = "Matching";
+            string searchTerm = "Id";
+            string idS = id.ToString();
+            orderID = CRUDQueries.ExecuteQueryWithResultString(table, "Bestellnummer", searchTerm, idS);
+            internalNumber = CRUDQueries.ExecuteQueryWithResultString(table, "Intern", searchTerm, idS);
+            amount = AdaptNumber(CRUDQueries.ExecuteQueryWithResultString(table, "Kaufbetrag", searchTerm, idS));
+            externalCosts = AdaptNumber(CRUDQueries.ExecuteQueryWithResultString(table, "Externe Kosten", searchTerm, idS));
+            externalCostsDIFF = AdaptNumber(CRUDQueries.ExecuteQueryWithResultString(table, "ExterneKostenDIFF", searchTerm, idS));
+            taxesType = CRUDQueries.ExecuteQueryWithResultString(table, "Besteuerung", searchTerm, idS);
             if (taxesType.Contains("Diff"))
             {
                 taxesType = "DIFF";
@@ -118,18 +120,11 @@ namespace EigenbelegToolAlpha
 
    
 
-
-
-
-
         private void MatchingAlgorithm ()
         {
             string searchIntern = "";
-            string importNewIMEI = "";
             string searchOrderID = "";
             string newIMEI = "";
-            double newAmount = 0;
-            double newExternalCosts = 0;
             string newMonth = "";
             string marketplace = "";
             string taxes = "";
@@ -143,51 +138,31 @@ namespace EigenbelegToolAlpha
             int alreadyExistsCounter = 0;
             int alreadyExistsCounterButMatchingMonth = 0;
 
-            //Abfrage wenn IMEI nicht vorhanden sein sollte!
-            foreach (DataGridViewRow row in rep.reparaturenDGV.Rows)
-            {
-                if (row.Cells[5].Value.Equals(""))
-                {
-                    foreach (DataGridViewRow row2 in prot.protokollierungDGV.Rows)
-                    {
-                        searchIntern = row.Cells[1].Value.ToString();
-                        if (row2.Cells[3].Value.Equals(searchIntern))
-                        {
-                            importNewIMEI = row2.Cells[2].Value.ToString();
-                            string query = "UPDATE `Reparaturen` SET `IMEI` = '" + importNewIMEI + "' WHERE `Intern` = '" + searchIntern + "'";
-                            CRUDQueries.ExecuteQuery(query);
-                        }
-                    }
-                }
-            }
-            //Der eigentliche Matchingprozess
-            foreach (DataGridViewRow row3 in prot.protokollierungDGV.Rows)
+            foreach (DataGridViewRow row in prot.protokollierungDGV.Rows)
             {
                 approvedRows++;
-                searchOrderID = row3.Cells[1].Value.ToString();
-                newMonth = row3.Cells[5].Value.ToString();
-                searchIntern = row3.Cells[3].Value.ToString();
+                searchOrderID = row.Cells[1].Value.ToString();
+                newMonth = row.Cells[5].Value.ToString();
+                searchIntern = row.Cells[3].Value.ToString();
                 var resultExistsInMatching = CRUDQueries.ExecuteQueryWithResult("Matching", "Id", "Bestellnummer", searchOrderID);
                 var resultExistsInternInMatching = CRUDQueries.ExecuteQueryWithResult("Matching", "Id", "Intern", searchIntern);
                 //Überprüfen ob der Datensatz schon in Matching vorhanden ist + Ob Monat relevant ist + ob Intern schon vorhanden ist!
                 if (resultExistsInMatching == 0 && newMonth == month && resultExistsInternInMatching == 0)
                 {
                     //Data Pull aus Protokollierung
-                    searchOrderID = row3.Cells[1].Value.ToString();
-                    newIMEI = row3.Cells[2].Value.ToString();
-                    marketplace = row3.Cells[4].Value.ToString();
+                    newIMEI = row.Cells[2].Value.ToString();
+                    marketplace = row.Cells[4].Value.ToString();
                     related = "Ja";
                     //Data Pull aus Reparaturen
                     var id = CRUDQueries.ExecuteQueryWithResult("Reparaturen", "Id", "Intern", searchIntern);
-                    //Unterscheidung ob € Zeichen vorhanden ist.
                     string tempAmount = AdaptNumber(CRUDQueries.ExecuteQueryWithResultString("Reparaturen", "Kaufbetrag", "Id", id.ToString()));
                     string tempExternalCosts = AdaptNumber(CRUDQueries.ExecuteQueryWithResultString("Reparaturen", "ExterneKosten", "Id", id.ToString()));
                     string tempExternalCostsDiff = AdaptNumber(CRUDQueries.ExecuteQueryWithResultString("Reparaturen", "ExterneKostenDIFF", "Id", id.ToString()));
                     taxes = CRUDQueries.ExecuteQueryWithResultString("Reparaturen", "Besteuerung", "Id", id.ToString());
-                    string query2 = String.Format("INSERT INTO `Matching`(`Bestellnummer`,`IMEI`,`Intern`,`Kaufbetrag`,`Externe Kosten``ExterneKostenDIFF`,`Marktplatz`,`Besteuerung`,`Monat`,`Zugeordnet?`) VALUES ('{0}','{1}','{2}','{3}','{4}','{5}','{6}','{7}','{8}','{9}')"
+                    string query = String.Format("INSERT INTO `Matching`(`Bestellnummer`,`IMEI`,`Intern`,`Kaufbetrag`,`Externe Kosten`,`ExterneKostenDIFF`,`Marktplatz`,`Besteuerung`,`Monat`,`Zugeordnet?`) VALUES ('{0}','{1}','{2}','{3}','{4}','{5}','{6}','{7}','{8}','{9}')"
                                     , searchOrderID, newIMEI, searchIntern, tempAmount, tempExternalCosts,tempExternalCostsDiff, marketplace, taxes, newMonth, related);
                     addedRows++;
-                    CRUDQueries.ExecuteQuery(query2);
+                    CRUDQueries.ExecuteQuery(query);
                 }
                 else if (newMonth != month)
                 {
@@ -477,7 +452,7 @@ namespace EigenbelegToolAlpha
         {
             string year = "2022";
             var returnValue = CRUDQueries.ExecuteQueryWithResult("Evaluations", "Id", "Monat", month);
-            GoogleDrive drive = new GoogleDrive(orderRelationPDF.fullPath, "pdf");
+            GoogleDrive drive = new GoogleDrive(MonthlyReportPDF.monthlyReportFinishedPath, "pdf");
             if (returnValue == 0)
             {
                 string query = string.Format("INSERT INTO `Evaluations` (`Monat`,`Jahr`,`Link`) VALUES ('{0}','{1}','{2}')"
@@ -495,14 +470,14 @@ namespace EigenbelegToolAlpha
         }
         private void btn_ExecuteAllAlgorithms_Click(object sender, EventArgs e)
         {
-            //try
-            //{
-            //    MatchingAlgorithm();
-            //}
-            //catch (Exception ex)
-            //{
-            //    MessageBox.Show("Der Matching Algorithmus hat ein Problem: " + ex.Message);
-            //}
+            try
+            {
+                MatchingAlgorithm();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Der Matching Algorithmus hat ein Problem: " + ex.Message);
+            }
             try
             {
                 DonorDevicesAlgorithm();
@@ -519,17 +494,30 @@ namespace EigenbelegToolAlpha
             {
                 MessageBox.Show("Der Geräte pro Monat Algorithmus hat ein Problem: " + ex.Message);
             }
-            GetFullDataSetOrder();
-            MonthlyReportPDF.CreatePDFFile();
-
-            //try
-            //{
-            //    UploadPDF();
-            //}
-            //catch (Exception ex)
-            //{
-            //    MessageBox.Show("Der Matching Algorithmus hat ein Problem: " + ex.Message);
-            //}
+            try
+            {
+                GetFullDataSetOrder();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Get Full Data Set Order Algorithmus hat ein Problem: " + ex.Message);
+            }
+            try
+            {
+                MonthlyReportPDF.CreatePDFFile();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Erstellung der Monthly Report PDF Datei hat ein Problem: " + ex.Message);
+            }
+            try
+            {
+                UploadPDF();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Uploading Methode hat ein Problem: " + ex.Message);
+            }
         }
     }
 }

@@ -61,5 +61,10 @@ namespace EigenbelegToolAlpha
         {
             BuildMessage("Keine Sorge, das ist eine Vorsichtsmaßnahme von PayPal. Das machen dir zurzeit anscheinend öfter, um Ihre Nutzer zu schützen.\r\nSoweit ich das kenne, wird das Geld freigeschaltet, sobald das Gerät hier eintrifft. Am besten ist es immer, den Sendungsverfolg zu hinterlegen. Das System erkennt dann die Ankunft. Auf jeden Fall ist Ihr Geld bei PayPal sicher aufgehoben.\r\nBei weiteren Rückfragen hilft bestimmt der PayPal Support.");
         }
+
+        private void Btn_PayPalBlocksMoneyAfterDelivery_Click(object sender, EventArgs e)
+        {
+            BuildMessage("Bitte entschuldigen Sie die Unannehmlichkeiten. Momentan hält PayPal verhältnismäßig viel ein, bitte gedulden Sie sich. Mich stört das selber auch. Hatte ich selten, dass es so oft vorkommt, dass Geld einbehalten wird. \r\nEmpfehlen kann ich immer die Hinterlegung des Sendungsverfolgs. Ansonsten habe ich gerade nochmal extra nachgeschaut, ich habe dort leider keine Möglichkeiten für eine verschnellerte Freischaltung.\r\nBitte daher um Geduld, wenn es frei ist können Sie sich ja kurz melden.");
+        }
     }
 }

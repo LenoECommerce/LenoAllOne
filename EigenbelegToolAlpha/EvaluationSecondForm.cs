@@ -33,8 +33,6 @@ namespace EigenbelegToolAlpha
         {
             try
             {
-                sparepartsGrossSalesMarginalVat = Convert.ToDouble(textBox_SparePartsGrossSalesMarginalVa.Text);
-                sparepartsGrossSalesNormalVat = Convert.ToDouble(textBox_SparePartsGrossSalesNormalVat.Text);
                 B2BGrossSalesTotal = Convert.ToDouble(textBox_B2BGrossSales.Text);
                 B2BRevenue = Convert.ToDouble(textBox_B2BGrossSalesRevenue.Text);
                 rateConsumptionCables = Convert.ToDouble(textBox_rateConsumptionCables.Text)*1;

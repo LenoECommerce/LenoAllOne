@@ -49,7 +49,7 @@ namespace EigenbelegToolAlpha
 
         private void Btn_ShipmentLabelSentIt_Click(object sender, EventArgs e)
         {
-            BuildMessage("Habe das Etikett soeben an Ihre Mailadresse gesendet. \r\n\r\nBitte geben Sie doch Bescheid, wenn sie das Paket abgegeben haben. Bitte alles sicher verpacken und vor allem das Gerät auf Werkseinstellungen zurücksetzen und jegliche Sperren (bei Apple: iCloud Konto oder bei Samsung Google Konto)\r\n\r\nnBitte kontaktieren Sie mich doch, wenn Sie es verschickt haben.\r\n\r\nPositive Bewertung würde uns sehr freuen. Vor allem auch über Trustpilot: https://de.trustpilot.com/review/leno-ecommerce.de");
+            BuildMessage("Habe das Etikett soeben an Ihre Mailadresse gesendet. Nur zur Information: Das Etikett kann leider nicht in einer Postfiliale vor Ort ausgedruckt werden.\r\n\r\nBitte geben Sie doch Bescheid, wenn sie das Paket abgegeben haben. Bitte alles sicher verpacken und vor allem das Gerät auf Werkseinstellungen zurücksetzen und jegliche Sperren (bei Apple: iCloud Konto oder bei Samsung Google Konto)\r\n\r\nBitte kontaktieren Sie mich doch, wenn Sie es verschickt haben.\r\n\r\nPositive Bewertung würde uns sehr freuen. Vor allem auch über Trustpilot: https://de.trustpilot.com/review/leno-ecommerce.de");
         }
 
         private void Btn_GetBack_Click(object sender, EventArgs e)
@@ -67,7 +67,7 @@ namespace EigenbelegToolAlpha
 
         private void Btn_BurnIn_Click(object sender, EventArgs e)
         {
-            BuildMessage("Letzte Nachfrage noch:\r\nWir mussten in letzter Zeit mehrfach folgenden Fehler feststellen: Bei einigen Samsung Modellen kommt es mit der Zeit der Nutzung zu einem so genannten „Burn In“, ein so genannter Pixelfehler. Dies äußert sich, indem man bei einem weißen Hintergrund bestimmte Pixel sehr deutlich erkennt.\r\n(siehe Beispielbilder hier: [https://drive.google.com/drive/folders/1Cxh-5atSUTq8-2lfMA7ppkNe7TeIR4fz?usp=sharing](https://drive.google.com/drive/folders/1Cxh-5atSUTq8-2lfMA7ppkNe7TeIR4fz?usp=sharing))\r\nWir möchten unseren Kunden nur die beste Qualität anbieten, weshalb wir Sie bitten würden, das Gerät einmal auf dieses Fehlerbild zu prüfen, damit keine Unstimmigkeiten im Nachgang entstehen.\r\nAm besten erkennt man dies bei leichtem Kippen des Geräts und mit einem Youtube Video “Weißer Hintergrund”, um wirklich alles zu erkennen.\r\nFreue mich über Rückmeldung.\r\n\r\nBei Rückfragen stehe ich Ihnen sehr gerne jederzeit zur Verfügung.\r\nMfG Lennart von Leno Repair");
+            BuildMessage("Letzte Nachfrage noch:\r\nWir mussten in letzter Zeit mehrfach folgenden Fehler feststellen: Bei einigen Samsung Modellen kommt es mit der Zeit der Nutzung zu einem so genannten „Burn In“, ein so genannter Pixelfehler. Dies äußert sich, indem man bei einem weißen Hintergrund bestimmte Pixel sehr deutlich erkennt.\r\n(siehe Beispielbilder hier: https://drive.google.com/drive/folders/1Cxh-5atSUTq8-2lfMA7ppkNe7TeIR4fz?usp=sharing )\r\nWir möchten unseren Kunden nur die beste Qualität anbieten, weshalb wir Sie bitten würden, das Gerät einmal auf dieses Fehlerbild zu prüfen, damit keine Unstimmigkeiten im Nachgang entstehen.\r\nAm besten erkennt man dies bei leichtem Kippen des Geräts und mit einem Youtube Video “Weißer Hintergrund”, um wirklich alles zu erkennen.\r\nFreue mich über Rückmeldung.\r\n\r\nBei Rückfragen stehe ich Ihnen sehr gerne jederzeit zur Verfügung.\r\nMfG Lennart von Leno Repair");
         }
     }
 }

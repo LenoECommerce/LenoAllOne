@@ -28,7 +28,7 @@
     <UpdateUrl>https://raw.githubusercontent.com/LenoECommerce/LenoAllOne/main/published/</UpdateUrl>
     <CreateWebPageOnPublish>true</CreateWebPageOnPublish>
     <WebPage>publish.htm</WebPage>
-    <ApplicationRevision>29</ApplicationRevision>
+    <ApplicationRevision>30</ApplicationRevision>
     <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
     <CreateDesktopShortcut>true</CreateDesktopShortcut>
@@ -87,6 +87,9 @@
     <Reference Include="ExcelLibrary, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\ExcelLibrary.1.2011.7.31\lib\ExcelLibrary.dll</HintPath>
     </Reference>
+    <Reference Include="FSharp.Core, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\FSharp.Core.6.0.2\lib\netstandard2.0\FSharp.Core.dll</HintPath>
+    </Reference>
     <Reference Include="Google.Apis, Version=1.57.0.0, Culture=neutral, PublicKeyToken=4b01fa6e34db77ab, processorArchitecture=MSIL">
       <HintPath>..\packages\Google.Apis.1.57.0\lib\net45\Google.Apis.dll</HintPath>
     </Reference>
@@ -124,6 +127,9 @@
     </Reference>
     <Reference Include="K4os.Hash.xxHash, Version=1.0.7.0, Culture=neutral, PublicKeyToken=32cd54395057cec3, processorArchitecture=MSIL">
       <HintPath>..\packages\K4os.Hash.xxHash.1.0.7\lib\net46\K4os.Hash.xxHash.dll</HintPath>
+    </Reference>
+    <Reference Include="MathNet.Numerics, Version=5.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\MathNet.Numerics.5.0.0\lib\net48\MathNet.Numerics.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.Bcl.AsyncInterfaces, Version=5.0.0.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.Bcl.AsyncInterfaces.5.0.0\lib\net461\Microsoft.Bcl.AsyncInterfaces.dll</HintPath>
@@ -363,6 +369,13 @@
     <Compile Include="ProtokollierungScan.Designer.cs">
       <DependentUpon>ProtokollierungScan.cs</DependentUpon>
     </Compile>
+    <Compile Include="RegularSalesAlgoOverview.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="RegularSalesAlgoOverview.Designer.cs">
+      <DependentUpon>RegularSalesAlgoOverview.cs</DependentUpon>
+    </Compile>
+    <Compile Include="RegularSalesAlgoXSL.cs" />
     <Compile Include="ReparaturCreate.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -551,6 +564,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="ProtokollierungScan.resx">
       <DependentUpon>ProtokollierungScan.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="RegularSalesAlgoOverview.resx">
+      <DependentUpon>RegularSalesAlgoOverview.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="ReparaturCreate.resx">
       <DependentUpon>ReparaturCreate.cs</DependentUpon>

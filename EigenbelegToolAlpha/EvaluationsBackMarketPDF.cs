@@ -79,6 +79,58 @@ namespace EigenbelegToolAlpha
             }
             return RemoveMinus(sumup);
         }
+        public double CollectReturnAmount()
+        {
+            double returnAmount = 0;
+            string[] numbers = new string[3] { "1", "2", "3" };
+            string pathPreset = "BackmarketNormal";
+            string pathPreset2 = "BackmarketPayPal";
+            string searchValue = "MONTANT DES COMMANDES REMBOURSÉES";
+            string searchValueTotal = "TOTAL";
+            int arrayIndexerPDF = 0;
+            foreach (string number in numbers)
+            {
+                string buildPath = pathPreset + numbers[arrayIndexerPDF] + ".txt";
+                string[] allLines = File.ReadAllLines(buildPath);
+                arrayIndexerPDF++;
+                int indexReturnList = findLine(allLines, searchValue);
+                //Alle Orders in Array auflisten | sozusagen ein Filter von allLines[]
+                for (int i = indexReturnList + 1; i < allLines.Count(); i++)
+                {
+                    if (!allLines[i].Contains(searchValueTotal))
+                    {
+                        double temp = GetReturnValueOfOneLine(i,allLines);
+                        returnAmount += temp;
+                    }
+                    else
+                    {
+                        break;
+                    }
+                }
+            }
+            arrayIndexerPDF = 0;
+            foreach (string number in numbers)
+            {
+                string buildPath = pathPreset2 + numbers[arrayIndexerPDF] + ".txt";
+                string[] allLines = File.ReadAllLines(buildPath);
+                arrayIndexerPDF++;
+                int indexReturnList = findLine(allLines, searchValue);
+                //Alle Orders in Array auflisten | sozusagen ein Filter von allLines[]
+                for (int i = indexReturnList + 1; i < allLines.Count(); i++)
+                {
+                    if (!allLines[i].Contains(searchValueTotal))
+                    {
+                        double temp = GetReturnValueOfOneLine(i, allLines);
+                        returnAmount += temp;
+                    }
+                    else
+                    {
+                        break;
+                    }
+                }
+            }
+            return returnAmount;
+        }
         public void AllocateBackCareFee (string numberPDF, double value)
         {
             if (numberPDF == "1")
@@ -296,6 +348,21 @@ namespace EigenbelegToolAlpha
             {
                 OrderRelationPDF.backCareFee = OrderRelationPDF.backCareFees3;
             }
+        }
+        public double GetReturnValueOfOneLine(int index, string[] array)
+        {
+            double value = 0;
+            string temp = array[index].ToString();
+            string space = " ";
+            string euroSign = "€";
+            int posEuroSign = temp.IndexOf(euroSign);
+            int fullLength = temp.Length;
+            string newTemp = temp.Substring(posEuroSign-10,fullLength-posEuroSign+10);
+            int lengthNewTemp = newTemp.Length;
+            int posSpace = newTemp.IndexOf(space);
+            newTemp = newTemp.Substring(posSpace,lengthNewTemp-posSpace-1);
+            value = Convert.ToDouble(newTemp);
+            return value;
         }
         public double getValueOfOneLine(int index, string[] array, int lengthOfTheFirstPos, string firstPos, string secondPos)
         {

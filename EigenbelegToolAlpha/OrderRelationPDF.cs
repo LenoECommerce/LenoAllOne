@@ -29,6 +29,7 @@ namespace EigenbelegToolAlpha
         public double entriesAdded = 0;
         //calcs
         public double marketPlaceFeesEbay = 0;
+        public static double returnAmount = 0;
         public double taxes = 0;
         public double revenue = 0;
         public double margin = 0;
@@ -245,6 +246,8 @@ namespace EigenbelegToolAlpha
         {
             evaluationsBackMarketPDF.Main();
             evaluationsEbay.Main();
+            returnAmount += evaluationsBackMarketPDF.CollectReturnAmount() - evaluationsBackMarketPDF.CollectReturnAmount()*0.1;
+            returnAmount += evaluationsEbay.CollectReturnAmount();
             paymentFeesNotPayPalTotal = evaluationsBackMarketPDF.CollectPaymentFeesAndBackCare();
             OrdersNotPayPal = evaluationsBackMarketPDF.CountNotPayPalOrders();
             double temp = evaluationsBackMarketPDF.RoundOneDigit(paymentFeesNotPayPalTotal / OrdersNotPayPal);

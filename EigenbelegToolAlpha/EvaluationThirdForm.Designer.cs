@@ -70,11 +70,9 @@
             this.textbox_LegalFinanzbuchhaltung = new System.Windows.Forms.TextBox();
             this.label22 = new System.Windows.Forms.Label();
             this.label24 = new System.Windows.Forms.Label();
-            this.label25 = new System.Windows.Forms.Label();
             this.label26 = new System.Windows.Forms.Label();
             this.textBox_RestMiete = new System.Windows.Forms.TextBox();
             this.textBox_RestVersandkosten = new System.Windows.Forms.TextBox();
-            this.textBox_RestKredit = new System.Windows.Forms.TextBox();
             this.SuspendLayout();
             // 
             // textbox_DigitalToolsBillbee
@@ -434,21 +432,11 @@
             this.label24.AutoSize = true;
             this.label24.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label24.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
-            this.label24.Location = new System.Drawing.Point(922, 175);
+            this.label24.Location = new System.Drawing.Point(922, 148);
             this.label24.Name = "label24";
             this.label24.Size = new System.Drawing.Size(107, 18);
             this.label24.TabIndex = 161;
             this.label24.Text = "Versandkosten";
-            // 
-            // label25
-            // 
-            this.label25.AutoSize = true;
-            this.label25.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label25.Location = new System.Drawing.Point(922, 145);
-            this.label25.Name = "label25";
-            this.label25.Size = new System.Drawing.Size(46, 18);
-            this.label25.TabIndex = 162;
-            this.label25.Text = "Kredit";
             // 
             // label26
             // 
@@ -469,28 +457,19 @@
             // 
             // textBox_RestVersandkosten
             // 
-            this.textBox_RestVersandkosten.Location = new System.Drawing.Point(1052, 175);
+            this.textBox_RestVersandkosten.Location = new System.Drawing.Point(1052, 148);
             this.textBox_RestVersandkosten.Name = "textBox_RestVersandkosten";
             this.textBox_RestVersandkosten.Size = new System.Drawing.Size(224, 20);
             this.textBox_RestVersandkosten.TabIndex = 166;
-            // 
-            // textBox_RestKredit
-            // 
-            this.textBox_RestKredit.Location = new System.Drawing.Point(1052, 143);
-            this.textBox_RestKredit.Name = "textBox_RestKredit";
-            this.textBox_RestKredit.Size = new System.Drawing.Size(224, 20);
-            this.textBox_RestKredit.TabIndex = 167;
             // 
             // EvaluationThirdForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1316, 532);
-            this.Controls.Add(this.textBox_RestKredit);
             this.Controls.Add(this.textBox_RestVersandkosten);
             this.Controls.Add(this.textBox_RestMiete);
             this.Controls.Add(this.label26);
-            this.Controls.Add(this.label25);
             this.Controls.Add(this.label24);
             this.Controls.Add(this.label22);
             this.Controls.Add(this.textbox_LegalFinanzbuchhaltung);
@@ -587,10 +566,8 @@
         private System.Windows.Forms.TextBox textbox_LegalFinanzbuchhaltung;
         private System.Windows.Forms.Label label22;
         private System.Windows.Forms.Label label24;
-        private System.Windows.Forms.Label label25;
         private System.Windows.Forms.Label label26;
         private System.Windows.Forms.TextBox textBox_RestMiete;
         private System.Windows.Forms.TextBox textBox_RestVersandkosten;
-        private System.Windows.Forms.TextBox textBox_RestKredit;
     }
 }

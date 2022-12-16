@@ -8,12 +8,15 @@ using System.Windows.Forms;
 using iTextSharp.text.pdf;
 using iTextSharp.text.pdf.parser;
 using System.IO;
+using System.Drawing;
 
 namespace EigenbelegToolAlpha
 {
     public class EvaluationsEbayPDF
     {
         EvaluationsFirstPage EvaluationsFirstPage = new EvaluationsFirstPage();
+        public static string reportTxtPath = "ebayreport.txt";
+        public string[] allLines = File.ReadAllLines(reportTxtPath);
         public void Main()
         {
             BuildTextFiles();
@@ -21,8 +24,6 @@ namespace EigenbelegToolAlpha
         public string GetSalesVolume(string orderId)
         {
             string salesReturnValue = "";
-            string reportTxtPath = "ebayreport.txt";
-            string[] allLines = File.ReadAllLines(reportTxtPath);
             string searchValueMain = "Bestellungen";
             int indexGrossSalesList = FindLineWithSpecificBegin(allLines, searchValueMain, 30);
 
@@ -39,8 +40,6 @@ namespace EigenbelegToolAlpha
         }
         public double GetSellerCommission(string orderId)
         {
-            string reportTxtPath = "ebayreport.txt";
-            string[] allLines = File.ReadAllLines(reportTxtPath);
             string searchValueFees = "Gebühren";
             int begin = OrderRelationPDF.beginLineEbay;
             for (int i = begin; i < allLines.Count(); i++)
@@ -52,6 +51,20 @@ namespace EigenbelegToolAlpha
                 }
             }
             return 0;
+        }
+        public double CollectReturnAmount()
+        {
+            double amount = 0;
+            string searchTerm = "Rückerstattungen";
+            int posSearchTerm = findLine(allLines, searchTerm)-1;
+            for (int i = posSearchTerm; i < allLines.Count(); i++)
+            {
+                if (allLines[i].Contains(searchTerm))
+                {
+                    return amount = getValueOfOneLine(i,allLines, 17, "schriften)");
+                }
+            }
+            return amount;
         }
         public double getValueOfOneLine(int index, string[] array, int lengthOfTheFirstPos, string firstPos)
         {

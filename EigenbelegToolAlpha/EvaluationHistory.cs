@@ -43,7 +43,15 @@ namespace EigenbelegToolAlpha
             evaluationsDGV.DataSource = dataSet.Tables[0];
 
             evaluationsDGV.Columns[0].Visible = false;
-
+            evaluationsDGV.Columns[4].Visible = false;
+            evaluationsDGV.Columns[5].Visible = false;
+            evaluationsDGV.Columns[6].Visible = false;
+            evaluationsDGV.Columns[7].Visible = false;
+            evaluationsDGV.Columns[8].Visible = false;
+            evaluationsDGV.Columns[9].Visible = false;
+            evaluationsDGV.Columns[10].Visible = false;
+            evaluationsDGV.Columns[11].Visible = false;
+            evaluationsDGV.Columns[12].Visible = false;
             //Sortierte Ansicht
             evaluationsDGV.Sort(evaluationsDGV.Columns[1], ListSortDirection.Descending);
 
