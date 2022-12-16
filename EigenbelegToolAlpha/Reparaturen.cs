@@ -14,6 +14,7 @@ using PdfSharp.Internal;
 using Microsoft.Office.Interop.Excel;
 using MySqlX.XDevAPI.Relational;
 using MySqlX.XDevAPI.Common;
+using bpac;
 
 namespace EigenbelegToolAlpha
 {
