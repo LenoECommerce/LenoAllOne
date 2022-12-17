@@ -50,6 +50,7 @@
             this.comboBox_UserSelection.Items.AddRange(new object[] {
             "NoahMainPC",
             "LennartMainPC",
+            "LennartLagerPC",
             "LennartLagerLaptop"});
             this.comboBox_UserSelection.Location = new System.Drawing.Point(225, 136);
             this.comboBox_UserSelection.Name = "comboBox_UserSelection";
@@ -70,7 +71,7 @@
             this.MaximizeBox = false;
             this.Name = "StartMenu";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Starmenü";
+            this.Text = "Startmenü";
             this.Load += new System.EventHandler(this.StartMenu_Load);
             this.ResumeLayout(false);
             this.PerformLayout();

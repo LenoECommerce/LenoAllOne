@@ -28,7 +28,7 @@
     <UpdateUrl>https://raw.githubusercontent.com/LenoECommerce/LenoAllOne/main/published/</UpdateUrl>
     <CreateWebPageOnPublish>true</CreateWebPageOnPublish>
     <WebPage>publish.htm</WebPage>
-    <ApplicationRevision>42</ApplicationRevision>
+    <ApplicationRevision>43</ApplicationRevision>
     <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
     <CreateDesktopShortcut>true</CreateDesktopShortcut>
@@ -354,6 +354,12 @@
     <Compile Include="ProofingVideoSyncLoadingBar.Designer.cs">
       <DependentUpon>ProofingVideoSyncLoadingBar.cs</DependentUpon>
     </Compile>
+    <Compile Include="ProofingVideoSyncPreparation.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ProofingVideoSyncPreparation.Designer.cs">
+      <DependentUpon>ProofingVideoSyncPreparation.cs</DependentUpon>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Protokollierung.cs">
       <SubType>Form</SubType>
@@ -549,6 +555,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="ProofingVideoSyncLoadingBar.resx">
       <DependentUpon>ProofingVideoSyncLoadingBar.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ProofingVideoSyncPreparation.resx">
+      <DependentUpon>ProofingVideoSyncPreparation.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

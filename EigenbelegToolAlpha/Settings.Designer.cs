@@ -55,6 +55,8 @@
             this.label10 = new System.Windows.Forms.Label();
             this.label11 = new System.Windows.Forms.Label();
             this.comboBox_PreferdStartWindow = new System.Windows.Forms.ComboBox();
+            this.label12 = new System.Windows.Forms.Label();
+            this.lbl_PathVideosUpload = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // label8
@@ -294,11 +296,32 @@
             this.comboBox_PreferdStartWindow.Size = new System.Drawing.Size(121, 21);
             this.comboBox_PreferdStartWindow.TabIndex = 90;
             // 
+            // label12
+            // 
+            this.label12.AutoSize = true;
+            this.label12.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label12.Location = new System.Drawing.Point(53, 500);
+            this.label12.Name = "label12";
+            this.label12.Size = new System.Drawing.Size(117, 18);
+            this.label12.TabIndex = 91;
+            this.label12.Text = "Video Uploads";
+            // 
+            // lbl_PathVideosUpload
+            // 
+            this.lbl_PathVideosUpload.Location = new System.Drawing.Point(215, 504);
+            this.lbl_PathVideosUpload.Name = "lbl_PathVideosUpload";
+            this.lbl_PathVideosUpload.Size = new System.Drawing.Size(345, 39);
+            this.lbl_PathVideosUpload.TabIndex = 92;
+            this.lbl_PathVideosUpload.Text = "lbl_PathVideosUpload";
+            this.lbl_PathVideosUpload.Click += new System.EventHandler(this.lbl_PathVideosUpload_Click);
+            // 
             // Settings
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(572, 589);
+            this.Controls.Add(this.lbl_PathVideosUpload);
+            this.Controls.Add(this.label12);
             this.Controls.Add(this.comboBox_PreferdStartWindow);
             this.Controls.Add(this.label11);
             this.Controls.Add(this.label10);
@@ -363,5 +386,7 @@
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.Label label11;
         private System.Windows.Forms.ComboBox comboBox_PreferdStartWindow;
+        private System.Windows.Forms.Label label12;
+        private System.Windows.Forms.Label lbl_PathVideosUpload;
     }
 }

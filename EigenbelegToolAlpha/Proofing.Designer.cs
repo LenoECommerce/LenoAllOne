@@ -34,6 +34,7 @@
             this.eigenbelegeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.protokollierungToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.protokollierungToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.serviceToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.sucheToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.auswertungenToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.textBox_InternalNumber = new System.Windows.Forms.TextBox();
@@ -51,11 +52,9 @@
             this.textBox_Video = new System.Windows.Forms.TextBox();
             this.textBox_nsysCertificate = new System.Windows.Forms.TextBox();
             this.textBox_IMEI = new System.Windows.Forms.TextBox();
-            this.btn_SyncTableWithNewData = new System.Windows.Forms.Button();
             this.folderBD = new System.Windows.Forms.FolderBrowserDialog();
             this.btn_CreateExcel = new System.Windows.Forms.Button();
             this.btn_certificateSyncing = new System.Windows.Forms.Button();
-            this.serviceToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.proofingDGV)).BeginInit();
             this.SuspendLayout();
@@ -88,23 +87,30 @@
             // eigenbelegeToolStripMenuItem
             // 
             this.eigenbelegeToolStripMenuItem.Name = "eigenbelegeToolStripMenuItem";
-            this.eigenbelegeToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.eigenbelegeToolStripMenuItem.Size = new System.Drawing.Size(156, 22);
             this.eigenbelegeToolStripMenuItem.Text = "Reparaturen";
             this.eigenbelegeToolStripMenuItem.Click += new System.EventHandler(this.eigenbelegeToolStripMenuItem_Click);
             // 
             // protokollierungToolStripMenuItem
             // 
             this.protokollierungToolStripMenuItem.Name = "protokollierungToolStripMenuItem";
-            this.protokollierungToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.protokollierungToolStripMenuItem.Size = new System.Drawing.Size(156, 22);
             this.protokollierungToolStripMenuItem.Text = "Eigenbelege";
             this.protokollierungToolStripMenuItem.Click += new System.EventHandler(this.protokollierungToolStripMenuItem_Click);
             // 
             // protokollierungToolStripMenuItem1
             // 
             this.protokollierungToolStripMenuItem1.Name = "protokollierungToolStripMenuItem1";
-            this.protokollierungToolStripMenuItem1.Size = new System.Drawing.Size(180, 22);
+            this.protokollierungToolStripMenuItem1.Size = new System.Drawing.Size(156, 22);
             this.protokollierungToolStripMenuItem1.Text = "Protokollierung";
             this.protokollierungToolStripMenuItem1.Click += new System.EventHandler(this.protokollierungToolStripMenuItem1_Click);
+            // 
+            // serviceToolStripMenuItem
+            // 
+            this.serviceToolStripMenuItem.Name = "serviceToolStripMenuItem";
+            this.serviceToolStripMenuItem.Size = new System.Drawing.Size(156, 22);
+            this.serviceToolStripMenuItem.Text = "Service";
+            this.serviceToolStripMenuItem.Click += new System.EventHandler(this.serviceToolStripMenuItem_Click);
             // 
             // sucheToolStripMenuItem
             // 
@@ -290,18 +296,6 @@
             this.textBox_IMEI.Size = new System.Drawing.Size(178, 20);
             this.textBox_IMEI.TabIndex = 82;
             // 
-            // btn_SyncTableWithNewData
-            // 
-            this.btn_SyncTableWithNewData.BackColor = System.Drawing.SystemColors.ActiveCaption;
-            this.btn_SyncTableWithNewData.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btn_SyncTableWithNewData.Location = new System.Drawing.Point(1055, 197);
-            this.btn_SyncTableWithNewData.Name = "btn_SyncTableWithNewData";
-            this.btn_SyncTableWithNewData.Size = new System.Drawing.Size(134, 26);
-            this.btn_SyncTableWithNewData.TabIndex = 83;
-            this.btn_SyncTableWithNewData.Text = "Video Sync";
-            this.btn_SyncTableWithNewData.UseVisualStyleBackColor = false;
-            this.btn_SyncTableWithNewData.Click += new System.EventHandler(this.btn_SyncTableWithNewData_Click);
-            // 
             // btn_CreateExcel
             // 
             this.btn_CreateExcel.BackColor = System.Drawing.SystemColors.ActiveCaption;
@@ -318,20 +312,13 @@
             // 
             this.btn_certificateSyncing.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.btn_certificateSyncing.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btn_certificateSyncing.Location = new System.Drawing.Point(1055, 156);
+            this.btn_certificateSyncing.Location = new System.Drawing.Point(1055, 187);
             this.btn_certificateSyncing.Name = "btn_certificateSyncing";
             this.btn_certificateSyncing.Size = new System.Drawing.Size(134, 26);
             this.btn_certificateSyncing.TabIndex = 85;
             this.btn_certificateSyncing.Text = "Zertifikat Sync";
             this.btn_certificateSyncing.UseVisualStyleBackColor = false;
             this.btn_certificateSyncing.Click += new System.EventHandler(this.btn_certificateSyncing_Click);
-            // 
-            // serviceToolStripMenuItem
-            // 
-            this.serviceToolStripMenuItem.Name = "serviceToolStripMenuItem";
-            this.serviceToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-            this.serviceToolStripMenuItem.Text = "Service";
-            this.serviceToolStripMenuItem.Click += new System.EventHandler(this.serviceToolStripMenuItem_Click);
             // 
             // Proofing
             // 
@@ -341,7 +328,6 @@
             this.ClientSize = new System.Drawing.Size(1264, 814);
             this.Controls.Add(this.btn_certificateSyncing);
             this.Controls.Add(this.btn_CreateExcel);
-            this.Controls.Add(this.btn_SyncTableWithNewData);
             this.Controls.Add(this.textBox_IMEI);
             this.Controls.Add(this.textBox_nsysCertificate);
             this.Controls.Add(this.textBox_Video);
@@ -394,7 +380,6 @@
         private System.Windows.Forms.TextBox textBox_Video;
         private System.Windows.Forms.TextBox textBox_nsysCertificate;
         private System.Windows.Forms.TextBox textBox_IMEI;
-        private System.Windows.Forms.Button btn_SyncTableWithNewData;
         private System.Windows.Forms.FolderBrowserDialog folderBD;
         private System.Windows.Forms.ToolStripMenuItem protokollierungToolStripMenuItem1;
         private System.Windows.Forms.Button btn_CreateExcel;

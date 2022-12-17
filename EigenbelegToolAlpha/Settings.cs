@@ -32,18 +32,13 @@ namespace EigenbelegToolAlpha
             textBox_SettingsInternalNumber.Text = valueIntern;
             comboBox_PreferdStartWindow.Text = defaultStartingWindow;
 
-            string modellTemplate = CRUDQueries.ExecuteQueryWithResultString("ConfigUser","TemplateModell","Nutzer", currentUser);
-            lbl_currentPathModellTemplate.Text = modellTemplate;
-            string displayTemplate = CRUDQueries.ExecuteQueryWithResultString("ConfigUser", "TemplateDisplay", "Nutzer", currentUser);
-            lbl_currentPathDisplayTemplate.Text = displayTemplate;
-            string platineTemplate = CRUDQueries.ExecuteQueryWithResultString("ConfigUser", "TemplatePlatine", "Nutzer", currentUser);
-            lbl_currentPathPlatinenTemplate.Text = platineTemplate;
-            string sonstigeTeileTemplate = CRUDQueries.ExecuteQueryWithResultString("ConfigUser", "TemplateSonstigeTeile", "Nutzer", currentUser);
-            lbl_currentPathSonstigesTemplate.Text = sonstigeTeileTemplate;
-            string saveLocationEB = CRUDQueries.ExecuteQueryWithResultString("ConfigUser", "PathSaveLocationEB", "Nutzer", currentUser);
-            lbl_SaveLocationPDF.Text = saveLocationEB;
-            string sourceImages = CRUDQueries.ExecuteQueryWithResultString("ConfigUser", "PathImagesEB", "Nutzer", currentUser);
-            lbl_SourceImages.Text = sourceImages;
+            lbl_currentPathModellTemplate.Text = CRUDQueries.ExecuteQueryWithResultString("ConfigUser", "TemplateModell", "Nutzer", currentUser);
+            lbl_currentPathDisplayTemplate.Text = CRUDQueries.ExecuteQueryWithResultString("ConfigUser", "TemplateDisplay", "Nutzer", currentUser);
+            lbl_currentPathPlatinenTemplate.Text = CRUDQueries.ExecuteQueryWithResultString("ConfigUser", "TemplatePlatine", "Nutzer", currentUser);
+            lbl_currentPathSonstigesTemplate.Text = CRUDQueries.ExecuteQueryWithResultString("ConfigUser", "TemplateSonstigeTeile", "Nutzer", currentUser);
+            lbl_SaveLocationPDF.Text = CRUDQueries.ExecuteQueryWithResultString("ConfigUser", "PathSaveLocationEB", "Nutzer", currentUser);
+            lbl_SourceImages.Text = CRUDQueries.ExecuteQueryWithResultString("ConfigUser", "PathImagesEB", "Nutzer", currentUser);
+            lbl_PathVideosUpload.Text = CRUDQueries.ExecuteQueryWithResultString("ConfigUser", "PathVideosForUpload", "Nutzer", currentUser);
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -117,6 +112,15 @@ namespace EigenbelegToolAlpha
         private void textBox_SettingsInternalNumber_TextChanged(object sender, EventArgs e)
         {
 
+        }
+
+        private void lbl_PathVideosUpload_Click(object sender, EventArgs e)
+        {
+            folderDialog.ShowDialog();
+            string selectedDirectory = folderDialog.SelectedPath;
+            selectedDirectory = selectedDirectory.Replace(@"\", @"\\");
+            CRUDQueries.ExecuteQuery("UPDATE `ConfigUser` SET `PathVideosForUpload` = '" + selectedDirectory + "' WHERE `Nutzer` = '" + currentUser + "'");
+            lbl_PathVideosUpload.Text = selectedDirectory;
         }
     }
 }

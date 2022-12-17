@@ -31,6 +31,7 @@ namespace EigenbelegToolAlpha
             {
                 currentUser = ReturnCurrentUser();
                 string preferedWindow = CRUDQueries.ExecuteQueryWithResultString("ConfigUser", "Standardfenster", "Nutzer", currentUser).ToString();
+                VideoUpload();
                 RunWindow(preferedWindow);
             }
             window.Backup();
@@ -57,8 +58,21 @@ namespace EigenbelegToolAlpha
             {
                 Application.Run(new Eigenbelege());
             }
-        }
 
+        }
+        public static void VideoUpload()
+        {
+            if (currentUser == "LennartLagerPC")
+            {
+                DateTime today = DateTime.Now;
+                DateTime lastUpload = Convert.ToDateTime(CRUDQueries.ExecuteQueryWithResultString("Config","Nummer","Typ","LastVideoUpload"));
+                if (today.Subtract(lastUpload).TotalDays >= 7)
+                {
+                    Proofing window = new Proofing();
+                    window.VideoSync();
+                }
+            }
+        }
         private static bool ExistsUserFile()
         {
             if (File.Exists(Environment.CurrentDirectory + @"\user.txt"))

@@ -9,6 +9,7 @@ using System.IO;
 using System.Linq;
 using System.Runtime.Remoting.Metadata.W3cXsd2001;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
@@ -170,61 +171,64 @@ namespace EigenbelegToolAlpha
                 MessageBox.Show(ex.Message);
             }
         }
-
-        private void btn_SyncTableWithNewData_Click(object sender, EventArgs e)
+        public void VideoSync()
         {
-            //Check new entries and copy paste intern + imei
+            ProofingVideoSyncPreparation preparation = new ProofingVideoSyncPreparation();
+            preparation.Show();
+            //Check new entries and copy paste intern +imei
             int highestInternalNumber = CRUDQueries.ExecuteQueryWithResult("Config", "Nummer", "Typ", "InterneNummer");
             int dgvHighestInternalNumber = Convert.ToInt32(proofingDGV.Rows[0].Cells[1].Value);
             for (int i = dgvHighestInternalNumber; i <= highestInternalNumber; i++)
             {
-                    var testIfNotCreated = CRUDQueries.ExecuteQueryWithResult("Proofing","Id","Intern",i.ToString());
-                    if (testIfNotCreated == 0)
-                    {
-                        string newIMEI = CRUDQueries.ExecuteQueryWithResultString("Reparaturen","IMEI","Intern",i.ToString());
-                        string query = "INSERT INTO `Proofing` (`Intern`,`IMEI`) VALUES ('"+i.ToString()+"','" + newIMEI + "')";
-                        CRUDQueries.ExecuteQuery(query);
-                    }
+                var testIfNotCreated = CRUDQueries.ExecuteQueryWithResult("Proofing", "Id", "Intern", i.ToString());
+                if (testIfNotCreated == 0)
+                {
+                    string newIMEI = CRUDQueries.ExecuteQueryWithResultString("Reparaturen", "IMEI", "Intern", i.ToString());
+                    string query = "INSERT INTO `Proofing` (`Intern`,`IMEI`) VALUES ('" + i.ToString() + "','" + newIMEI + "')";
+                    CRUDQueries.ExecuteQuery(query);
+                }
 
             }
             //Check imei changes l deduct 100 because of performance
-            for (int i = highestInternalNumber-100; i <= highestInternalNumber; i++)
+            for (int i = highestInternalNumber - 100; i <= highestInternalNumber; i++)
             {
                 string newIMEICheckUp = CRUDQueries.ExecuteQueryWithResultString("Reparaturen", "IMEI", "Intern", i.ToString());
                 var testIfNotCreated = CRUDQueries.ExecuteQueryWithResult("Proofing", "Id", "IMEI", i.ToString());
                 if (testIfNotCreated == 0 & newIMEICheckUp != "")
                 {
-                    string query = "UPDATE `Proofing` SET `IMEI` = '" + newIMEICheckUp + "' WHERE `Intern` = '"+i.ToString()+"'";
+                    string query = "UPDATE `Proofing` SET `IMEI` = '" + newIMEICheckUp + "' WHERE `Intern` = '" + i.ToString() + "'";
                     CRUDQueries.ExecuteQuery(query);
                 }
             }
 
-            folderBD.ShowDialog();
+            string folderPath = "";
             try
             {
-                string folderPath = folderBD.SelectedPath;
+                folderPath = CRUDQueries.ExecuteQueryWithResultString("ConfigUser", "PathVideosForUpload", "Nutzer", "LennartLagerPC");
                 string[] filesInDir = Directory.GetFiles(folderPath);
                 int countChanger = 0;
+                preparation.Hide();
                 ProofingVideoSyncLoadingBar window = new ProofingVideoSyncLoadingBar(filesInDir.Count());
                 window.Show();
+                ShowProofing();
                 foreach (DataGridViewRow row in proofingDGV.Rows)
                 {
-                   foreach (var item in filesInDir)
-                   {
+                    foreach (var item in filesInDir)
+                    {
                         string fileName = Path.GetFileNameWithoutExtension(item).ToString();
                         string rowValueIntern = row.Cells[1].Value.ToString();
                         if (rowValueIntern == fileName)
                         {
-                             if (row.Cells[3].Value.ToString() == "")
-                             {
-                                 countChanger++;
-                                 window.ChangeBar(countChanger);
-                                 window.lbl_matchedVideos.Text = countChanger.ToString();
-                                 GoogleDrive drive = new GoogleDrive(item,"mp4");
-                                 string fileLink = GoogleDrive.currentLink;
-                                 string query = "UPDATE `Proofing` SET `Video` = '" + fileLink + "' WHERE `Intern` = '" + rowValueIntern + "'";
-                                 CRUDQueries.ExecuteQuery(query);
-                             }
+                            if (row.Cells[3].Value.ToString() == "")
+                            {
+                                countChanger++;
+                                window.ChangeBar(countChanger);
+                                window.lbl_matchedVideos.Text = countChanger.ToString();
+                                GoogleDrive drive = new GoogleDrive(item, "mp4");
+                                string fileLink = GoogleDrive.currentLink;
+                                string query = "UPDATE `Proofing` SET `Video` = '" + fileLink + "' WHERE `Intern` = '" + rowValueIntern + "'";
+                                CRUDQueries.ExecuteQuery(query);
+                            }
                         }
                     }
                 }
@@ -236,7 +240,21 @@ namespace EigenbelegToolAlpha
             {
                 MessageBox.Show(ex.Message);
             }
-
+            string today = DateTime.Now.ToString();
+            CRUDQueries.ExecuteQuery("UPDATE `Config` SET `Nummer` = '" + today + "' WHERE `Typ` = 'LastVideoUpload'");
+            DeleteFilesAfterUpload(folderPath);
+        }
+        public void DeleteFilesAfterUpload(string folderPath)
+        {
+            string[] filesInDir = Directory.GetFiles(folderPath);
+            foreach (var item in filesInDir)
+            {
+                File.Delete(item);
+            }
+        }
+        public void btn_SyncTableWithNewData_Click(object sender, EventArgs e)
+        {
+            VideoSync();
         }
 
         private void eigenbelegeToolStripMenuItem_Click(object sender, EventArgs e)
