@@ -122,14 +122,14 @@ namespace EigenbelegToolAlpha
         {
             //Dreisatz
             double temp = foreCastSalesVolume - currentSalesVolume;
-            double result = (temp / NonPayPalShare) * 100;
+            double result = (temp / NonPayPalShare) * 100+temp;
             return result;
         }
         public static double CalculateAmoundAtLeast()
         {
             //Logik: 10% Sales Drop wäre verkraftbar
-            double tenPercentDropNiveau = lastSalesVolume / 100 * 90;
-            return (tenPercentDropNiveau / NonPayPalShare) * 100;
+            double tenPercentDropNiveau = (lastSalesVolume-currentSalesVolume) / 100 * 90;
+            return (tenPercentDropNiveau / NonPayPalShare) * 100+tenPercentDropNiveau;
         }
 
     }
