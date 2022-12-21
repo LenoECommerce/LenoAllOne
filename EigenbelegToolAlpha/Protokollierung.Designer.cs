@@ -39,6 +39,7 @@
             this.eigenbelegeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.protokollierungToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.proofingToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.serviceToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.sucheToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.auswertungToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.label2 = new System.Windows.Forms.Label();
@@ -59,7 +60,7 @@
             this.openFD = new System.Windows.Forms.OpenFileDialog();
             this.button3 = new System.Windows.Forms.Button();
             this.btn_BulkEditor = new System.Windows.Forms.Button();
-            this.serviceToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.externenVerkaufHinzufügenToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             ((System.ComponentModel.ISupportInitialize)(this.protokollierungDGV)).BeginInit();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
@@ -139,7 +140,8 @@
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.fensterwechselToolStripMenuItem,
             this.sucheToolStripMenuItem,
-            this.auswertungToolStripMenuItem});
+            this.auswertungToolStripMenuItem,
+            this.externenVerkaufHinzufügenToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.Size = new System.Drawing.Size(1264, 24);
@@ -161,23 +163,30 @@
             // eigenbelegeToolStripMenuItem
             // 
             this.eigenbelegeToolStripMenuItem.Name = "eigenbelegeToolStripMenuItem";
-            this.eigenbelegeToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.eigenbelegeToolStripMenuItem.Size = new System.Drawing.Size(138, 22);
             this.eigenbelegeToolStripMenuItem.Text = "Reparaturen";
             this.eigenbelegeToolStripMenuItem.Click += new System.EventHandler(this.eigenbelegeToolStripMenuItem_Click);
             // 
             // protokollierungToolStripMenuItem
             // 
             this.protokollierungToolStripMenuItem.Name = "protokollierungToolStripMenuItem";
-            this.protokollierungToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.protokollierungToolStripMenuItem.Size = new System.Drawing.Size(138, 22);
             this.protokollierungToolStripMenuItem.Text = "Eigenbelege";
             this.protokollierungToolStripMenuItem.Click += new System.EventHandler(this.protokollierungToolStripMenuItem_Click);
             // 
             // proofingToolStripMenuItem
             // 
             this.proofingToolStripMenuItem.Name = "proofingToolStripMenuItem";
-            this.proofingToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.proofingToolStripMenuItem.Size = new System.Drawing.Size(138, 22);
             this.proofingToolStripMenuItem.Text = "Proofing";
             this.proofingToolStripMenuItem.Click += new System.EventHandler(this.proofingToolStripMenuItem_Click);
+            // 
+            // serviceToolStripMenuItem
+            // 
+            this.serviceToolStripMenuItem.Name = "serviceToolStripMenuItem";
+            this.serviceToolStripMenuItem.Size = new System.Drawing.Size(138, 22);
+            this.serviceToolStripMenuItem.Text = "Service";
+            this.serviceToolStripMenuItem.Click += new System.EventHandler(this.serviceToolStripMenuItem_Click);
             // 
             // sucheToolStripMenuItem
             // 
@@ -346,7 +355,8 @@
             this.comboBox_Marketplace.FormattingEnabled = true;
             this.comboBox_Marketplace.Items.AddRange(new object[] {
             "BackMarket",
-            "Ebay"});
+            "Ebay",
+            "Extern"});
             this.comboBox_Marketplace.Location = new System.Drawing.Point(178, 124);
             this.comboBox_Marketplace.Name = "comboBox_Marketplace";
             this.comboBox_Marketplace.Size = new System.Drawing.Size(178, 21);
@@ -392,12 +402,12 @@
             this.btn_BulkEditor.UseVisualStyleBackColor = false;
             this.btn_BulkEditor.Click += new System.EventHandler(this.btn_BulkEditor_Click);
             // 
-            // serviceToolStripMenuItem
+            // externenVerkaufHinzufügenToolStripMenuItem
             // 
-            this.serviceToolStripMenuItem.Name = "serviceToolStripMenuItem";
-            this.serviceToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-            this.serviceToolStripMenuItem.Text = "Service";
-            this.serviceToolStripMenuItem.Click += new System.EventHandler(this.serviceToolStripMenuItem_Click);
+            this.externenVerkaufHinzufügenToolStripMenuItem.Name = "externenVerkaufHinzufügenToolStripMenuItem";
+            this.externenVerkaufHinzufügenToolStripMenuItem.Size = new System.Drawing.Size(170, 20);
+            this.externenVerkaufHinzufügenToolStripMenuItem.Text = "Externen Verkauf hinzufügen";
+            this.externenVerkaufHinzufügenToolStripMenuItem.Click += new System.EventHandler(this.externenVerkaufHinzufügenToolStripMenuItem_Click);
             // 
             // Protokollierung
             // 
@@ -476,5 +486,6 @@
         private System.Windows.Forms.ToolStripMenuItem auswertungToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem sucheToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem serviceToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem externenVerkaufHinzufügenToolStripMenuItem;
     }
 }

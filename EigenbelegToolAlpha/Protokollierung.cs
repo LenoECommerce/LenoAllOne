@@ -162,10 +162,7 @@ namespace EigenbelegToolAlpha
                 comboBox_Marketplace.Text = CheckMarketplace(textBox_OrderID.Text);
             }
             ProtokollierungCreate();
-            textBox_IMEI.Text = "";
-            textBox_InternalNumber.Text = "";
-            textBox_OrderID.Text = "";
-            comboBox_Marketplace.Text = "";
+            ClearAllFields();
         }
 
         private void protokollierungDGV_CellClick(object sender, DataGridViewCellEventArgs e)
@@ -372,6 +369,32 @@ namespace EigenbelegToolAlpha
             Service window = new Service();
             window.Show();
             this.Hide();
+        }
+        public void ClearAllFields()
+        {
+            textBox_IMEI.Text = "";
+            textBox_InternalNumber.Text = "";
+            textBox_OrderID.Text = "";
+            comboBox_Marketplace.Text = "";
+            comboBox_Months.Text = "";
+        }
+        private void externenVerkaufHinzufügenToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            using (var form = new ProtokollierungAddExternalSell())
+            {
+                var result = form.ShowDialog();
+                if (result == DialogResult.OK)
+                {
+                    textBox_IMEI.Text = form.imei;
+                    textBox_InternalNumber.Text = form.internalNumber;
+                    textBox_OrderID.Text = form.orderNumberReplacement;
+                    comboBox_Months.Text = form.month;
+                    comboBox_Marketplace.Text = form.reference;
+                    textBox_ScanDate.Text = "/";
+                    ProtokollierungCreate();
+                    ClearAllFields();
+                }
+            }
         }
     }
 }

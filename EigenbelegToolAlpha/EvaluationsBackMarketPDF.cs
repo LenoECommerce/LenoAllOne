@@ -253,6 +253,10 @@ namespace EigenbelegToolAlpha
         }
         public string FindPDFViaOrderNumber (string orderID)
         {
+            if (orderID.Contains("€"))
+            {
+                return "";
+            }
             string[] numbers = new string[3] { "1", "2", "3" };
             string pathPreset = "BackmarketNormal";
             string searchValueForGrossSalesList = " 1 ";

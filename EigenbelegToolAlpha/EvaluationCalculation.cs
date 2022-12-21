@@ -31,11 +31,11 @@ namespace EigenbelegToolAlpha
         public static double backMarketPayPalGrossSalesVolumeTotal = 0;
         public static double backMarketPayPalGrossSalesVolumeMarginalVat = 0;
         public static double backMarketPayPalGrossSalesVolumeNormalVat = 0;
-        public static double backMarketPayPalReturnsTotal;
+        public static double backMarketPayPalReturnsTotal = 0;
         public static double backMarketPayPalReturnsNormalVat = 0;
         public static double backMarketPayPalReturnsMarginalVat = 0;
-        public static double backMarketPayPalOutcome;
-        public static double backMarketPayPalFees;
+        public static double backMarketPayPalOutcome = 0;
+        public static double backMarketPayPalFees = 0;
 
         public static double inputOfGoodsREG = 0;
         public static double inputOfGoodsDIFF = 0;
@@ -70,6 +70,8 @@ namespace EigenbelegToolAlpha
         public string revenue = "";
         public string margin = "";
 
+        string idS = "";
+
         Protokollierung prot = new Protokollierung();
         Reparaturen rep = new Reparaturen();
         Matching match = new Matching();
@@ -99,22 +101,29 @@ namespace EigenbelegToolAlpha
         }
         private void FetchDataFromMatching(int id)
         {
-            string table = "Matching";
-            string searchTerm = "Id";
-            string idS = id.ToString();
-            orderID = CRUDQueries.ExecuteQueryWithResultString(table, "Bestellnummer", searchTerm, idS);
-            internalNumber = CRUDQueries.ExecuteQueryWithResultString(table, "Intern", searchTerm, idS);
-            amount = AdaptNumber(CRUDQueries.ExecuteQueryWithResultString(table, "Kaufbetrag", searchTerm, idS));
-            externalCosts = AdaptNumber(CRUDQueries.ExecuteQueryWithResultString(table, "Externe Kosten", searchTerm, idS));
-            externalCostsDIFF = AdaptNumber(CRUDQueries.ExecuteQueryWithResultString(table, "ExterneKostenDIFF", searchTerm, idS));
-            taxesType = CRUDQueries.ExecuteQueryWithResultString(table, "Besteuerung", searchTerm, idS);
-            if (taxesType.Contains("Diff"))
+            try
             {
-                taxesType = "DIFF";
+                string table = "Matching";
+                string searchTerm = "Id";
+                idS = id.ToString();
+                orderID = CRUDQueries.ExecuteQueryWithResultString(table, "Bestellnummer", searchTerm, idS);
+                internalNumber = CRUDQueries.ExecuteQueryWithResultString(table, "Intern", searchTerm, idS);
+                amount = AdaptNumber(CRUDQueries.ExecuteQueryWithResultString(table, "Kaufbetrag", searchTerm, idS));
+                externalCosts = AdaptNumber(CRUDQueries.ExecuteQueryWithResultString(table, "Externe Kosten", searchTerm, idS));
+                externalCostsDIFF = AdaptNumber(CRUDQueries.ExecuteQueryWithResultString(table, "ExterneKostenDIFF", searchTerm, idS));
+                taxesType = CRUDQueries.ExecuteQueryWithResultString(table, "Besteuerung", searchTerm, idS);
+                if (taxesType.Contains("Diff"))
+                {
+                    taxesType = "DIFF";
+                }
+                else if (taxesType.Contains("Reg"))
+                {
+                    taxesType = "REG";
+                }
             }
-            else if (taxesType.Contains("Reg"))
+            catch (Exception e)
             {
-                taxesType = "REG";
+                MessageBox.Show("Es gibt ein Problem mit FetchDataFromMatching\r\nMatching Id: " +idS + "\r\nFehler: "+e.Message);
             }
         }
 
@@ -494,14 +503,9 @@ namespace EigenbelegToolAlpha
             {
                 MessageBox.Show("Der Geräte pro Monat Algorithmus hat ein Problem: " + ex.Message);
             }
-            try
-            {
-                GetFullDataSetOrder();
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Get Full Data Set Order Algorithmus hat ein Problem: " + ex.Message);
-            }
+
+            GetFullDataSetOrder();
+
             try
             {
                 MonthlyReportPDF.CreatePDFFile();

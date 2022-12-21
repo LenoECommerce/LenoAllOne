@@ -35,6 +35,8 @@ namespace EigenbelegToolAlpha
         public static double grossSalesTotalB2C = OrderRelationPDF.grossSalesEbay + OrderRelationPDF.grossSalesBackmarketPayPal + OrderRelationPDF.grossSalesBackmarketNormal-OrderRelationPDF.returnAmount;
         public static double costsAtAll = runningCostsTotalNet + EvaluationSecondForm.moreExternalCosts + EvaluationCalculation.donorDevicesAmount;
         public static double revenueAfterCosts = RoundOneDigit(OrderRelationPDF.revenueTotal - costsAtAll);
+        public static double revenueWithB2BRevenue = revenueAfterCosts + EvaluationSecondForm.B2BRevenue;
+        public static double revenuePerDevice = RoundOneDigit(revenueAfterCosts/ EvaluationCalculation.kpiDevicesPerMonthSold);
         public static double margin = RoundOneDigit(revenueAfterCosts / grossSalesTotalB2C * 100);
         public static double costsPerOrder = RoundOneDigit(runningCostsTotalNet / EvaluationCalculation.kpiDevicesPerMonthSold);
         public static void CreatePDFFile()
@@ -44,10 +46,10 @@ namespace EigenbelegToolAlpha
             PdfDocument document = new PdfDocument();
             //New pages
             PdfPage page = document.AddPage();
-            //PdfPage page2 = document.AddPage();
+            PdfPage page2 = document.AddPage();
 
             XGraphics gfx = XGraphics.FromPdfPage(page);
-            //XGraphics gfx2 = XGraphics.FromPdfPage(page2);
+            XGraphics gfx2 = XGraphics.FromPdfPage(page2);
             XFont heading = new XFont("Arial", 20);
             XFont main = new XFont("Arial", 14);
             XFont subFont = new XFont("Arial", 11);
@@ -107,7 +109,11 @@ namespace EigenbelegToolAlpha
             gfx.DrawString(EvaluationCalculation.kpiDevicesPerMonthSold.ToString() + " Geräte", subFont, XBrushes.Black, new XPoint(400, 790));
             gfx.DrawString("Kosten / Auftrag (Misch)", main, XBrushes.Black, new XPoint(200, 820));
             gfx.DrawString(costsPerOrder.ToString() + "€", subFont, XBrushes.Black, new XPoint(400, 820));
-
+            //2nd page
+            gfx2.DrawString("Revenue / Device", main, XBrushes.Black, new XPoint(200, 100));
+            gfx2.DrawString(revenuePerDevice.ToString()+ "€", subFont, XBrushes.Black, new XPoint(400, 100));
+            gfx2.DrawString("Gewinn + B2B", main, XBrushes.Black, new XPoint(200, 130));
+            gfx2.DrawString(revenueWithB2BRevenue.ToString() + "€", subFont, XBrushes.Black, new XPoint(400, 130));
             //Leno Logo
             string imagePath = Path.GetTempPath();
             imagePath = imagePath + "lenologo.jpg";
