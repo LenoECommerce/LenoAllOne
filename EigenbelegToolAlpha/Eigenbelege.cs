@@ -17,6 +17,7 @@ using System.Collections;
 using System.Runtime.InteropServices;
 using System.Security.Cryptography;
 using MigraDoc.DocumentObjectModel.Internals;
+using System.Runtime.Remoting.Messaging;
 
 namespace EigenbelegToolAlpha
 {
@@ -55,10 +56,45 @@ namespace EigenbelegToolAlpha
         private void Hauptmenü_Load(object sender, EventArgs e)
         {
             ShowEigenbelege();
+            CheckIfThereIsAnEntryLonger10Days();
             string lastPayPalImport = CRUDQueries.ExecuteQueryWithResultString("Config", "Nummer", "Typ", "LastPayPalImport").ToString();
             lbl_LastPayPalImport.Text = "Letzter PayPal-Import: " + lastPayPalImport;
             string lastBuyBackSync = CRUDQueries.ExecuteQueryWithResultString("Config", "Nummer", "Typ", "LastBuyBackSync").ToString();
             lbl_LastBuyBackSync.Text = "Letzter BuyBackSync: " + lastBuyBackSync;
+        }
+        private void CheckIfThereIsAnEntryLonger10Days()
+        {
+            string[] entriesMatched = new string[10];
+            DateTime today = DateTime.Now;
+            int arraycounter = 0;
+            string numbersAsString = "";
+            DateTime lastCheck = Convert.ToDateTime(CRUDQueries.ExecuteQueryWithResultString("Config", "Nummer", "Typ", "LastNotArrivedCheck"));
+            if (today.Subtract(lastCheck).TotalDays < 1)
+            {
+                return;
+            }
+            foreach (DataGridViewRow row in eigenbelegeDGV.Rows)
+            {
+                DateTime checkDate = Convert.ToDateTime(row.Cells[5].Value);
+                string arrived = row.Cells[12].Value.ToString();
+                if (today.Subtract(checkDate).TotalDays >= 10 && arrived != "Ja")
+                {
+                    entriesMatched[arraycounter] = row.Cells[1].Value.ToString();
+                    arraycounter++;
+                }
+            }
+            if (entriesMatched.Length < 1)
+            {
+                return;
+            }
+            foreach (var item in entriesMatched)
+            {
+                numbersAsString = string.Join(",", entriesMatched.Select(n => n));
+
+            }
+            string message = "Folgende Aufträge sind betroffen: \r\n\r\n" +numbersAsString;
+            MessageBox.Show(message);
+            CRUDQueries.ExecuteQuery("UPDATE `Config` SET `Nummer` = ' "+today+ "' WHERE `Typ` = 'LastNotArrivedCheck'");
         }
 
         private void dataImport()
@@ -730,6 +766,58 @@ namespace EigenbelegToolAlpha
         {
             RegularSalesAlgoOverview window = new RegularSalesAlgoOverview();
             window.Show();
+        }
+        private bool checkIfSelected()
+        {
+            if (lastSelectedProductKey == 0)
+            {
+                MessageBox.Show("Bitte wähle zuerst einen Eintrag aus");
+                return false;
+            }
+            else
+            {
+                return true;
+            }
+        }
+        private void btn_PrintLabelForSellOff_Click(object sender, EventArgs e)
+        {
+            string currentUser = File.ReadAllText(Environment.CurrentDirectory + @"\user.txt");
+            if (checkIfSelected() == false)
+            {
+                return;
+            }
+            try
+            {
+                try
+                {
+                    path = CRUDQueries.ExecuteQueryWithResultString("ConfigUser", "TemplateSellOff", "Nutzer", currentUser);
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Bitte setze in den Einstellungen dein Template fest; Fehlermeldung:" + ex.Message);
+                }
+
+
+                bpac.Document doc = new bpac.Document();
+                doc.Open(path);
+                doc.SetPrinter("Brother QL-600", true);
+
+                var numberIndex = doc.GetBarcodeIndex("number");
+                var modelIndex = doc.GetBarcodeIndex("model");
+                var storageIndex = doc.GetBarcodeIndex("storage");
+                doc.SetBarcodeData(numberIndex, eigenbelegNumber);
+                doc.SetBarcodeData(modelIndex, model);
+                doc.SetBarcodeData(storageIndex, storage);
+
+                doc.StartPrint("", bpac.PrintOptionConstants.bpoDefault);
+                doc.PrintOut(1, bpac.PrintOptionConstants.bpoDefault);
+                doc.EndPrint();
+                doc.Close();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Print Error: " + ex.Message);
+            }
         }
     }
 }

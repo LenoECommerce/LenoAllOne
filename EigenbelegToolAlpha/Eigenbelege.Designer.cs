@@ -38,8 +38,6 @@
             this.button3 = new System.Windows.Forms.Button();
             this.openFD = new System.Windows.Forms.OpenFileDialog();
             this.folderBrowserDialog1 = new System.Windows.Forms.FolderBrowserDialog();
-            this.btn_SelectAllRows = new System.Windows.Forms.Button();
-            this.btn_DeleteAll = new System.Windows.Forms.Button();
             this.btn_PushToRep = new System.Windows.Forms.Button();
             this.button5 = new System.Windows.Forms.Button();
             this.btn_SwitchToRelatedReparatur = new System.Windows.Forms.Button();
@@ -60,11 +58,12 @@
             this.b2BToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.lieferscheineMergeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.etikettenMergeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.regularSalesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.btn_folderInstaCreate = new System.Windows.Forms.Button();
             this.btn_buybackPriceAdaptions = new System.Windows.Forms.Button();
             this.lbl_LastPayPalImport = new System.Windows.Forms.Label();
             this.lbl_LastBuyBackSync = new System.Windows.Forms.Label();
-            this.regularSalesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.btn_PrintLabelForSellOff = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.eigenbelegeDGV)).BeginInit();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
@@ -162,32 +161,6 @@
             // openFD
             // 
             this.openFD.FileName = "openFD";
-            // 
-            // btn_SelectAllRows
-            // 
-            this.btn_SelectAllRows.BackColor = System.Drawing.SystemColors.ActiveCaption;
-            this.btn_SelectAllRows.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btn_SelectAllRows.ForeColor = System.Drawing.Color.Black;
-            this.btn_SelectAllRows.Location = new System.Drawing.Point(919, 179);
-            this.btn_SelectAllRows.Name = "btn_SelectAllRows";
-            this.btn_SelectAllRows.Size = new System.Drawing.Size(134, 26);
-            this.btn_SelectAllRows.TabIndex = 28;
-            this.btn_SelectAllRows.Text = "Alles auswählen";
-            this.btn_SelectAllRows.UseVisualStyleBackColor = false;
-            this.btn_SelectAllRows.Click += new System.EventHandler(this.btn_SelectAllRows_Click);
-            // 
-            // btn_DeleteAll
-            // 
-            this.btn_DeleteAll.BackColor = System.Drawing.SystemColors.ActiveCaption;
-            this.btn_DeleteAll.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btn_DeleteAll.ForeColor = System.Drawing.Color.Black;
-            this.btn_DeleteAll.Location = new System.Drawing.Point(1082, 179);
-            this.btn_DeleteAll.Name = "btn_DeleteAll";
-            this.btn_DeleteAll.Size = new System.Drawing.Size(134, 26);
-            this.btn_DeleteAll.TabIndex = 29;
-            this.btn_DeleteAll.Text = "Alles löschen";
-            this.btn_DeleteAll.UseVisualStyleBackColor = false;
-            this.btn_DeleteAll.Click += new System.EventHandler(this.btn_DeleteAll_Click);
             // 
             // btn_PushToRep
             // 
@@ -388,6 +361,13 @@
             this.etikettenMergeToolStripMenuItem.Text = "Etiketten Merge";
             this.etikettenMergeToolStripMenuItem.Click += new System.EventHandler(this.etikettenMergeToolStripMenuItem_Click);
             // 
+            // regularSalesToolStripMenuItem
+            // 
+            this.regularSalesToolStripMenuItem.Name = "regularSalesToolStripMenuItem";
+            this.regularSalesToolStripMenuItem.Size = new System.Drawing.Size(91, 20);
+            this.regularSalesToolStripMenuItem.Text = "Regular Sales ";
+            this.regularSalesToolStripMenuItem.Click += new System.EventHandler(this.regularSalesToolStripMenuItem_Click);
+            // 
             // btn_folderInstaCreate
             // 
             this.btn_folderInstaCreate.BackColor = System.Drawing.SystemColors.ActiveCaption;
@@ -406,7 +386,7 @@
             this.btn_buybackPriceAdaptions.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.btn_buybackPriceAdaptions.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btn_buybackPriceAdaptions.ForeColor = System.Drawing.Color.Black;
-            this.btn_buybackPriceAdaptions.Location = new System.Drawing.Point(688, 80);
+            this.btn_buybackPriceAdaptions.Location = new System.Drawing.Point(679, 80);
             this.btn_buybackPriceAdaptions.Name = "btn_buybackPriceAdaptions";
             this.btn_buybackPriceAdaptions.Size = new System.Drawing.Size(134, 26);
             this.btn_buybackPriceAdaptions.TabIndex = 50;
@@ -438,12 +418,18 @@
             this.lbl_LastBuyBackSync.TabIndex = 52;
             this.lbl_LastBuyBackSync.Text = "Letzter BuyBackSync:";
             // 
-            // regularSalesToolStripMenuItem
+            // btn_PrintLabelForSellOff
             // 
-            this.regularSalesToolStripMenuItem.Name = "regularSalesToolStripMenuItem";
-            this.regularSalesToolStripMenuItem.Size = new System.Drawing.Size(91, 20);
-            this.regularSalesToolStripMenuItem.Text = "Regular Sales ";
-            this.regularSalesToolStripMenuItem.Click += new System.EventHandler(this.regularSalesToolStripMenuItem_Click);
+            this.btn_PrintLabelForSellOff.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            this.btn_PrintLabelForSellOff.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btn_PrintLabelForSellOff.ForeColor = System.Drawing.Color.Black;
+            this.btn_PrintLabelForSellOff.Location = new System.Drawing.Point(835, 80);
+            this.btn_PrintLabelForSellOff.Name = "btn_PrintLabelForSellOff";
+            this.btn_PrintLabelForSellOff.Size = new System.Drawing.Size(134, 26);
+            this.btn_PrintLabelForSellOff.TabIndex = 53;
+            this.btn_PrintLabelForSellOff.Text = "Etikett Sell Off";
+            this.btn_PrintLabelForSellOff.UseVisualStyleBackColor = false;
+            this.btn_PrintLabelForSellOff.Click += new System.EventHandler(this.btn_PrintLabelForSellOff_Click);
             // 
             // Eigenbelege
             // 
@@ -451,6 +437,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
             this.ClientSize = new System.Drawing.Size(1264, 836);
+            this.Controls.Add(this.btn_PrintLabelForSellOff);
             this.Controls.Add(this.lbl_LastBuyBackSync);
             this.Controls.Add(this.lbl_LastPayPalImport);
             this.Controls.Add(this.btn_buybackPriceAdaptions);
@@ -463,8 +450,6 @@
             this.Controls.Add(this.btn_SwitchToRelatedReparatur);
             this.Controls.Add(this.button5);
             this.Controls.Add(this.btn_PushToRep);
-            this.Controls.Add(this.btn_DeleteAll);
-            this.Controls.Add(this.btn_SelectAllRows);
             this.Controls.Add(this.button3);
             this.Controls.Add(this.btn_eigenbelegRemove);
             this.Controls.Add(this.btn_eigenbelegEdit);
@@ -498,8 +483,6 @@
         private System.Windows.Forms.Button button3;
         private System.Windows.Forms.OpenFileDialog openFD;
         private System.Windows.Forms.FolderBrowserDialog folderBrowserDialog1;
-        private System.Windows.Forms.Button btn_SelectAllRows;
-        private System.Windows.Forms.Button btn_DeleteAll;
         private System.Windows.Forms.Button btn_PushToRep;
         private System.Windows.Forms.Button button5;
         private System.Windows.Forms.Button btn_SwitchToRelatedReparatur;
@@ -525,6 +508,7 @@
         private System.Windows.Forms.ToolStripMenuItem lieferscheineMergeToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem etikettenMergeToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem regularSalesToolStripMenuItem;
+        private System.Windows.Forms.Button btn_PrintLabelForSellOff;
     }
 }
 

@@ -22,6 +22,9 @@ namespace EigenbelegToolAlpha
 
             CRUDQueries window = new CRUDQueries();
             StartMenu window2 = new StartMenu();
+
+            //PayPalAPI payPalAPI = new PayPalAPI();
+            //payPalAPI.Main();
             //Application.Run(new EvaluationsFirstPage());
             if (window2.CheckUser() == false)
             {

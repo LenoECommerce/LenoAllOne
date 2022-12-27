@@ -30,8 +30,6 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Reparaturen));
             this.reparaturenDGV = new System.Windows.Forms.DataGridView();
-            this.btn_DeleteAll = new System.Windows.Forms.Button();
-            this.btn_SelectAllRows = new System.Windows.Forms.Button();
             this.btn_reparaturenEdit = new System.Windows.Forms.Button();
             this.btn_reparaturenCreate = new System.Windows.Forms.Button();
             this.btn_reparaturenDelete = new System.Windows.Forms.Button();
@@ -81,32 +79,6 @@
             this.reparaturenDGV.TabIndex = 29;
             this.reparaturenDGV.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.reparaturenDGV_CellClick);
             this.reparaturenDGV.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.reparaturenDGV_CellContentClick);
-            // 
-            // btn_DeleteAll
-            // 
-            this.btn_DeleteAll.BackColor = System.Drawing.SystemColors.ActiveCaption;
-            this.btn_DeleteAll.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btn_DeleteAll.ForeColor = System.Drawing.Color.Black;
-            this.btn_DeleteAll.Location = new System.Drawing.Point(1073, 250);
-            this.btn_DeleteAll.Name = "btn_DeleteAll";
-            this.btn_DeleteAll.Size = new System.Drawing.Size(134, 26);
-            this.btn_DeleteAll.TabIndex = 31;
-            this.btn_DeleteAll.Text = "Alles löschen";
-            this.btn_DeleteAll.UseVisualStyleBackColor = false;
-            this.btn_DeleteAll.Click += new System.EventHandler(this.btn_DeleteAll_Click);
-            // 
-            // btn_SelectAllRows
-            // 
-            this.btn_SelectAllRows.BackColor = System.Drawing.SystemColors.ActiveCaption;
-            this.btn_SelectAllRows.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btn_SelectAllRows.ForeColor = System.Drawing.Color.Black;
-            this.btn_SelectAllRows.Location = new System.Drawing.Point(915, 250);
-            this.btn_SelectAllRows.Name = "btn_SelectAllRows";
-            this.btn_SelectAllRows.Size = new System.Drawing.Size(134, 26);
-            this.btn_SelectAllRows.TabIndex = 30;
-            this.btn_SelectAllRows.Text = "Alles auswählen";
-            this.btn_SelectAllRows.UseVisualStyleBackColor = false;
-            this.btn_SelectAllRows.Click += new System.EventHandler(this.btn_SelectAllRows_Click);
             // 
             // btn_reparaturenEdit
             // 
@@ -366,8 +338,6 @@
             this.Controls.Add(this.btn_reparaturenDelete);
             this.Controls.Add(this.btn_reparaturenEdit);
             this.Controls.Add(this.btn_reparaturenCreate);
-            this.Controls.Add(this.btn_DeleteAll);
-            this.Controls.Add(this.btn_SelectAllRows);
             this.Controls.Add(this.reparaturenDGV);
             this.Controls.Add(this.menuStrip1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
@@ -388,8 +358,6 @@
 
         #endregion
         public System.Windows.Forms.DataGridView reparaturenDGV;
-        private System.Windows.Forms.Button btn_DeleteAll;
-        private System.Windows.Forms.Button btn_SelectAllRows;
         private System.Windows.Forms.Button btn_reparaturenEdit;
         private System.Windows.Forms.Button btn_reparaturenCreate;
         private System.Windows.Forms.Button btn_reparaturenDelete;

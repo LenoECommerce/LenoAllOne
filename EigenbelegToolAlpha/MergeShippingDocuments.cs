@@ -33,7 +33,7 @@ namespace EigenbelegToolAlpha
         public string barcodePath = folderPath + "barcode";
         public string text = "";
         public int counter = 0;
-        public string[] languages = new string[8] {"Pedido n° ","Bestellnr. ","Ordine n° ","Order no. ","Tilausnumero ", "N.º de encomenda ", "Commande n°", "Bestelnr. " };
+        public string[] languages = new string[9] {"Pedido n° ","Bestellnr. ","Ordine n° ","Order no. ","Tilausnumero ", "N.º de encomenda ", "Commande n°", "Bestelnr. " , "Αριθμός παραγγελίας " };
 
         public MergeShippingDocuments(string folderValue, string type)
         {

@@ -142,9 +142,9 @@
             this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label4.Location = new System.Drawing.Point(49, 157);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(137, 18);
+            this.label4.Size = new System.Drawing.Size(138, 18);
             this.label4.TabIndex = 71;
-            this.label4.Text = "Display Template";
+            this.label4.Text = "Sell Off Template";
             // 
             // label5
             // 

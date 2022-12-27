@@ -33,7 +33,7 @@ namespace EigenbelegToolAlpha
             comboBox_PreferdStartWindow.Text = defaultStartingWindow;
 
             lbl_currentPathModellTemplate.Text = CRUDQueries.ExecuteQueryWithResultString("ConfigUser", "TemplateModell", "Nutzer", currentUser);
-            lbl_currentPathDisplayTemplate.Text = CRUDQueries.ExecuteQueryWithResultString("ConfigUser", "TemplateDisplay", "Nutzer", currentUser);
+            lbl_currentPathDisplayTemplate.Text = CRUDQueries.ExecuteQueryWithResultString("ConfigUser", "TemplateSellOff", "Nutzer", currentUser);
             lbl_currentPathPlatinenTemplate.Text = CRUDQueries.ExecuteQueryWithResultString("ConfigUser", "TemplatePlatine", "Nutzer", currentUser);
             lbl_currentPathSonstigesTemplate.Text = CRUDQueries.ExecuteQueryWithResultString("ConfigUser", "TemplateSonstigeTeile", "Nutzer", currentUser);
             lbl_SaveLocationPDF.Text = CRUDQueries.ExecuteQueryWithResultString("ConfigUser", "PathSaveLocationEB", "Nutzer", currentUser);
@@ -69,7 +69,7 @@ namespace EigenbelegToolAlpha
             openFD.ShowDialog();
             string selectedFileName = openFD.FileName;
             selectedFileName = selectedFileName.Replace(@"\", @"\\");
-            CRUDQueries.ExecuteQuery("UPDATE `ConfigUser` SET `TemplateDisplay` = '" + selectedFileName + "' WHERE `Nutzer` = '" + currentUser + "'");
+            CRUDQueries.ExecuteQuery("UPDATE `ConfigUser` SET `TemplateSellOff` = '" + selectedFileName + "' WHERE `Nutzer` = '" + currentUser + "'");
             lbl_currentPathDisplayTemplate.Text = selectedFileName;
         }
 
