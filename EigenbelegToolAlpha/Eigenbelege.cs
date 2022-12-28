@@ -802,13 +802,9 @@ namespace EigenbelegToolAlpha
                 doc.Open(path);
                 doc.SetPrinter("Brother QL-600", true);
 
-                var numberIndex = doc.GetBarcodeIndex("number");
-                var modelIndex = doc.GetBarcodeIndex("model");
-                var storageIndex = doc.GetBarcodeIndex("storage");
-                doc.SetBarcodeData(numberIndex, eigenbelegNumber);
-                doc.SetBarcodeData(modelIndex, model);
-                doc.SetBarcodeData(storageIndex, storage);
-
+                doc.GetObject("number").Text = eigenbelegNumber;
+                doc.GetObject("model").Text = model;
+                doc.GetObject("storage").Text = storage;
                 doc.StartPrint("", bpac.PrintOptionConstants.bpoDefault);
                 doc.PrintOut(1, bpac.PrintOptionConstants.bpoDefault);
                 doc.EndPrint();

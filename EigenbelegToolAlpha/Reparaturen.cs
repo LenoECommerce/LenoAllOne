@@ -445,7 +445,7 @@ namespace EigenbelegToolAlpha
 
                 bpac.Document doc = new bpac.Document();
                 doc.Open(path);
-                bool test = doc.SetPrinter("Brother QL-600", true);
+                doc.SetPrinter("Brother QL-600", true);
 
                 var temp = doc.GetBarcodeIndex("SKU");
                 var temp2 = doc.GetBarcodeIndex("IMEICombo");
