@@ -64,6 +64,7 @@
             this.lbl_LastPayPalImport = new System.Windows.Forms.Label();
             this.lbl_LastBuyBackSync = new System.Windows.Forms.Label();
             this.btn_PrintLabelForSellOff = new System.Windows.Forms.Button();
+            this.rEGCheckToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             ((System.ComponentModel.ISupportInitialize)(this.eigenbelegeDGV)).BeginInit();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
@@ -262,7 +263,8 @@
             this.b2BToolStripMenuItem,
             this.lieferscheineMergeToolStripMenuItem,
             this.etikettenMergeToolStripMenuItem,
-            this.regularSalesToolStripMenuItem});
+            this.regularSalesToolStripMenuItem,
+            this.rEGCheckToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.Size = new System.Drawing.Size(1264, 24);
@@ -431,6 +433,13 @@
             this.btn_PrintLabelForSellOff.UseVisualStyleBackColor = false;
             this.btn_PrintLabelForSellOff.Click += new System.EventHandler(this.btn_PrintLabelForSellOff_Click);
             // 
+            // rEGCheckToolStripMenuItem
+            // 
+            this.rEGCheckToolStripMenuItem.Name = "rEGCheckToolStripMenuItem";
+            this.rEGCheckToolStripMenuItem.Size = new System.Drawing.Size(76, 20);
+            this.rEGCheckToolStripMenuItem.Text = "REG Check";
+            this.rEGCheckToolStripMenuItem.Click += new System.EventHandler(this.rEGCheckToolStripMenuItem_Click);
+            // 
             // Eigenbelege
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -509,6 +518,7 @@
         private System.Windows.Forms.ToolStripMenuItem etikettenMergeToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem regularSalesToolStripMenuItem;
         private System.Windows.Forms.Button btn_PrintLabelForSellOff;
+        private System.Windows.Forms.ToolStripMenuItem rEGCheckToolStripMenuItem;
     }
 }
 

@@ -101,5 +101,18 @@ namespace EigenbelegToolAlpha
         {
             textBox_eigenbelegAdress.Text = textBox_eigenbelegSellerName.Text;
         }
+
+        private void btn_buybackFillOut_Click(object sender, EventArgs e)
+        {
+            //using (var form = new EigenbelegCreate())
+            //{
+            //    var result = form.ShowDialog();
+            //    if (result == DialogResult.OK)
+            //    {
+            //        string returnValue = "test";
+            //        textBox_eigenbelegSellerName.Text = returnValue;
+            //    }
+            //}
+        }
     }
 }

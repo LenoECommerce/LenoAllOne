@@ -89,8 +89,10 @@ namespace EigenbelegToolAlpha
             }
             foreach (var item in entriesMatched)
             {
-                numbersAsString = string.Join(",", entriesMatched.Select(n => n));
-
+                if (item != "")
+                {
+                    numbersAsString = string.Join(",", entriesMatched.Select(n => n));
+                }
             }
             string message = "Folgende Aufträge sind betroffen: \r\n\r\n" +numbersAsString;
             MessageBox.Show(message);
@@ -786,34 +788,48 @@ namespace EigenbelegToolAlpha
             {
                 return;
             }
-            try
+            using (var form = new EigenbelegeLabelSellOffInput())
             {
-                try
+                var result = form.ShowDialog();
+                if (result == DialogResult.OK)
                 {
-                    path = CRUDQueries.ExecuteQueryWithResultString("ConfigUser", "TemplateSellOff", "Nutzer", currentUser);
+                    try
+                    {
+                        try
+                        {
+                            path = CRUDQueries.ExecuteQueryWithResultString("ConfigUser", "TemplateSellOff", "Nutzer", currentUser);
+                        }
+                        catch (Exception ex)
+                        {
+                            MessageBox.Show("Bitte setze in den Einstellungen dein Template fest; Fehlermeldung:" + ex.Message);
+                        }
+
+                        bpac.Document doc = new bpac.Document();
+                        doc.Open(path);
+                        doc.SetPrinter("Brother QL-600", true);
+                        string barcodeContent = form.imei;
+                        var indexBarcode = doc.GetBarcodeIndex("barcode");
+                        doc.SetBarcodeData(indexBarcode, barcodeContent);
+                        doc.GetObject("number").Text = eigenbelegNumber;
+                        doc.GetObject("model").Text = model;
+                        doc.GetObject("storage").Text = storage;
+                        doc.StartPrint("", bpac.PrintOptionConstants.bpoDefault);
+                        doc.PrintOut(1, bpac.PrintOptionConstants.bpoDefault);
+                        doc.EndPrint();
+                        doc.Close();
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show("Print Error: " + ex.Message);
+                    }
                 }
-                catch (Exception ex)
-                {
-                    MessageBox.Show("Bitte setze in den Einstellungen dein Template fest; Fehlermeldung:" + ex.Message);
-                }
-
-
-                bpac.Document doc = new bpac.Document();
-                doc.Open(path);
-                doc.SetPrinter("Brother QL-600", true);
-
-                doc.GetObject("number").Text = eigenbelegNumber;
-                doc.GetObject("model").Text = model;
-                doc.GetObject("storage").Text = storage;
-                doc.StartPrint("", bpac.PrintOptionConstants.bpoDefault);
-                doc.PrintOut(1, bpac.PrintOptionConstants.bpoDefault);
-                doc.EndPrint();
-                doc.Close();
             }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Print Error: " + ex.Message);
-            }
+        }
+
+        private void rEGCheckToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            openFD.ShowDialog();
+            BillBeeTaxCheck.Analyse(openFD.FileName);
         }
     }
 }

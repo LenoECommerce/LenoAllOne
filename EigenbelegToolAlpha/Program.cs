@@ -23,6 +23,8 @@ namespace EigenbelegToolAlpha
             CRUDQueries window = new CRUDQueries();
             StartMenu window2 = new StartMenu();
 
+            //BackMarketAPIHandler backMarketAPIHandler = new BackMarketAPIHandler();
+            //backMarketAPIHandler.Main();
             //PayPalAPI payPalAPI = new PayPalAPI();
             //payPalAPI.Main();
             //Application.Run(new EvaluationsFirstPage());
@@ -36,9 +38,11 @@ namespace EigenbelegToolAlpha
                 string preferedWindow = CRUDQueries.ExecuteQueryWithResultString("ConfigUser", "Standardfenster", "Nutzer", currentUser).ToString();
                 VideoUpload();
                 RunWindow(preferedWindow);
+
             }
             window.Backup();
         }
+
         private static void RunWindow (string window)
         {
             if (window == "Reparaturen")

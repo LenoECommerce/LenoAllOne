@@ -58,6 +58,7 @@
             this.label14 = new System.Windows.Forms.Label();
             this.comboBox_eigenbelegStorage = new System.Windows.Forms.ComboBox();
             this.comboBox_eigenbelegeCreateDevice = new System.Windows.Forms.ComboBox();
+            this.btn_buybackFillOut = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // comboBox_eigenbelegArrived
@@ -383,11 +384,22 @@
             this.comboBox_eigenbelegeCreateDevice.Size = new System.Drawing.Size(205, 21);
             this.comboBox_eigenbelegeCreateDevice.TabIndex = 93;
             // 
+            // btn_buybackFillOut
+            // 
+            this.btn_buybackFillOut.Location = new System.Drawing.Point(26, 315);
+            this.btn_buybackFillOut.Name = "btn_buybackFillOut";
+            this.btn_buybackFillOut.Size = new System.Drawing.Size(159, 34);
+            this.btn_buybackFillOut.TabIndex = 94;
+            this.btn_buybackFillOut.Text = "BuyBack Fill Out";
+            this.btn_buybackFillOut.UseVisualStyleBackColor = true;
+            this.btn_buybackFillOut.Click += new System.EventHandler(this.btn_buybackFillOut_Click);
+            // 
             // EigenbelegCreate
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 361);
+            this.Controls.Add(this.btn_buybackFillOut);
             this.Controls.Add(this.comboBox_eigenbelegeCreateDevice);
             this.Controls.Add(this.comboBox_eigenbelegStorage);
             this.Controls.Add(this.label14);
@@ -459,5 +471,6 @@
         private System.Windows.Forms.Label label14;
         private System.Windows.Forms.ComboBox comboBox_eigenbelegStorage;
         private System.Windows.Forms.ComboBox comboBox_eigenbelegeCreateDevice;
+        private System.Windows.Forms.Button btn_buybackFillOut;
     }
 }
