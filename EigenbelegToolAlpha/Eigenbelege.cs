@@ -813,8 +813,9 @@ namespace EigenbelegToolAlpha
                         doc.GetObject("number").Text = eigenbelegNumber;
                         doc.GetObject("model").Text = model;
                         doc.GetObject("storage").Text = storage;
+                        doc.GetObject("condition").Text = "Zustand: " + form.condition;
                         doc.StartPrint("", bpac.PrintOptionConstants.bpoDefault);
-                        doc.PrintOut(1, bpac.PrintOptionConstants.bpoDefault);
+                        doc.PrintOut(form.quantity, bpac.PrintOptionConstants.bpoDefault);
                         doc.EndPrint();
                         doc.Close();
                     }
@@ -828,8 +829,8 @@ namespace EigenbelegToolAlpha
 
         private void rEGCheckToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            openFD.ShowDialog();
-            BillBeeTaxCheck.Analyse(openFD.FileName);
+            TaxCheckForeignGrossSales window = new TaxCheckForeignGrossSales();
+            window.Show();
         }
     }
 }

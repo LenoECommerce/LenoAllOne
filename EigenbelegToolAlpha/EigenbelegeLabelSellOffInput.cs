@@ -13,6 +13,9 @@ namespace EigenbelegToolAlpha
     public partial class EigenbelegeLabelSellOffInput : Form
     {
         public string imei = "";
+        public string condition = "";
+        public int quantity = 0;
+
         public EigenbelegeLabelSellOffInput()
         {
             InitializeComponent();
@@ -21,6 +24,8 @@ namespace EigenbelegToolAlpha
         private void btn_Execute_Click(object sender, EventArgs e)
         {
             imei = textBox_IMEI.Text;
+            condition = comboBox_condition.Text;
+            quantity = Convert.ToInt32(comboBox_quantity.Text);
             DialogResult = DialogResult.OK; 
             this.Close();
         }

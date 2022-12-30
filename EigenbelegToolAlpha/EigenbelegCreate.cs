@@ -104,15 +104,15 @@ namespace EigenbelegToolAlpha
 
         private void btn_buybackFillOut_Click(object sender, EventArgs e)
         {
-            //using (var form = new EigenbelegCreate())
-            //{
-            //    var result = form.ShowDialog();
-            //    if (result == DialogResult.OK)
-            //    {
-            //        string returnValue = "test";
-            //        textBox_eigenbelegSellerName.Text = returnValue;
-            //    }
-            //}
+            using (var form = new EigenbelegCreateInputBuyBack())
+            {
+                var result = form.ShowDialog();
+                if (result == DialogResult.OK)
+                {
+                    string orderID = form.orderID;
+                    //action
+                }
+            }
         }
     }
 }

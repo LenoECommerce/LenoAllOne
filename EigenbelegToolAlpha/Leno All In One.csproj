@@ -28,7 +28,7 @@
     <UpdateUrl>https://raw.githubusercontent.com/LenoECommerce/LenoAllOne/main/published/</UpdateUrl>
     <CreateWebPageOnPublish>true</CreateWebPageOnPublish>
     <WebPage>publish.htm</WebPage>
-    <ApplicationRevision>49</ApplicationRevision>
+    <ApplicationRevision>50</ApplicationRevision>
     <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
     <CreateDesktopShortcut>true</CreateDesktopShortcut>
@@ -304,6 +304,12 @@
     <Compile Include="EigenbelegCreate.Designer.cs">
       <DependentUpon>EigenbelegCreate.cs</DependentUpon>
     </Compile>
+    <Compile Include="EigenbelegCreateInputBuyBack.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="EigenbelegCreateInputBuyBack.Designer.cs">
+      <DependentUpon>EigenbelegCreateInputBuyBack.cs</DependentUpon>
+    </Compile>
     <Compile Include="Eigenbelege.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -552,6 +558,12 @@
     <Compile Include="StartMenu.Designer.cs">
       <DependentUpon>StartMenu.cs</DependentUpon>
     </Compile>
+    <Compile Include="TaxCheckForeignGrossSales.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="TaxCheckForeignGrossSales.Designer.cs">
+      <DependentUpon>TaxCheckForeignGrossSales.cs</DependentUpon>
+    </Compile>
     <Compile Include="TextOperations.cs" />
     <Compile Include="WorkWithSpecificRep.cs">
       <SubType>Form</SubType>
@@ -573,6 +585,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="EigenbelegCreate.resx">
       <DependentUpon>EigenbelegCreate.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="EigenbelegCreateInputBuyBack.resx">
+      <DependentUpon>EigenbelegCreateInputBuyBack.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Eigenbelege.resx">
       <DependentUpon>Eigenbelege.cs</DependentUpon>
@@ -700,6 +715,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="StartMenu.resx">
       <DependentUpon>StartMenu.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="TaxCheckForeignGrossSales.resx">
+      <DependentUpon>TaxCheckForeignGrossSales.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="WorkWithSpecificRep.resx">
       <DependentUpon>WorkWithSpecificRep.cs</DependentUpon>

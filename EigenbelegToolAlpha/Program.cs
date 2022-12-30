@@ -27,7 +27,7 @@ namespace EigenbelegToolAlpha
             //backMarketAPIHandler.Main();
             //PayPalAPI payPalAPI = new PayPalAPI();
             //payPalAPI.Main();
-            //Application.Run(new EvaluationsFirstPage());
+
             if (window2.CheckUser() == false)
             {
                 Application.Run(new StartMenu());

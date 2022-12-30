@@ -18,7 +18,7 @@ namespace EigenbelegToolAlpha
         {
 
             string apiKey = "ZGFuZ2UuYnVzaW5lc3NlYmF5QGdtYWlsLmNvbTohRW5rdHVzczc=";
-            string endpointUrl = "https://www.backmarket.fr/ws/listings";
+            string endpointUrl = "https://www.backmarket.fr/ws/buyback/v1/orders?status=RECEIVED";
             string userAgent = "Aufermann & Dange Online Handel GbR";
             HttpWebRequest request = (HttpWebRequest)WebRequest.Create(endpointUrl);
             request.Method = "GET";
@@ -28,7 +28,7 @@ namespace EigenbelegToolAlpha
             request.Headers.Add("Accept-Language: de-de");
             request.UserAgent = userAgent;
 
-
+            
             using (HttpWebResponse response = (HttpWebResponse)request.GetResponse())
             {
                 // Check the status code of the response
