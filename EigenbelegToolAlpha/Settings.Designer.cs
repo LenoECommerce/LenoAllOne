@@ -42,8 +42,6 @@
             this.label5 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
             this.lbl_currentPathDisplayTemplate = new System.Windows.Forms.Label();
-            this.lbl_pathSnaggit = new System.Windows.Forms.Label();
-            this.lbl_pathElgato = new System.Windows.Forms.Label();
             this.btn_LocationTemplates = new System.Windows.Forms.Button();
             this.label20 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
@@ -57,6 +55,8 @@
             this.comboBox_PreferdStartWindow = new System.Windows.Forms.ComboBox();
             this.label12 = new System.Windows.Forms.Label();
             this.lbl_PathVideosUpload = new System.Windows.Forms.Label();
+            this.textBox_pathsnagit = new System.Windows.Forms.TextBox();
+            this.textBox_pathelgato = new System.Windows.Forms.TextBox();
             this.SuspendLayout();
             // 
             // label8
@@ -174,24 +174,6 @@
             this.lbl_currentPathDisplayTemplate.TabIndex = 74;
             this.lbl_currentPathDisplayTemplate.Text = "label3";
             this.lbl_currentPathDisplayTemplate.Click += new System.EventHandler(this.lbl_currentPathDisplayTemplate_Click);
-            // 
-            // lbl_pathSnaggit
-            // 
-            this.lbl_pathSnaggit.Location = new System.Drawing.Point(212, 200);
-            this.lbl_pathSnaggit.Name = "lbl_pathSnaggit";
-            this.lbl_pathSnaggit.Size = new System.Drawing.Size(345, 39);
-            this.lbl_pathSnaggit.TabIndex = 75;
-            this.lbl_pathSnaggit.Text = "label3";
-            this.lbl_pathSnaggit.Click += new System.EventHandler(this.lbl_currentPathPlatinenTemplate_Click);
-            // 
-            // lbl_pathElgato
-            // 
-            this.lbl_pathElgato.Location = new System.Drawing.Point(212, 239);
-            this.lbl_pathElgato.Name = "lbl_pathElgato";
-            this.lbl_pathElgato.Size = new System.Drawing.Size(345, 39);
-            this.lbl_pathElgato.TabIndex = 76;
-            this.lbl_pathElgato.Text = "label3";
-            this.lbl_pathElgato.Click += new System.EventHandler(this.lbl_currentPathSonstigesTemplate_Click);
             // 
             // btn_LocationTemplates
             // 
@@ -315,11 +297,29 @@
             this.lbl_PathVideosUpload.Text = "lbl_PathVideosUpload";
             this.lbl_PathVideosUpload.Click += new System.EventHandler(this.lbl_PathVideosUpload_Click);
             // 
+            // textBox_pathsnagit
+            // 
+            this.textBox_pathsnagit.Location = new System.Drawing.Point(215, 196);
+            this.textBox_pathsnagit.Name = "textBox_pathsnagit";
+            this.textBox_pathsnagit.Size = new System.Drawing.Size(320, 20);
+            this.textBox_pathsnagit.TabIndex = 93;
+            this.textBox_pathsnagit.TextChanged += new System.EventHandler(this.textBox_pathsnagit_TextChanged);
+            // 
+            // textBox_pathelgato
+            // 
+            this.textBox_pathelgato.Location = new System.Drawing.Point(215, 233);
+            this.textBox_pathelgato.Name = "textBox_pathelgato";
+            this.textBox_pathelgato.Size = new System.Drawing.Size(320, 20);
+            this.textBox_pathelgato.TabIndex = 94;
+            this.textBox_pathelgato.TextChanged += new System.EventHandler(this.textBox_pathelgato_TextChanged);
+            // 
             // Settings
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(572, 589);
+            this.Controls.Add(this.textBox_pathelgato);
+            this.Controls.Add(this.textBox_pathsnagit);
             this.Controls.Add(this.lbl_PathVideosUpload);
             this.Controls.Add(this.label12);
             this.Controls.Add(this.comboBox_PreferdStartWindow);
@@ -332,8 +332,6 @@
             this.Controls.Add(this.label7);
             this.Controls.Add(this.label20);
             this.Controls.Add(this.btn_LocationTemplates);
-            this.Controls.Add(this.lbl_pathElgato);
-            this.Controls.Add(this.lbl_pathSnaggit);
             this.Controls.Add(this.lbl_currentPathDisplayTemplate);
             this.Controls.Add(this.label6);
             this.Controls.Add(this.label5);
@@ -373,8 +371,6 @@
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label lbl_currentPathDisplayTemplate;
-        private System.Windows.Forms.Label lbl_pathSnaggit;
-        private System.Windows.Forms.Label lbl_pathElgato;
         private System.Windows.Forms.Button btn_LocationTemplates;
         private System.Windows.Forms.Label label20;
         private System.Windows.Forms.Label label7;
@@ -388,5 +384,7 @@
         private System.Windows.Forms.ComboBox comboBox_PreferdStartWindow;
         private System.Windows.Forms.Label label12;
         private System.Windows.Forms.Label lbl_PathVideosUpload;
+        private System.Windows.Forms.TextBox textBox_pathsnagit;
+        private System.Windows.Forms.TextBox textBox_pathelgato;
     }
 }

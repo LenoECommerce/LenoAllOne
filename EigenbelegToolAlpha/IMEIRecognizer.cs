@@ -8,6 +8,7 @@ using System.IO;
 using Google.Apis.Drive.v3.Data;
 using WindowsInput;
 using WindowsInput.Native;
+using System.Windows.Forms;
 
 namespace EigenbelegToolAlpha
 {
@@ -18,20 +19,27 @@ namespace EigenbelegToolAlpha
             string currentUser = System.IO.File.ReadAllText(Environment.CurrentDirectory + @"\user.txt");
             OpenAndMinimizeApp(CRUDQueries.ExecuteQueryWithResultString("ConfigUser", "PathSnagitExe", "Nutzer", currentUser));
             OpenAndMaximizeApp(CRUDQueries.ExecuteQueryWithResultString("ConfigUser", "PathElgatoCameraHubExe", "Nutzer", currentUser));
+            try
+            {
+                string desktopPath = Environment.GetFolderPath(Environment.SpecialFolder.Desktop) + @"\";
+                string fileName = desktopPath + @"Screenshot_1.png";
+                Thread.Sleep(3000);
+                System.Windows.Forms.SendKeys.SendWait("{PRTSC}");
+                Thread.Sleep(1000);
+                System.Windows.Forms.SendKeys.SendWait("^s");
+                Thread.Sleep(1000);
+                System.Diagnostics.Process.Start(fileName);
+                MaximizeCurrentApp();
+                Thread.Sleep(1000);
+                System.Windows.Forms.SendKeys.SendWait("{F9}");
+                Thread.Sleep(1000);
+                System.IO.File.Delete((fileName));
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
 
-            string desktopPath = Environment.GetFolderPath(Environment.SpecialFolder.Desktop) + @"\";
-            string fileName = desktopPath + @"Screenshot_1.png";
-            Thread.Sleep(3000);
-            System.Windows.Forms.SendKeys.SendWait("{PRTSC}");
-            Thread.Sleep(1000);
-            System.Windows.Forms.SendKeys.SendWait("^s");
-            Thread.Sleep(1000);
-            System.Diagnostics.Process.Start(fileName);
-            MaximizeCurrentApp();
-            Thread.Sleep(1000);
-            System.Windows.Forms.SendKeys.SendWait("{F9}");
-            Thread.Sleep(1000);
-            System.IO.File.Delete((fileName));
         }
         public void OpenAndMinimizeApp(string path)
         {
