@@ -34,8 +34,8 @@ namespace EigenbelegToolAlpha
 
             lbl_currentPathModellTemplate.Text = CRUDQueries.ExecuteQueryWithResultString("ConfigUser", "TemplateModell", "Nutzer", currentUser);
             lbl_currentPathDisplayTemplate.Text = CRUDQueries.ExecuteQueryWithResultString("ConfigUser", "TemplateSellOff", "Nutzer", currentUser);
-            lbl_currentPathPlatinenTemplate.Text = CRUDQueries.ExecuteQueryWithResultString("ConfigUser", "TemplatePlatine", "Nutzer", currentUser);
-            lbl_currentPathSonstigesTemplate.Text = CRUDQueries.ExecuteQueryWithResultString("ConfigUser", "TemplateSonstigeTeile", "Nutzer", currentUser);
+            lbl_pathSnaggit.Text = CRUDQueries.ExecuteQueryWithResultString("ConfigUser", "PathSnagitExe", "Nutzer", currentUser);
+            lbl_pathElgato.Text = CRUDQueries.ExecuteQueryWithResultString("ConfigUser", "PathElgatoCameraHubExe", "Nutzer", currentUser);
             lbl_SaveLocationPDF.Text = CRUDQueries.ExecuteQueryWithResultString("ConfigUser", "PathSaveLocationEB", "Nutzer", currentUser);
             lbl_SourceImages.Text = CRUDQueries.ExecuteQueryWithResultString("ConfigUser", "PathImagesEB", "Nutzer", currentUser);
             lbl_PathVideosUpload.Text = CRUDQueries.ExecuteQueryWithResultString("ConfigUser", "PathVideosForUpload", "Nutzer", currentUser);
@@ -78,8 +78,8 @@ namespace EigenbelegToolAlpha
             openFD.ShowDialog();
             string selectedFileName = openFD.FileName;
             selectedFileName = selectedFileName.Replace(@"\", @"\\");
-            CRUDQueries.ExecuteQuery("UPDATE `ConfigUser` SET `TemplatePlatine` = '" + selectedFileName + "' WHERE `Nutzer` = '" + currentUser + "'");
-            lbl_currentPathPlatinenTemplate.Text = selectedFileName;
+            CRUDQueries.ExecuteQuery("UPDATE `ConfigUser` SET `PathSnagitExe` = '" + selectedFileName + "' WHERE `Nutzer` = '" + currentUser + "'");
+            lbl_pathSnaggit.Text = selectedFileName;
         }
 
         private void lbl_currentPathSonstigesTemplate_Click(object sender, EventArgs e)
@@ -87,8 +87,8 @@ namespace EigenbelegToolAlpha
             openFD.ShowDialog();
             string selectedFileName = openFD.FileName;
             selectedFileName = selectedFileName.Replace(@"\", @"\\");
-            CRUDQueries.ExecuteQuery("UPDATE `ConfigUser` SET `TemplateSonstigeTeile` = '" + selectedFileName + "' WHERE `Nutzer` = '" + currentUser + "'");
-            lbl_currentPathSonstigesTemplate.Text = selectedFileName;
+            CRUDQueries.ExecuteQuery("UPDATE `ConfigUser` SET `PathElgatoCameraHubExe` = '" + selectedFileName + "' WHERE `Nutzer` = '" + currentUser + "'");
+            lbl_pathElgato.Text = selectedFileName;
         }
 
         private void btn_LocationTemplates_Click(object sender, EventArgs e)

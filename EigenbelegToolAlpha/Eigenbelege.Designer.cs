@@ -59,12 +59,13 @@
             this.lieferscheineMergeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.etikettenMergeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.regularSalesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.rEGCheckToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.btn_folderInstaCreate = new System.Windows.Forms.Button();
             this.btn_buybackPriceAdaptions = new System.Windows.Forms.Button();
             this.lbl_LastPayPalImport = new System.Windows.Forms.Label();
             this.lbl_LastBuyBackSync = new System.Windows.Forms.Label();
             this.btn_PrintLabelForSellOff = new System.Windows.Forms.Button();
-            this.rEGCheckToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.iMEIErkennungToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             ((System.ComponentModel.ISupportInitialize)(this.eigenbelegeDGV)).BeginInit();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
@@ -264,7 +265,8 @@
             this.lieferscheineMergeToolStripMenuItem,
             this.etikettenMergeToolStripMenuItem,
             this.regularSalesToolStripMenuItem,
-            this.rEGCheckToolStripMenuItem});
+            this.rEGCheckToolStripMenuItem,
+            this.iMEIErkennungToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.Size = new System.Drawing.Size(1264, 24);
@@ -370,6 +372,13 @@
             this.regularSalesToolStripMenuItem.Text = "Regular Sales ";
             this.regularSalesToolStripMenuItem.Click += new System.EventHandler(this.regularSalesToolStripMenuItem_Click);
             // 
+            // rEGCheckToolStripMenuItem
+            // 
+            this.rEGCheckToolStripMenuItem.Name = "rEGCheckToolStripMenuItem";
+            this.rEGCheckToolStripMenuItem.Size = new System.Drawing.Size(76, 20);
+            this.rEGCheckToolStripMenuItem.Text = "REG Check";
+            this.rEGCheckToolStripMenuItem.Click += new System.EventHandler(this.rEGCheckToolStripMenuItem_Click);
+            // 
             // btn_folderInstaCreate
             // 
             this.btn_folderInstaCreate.BackColor = System.Drawing.SystemColors.ActiveCaption;
@@ -433,12 +442,12 @@
             this.btn_PrintLabelForSellOff.UseVisualStyleBackColor = false;
             this.btn_PrintLabelForSellOff.Click += new System.EventHandler(this.btn_PrintLabelForSellOff_Click);
             // 
-            // rEGCheckToolStripMenuItem
+            // iMEIErkennungToolStripMenuItem
             // 
-            this.rEGCheckToolStripMenuItem.Name = "rEGCheckToolStripMenuItem";
-            this.rEGCheckToolStripMenuItem.Size = new System.Drawing.Size(76, 20);
-            this.rEGCheckToolStripMenuItem.Text = "REG Check";
-            this.rEGCheckToolStripMenuItem.Click += new System.EventHandler(this.rEGCheckToolStripMenuItem_Click);
+            this.iMEIErkennungToolStripMenuItem.Name = "iMEIErkennungToolStripMenuItem";
+            this.iMEIErkennungToolStripMenuItem.Size = new System.Drawing.Size(102, 20);
+            this.iMEIErkennungToolStripMenuItem.Text = "IMEI Erkennung";
+            this.iMEIErkennungToolStripMenuItem.Click += new System.EventHandler(this.iMEIErkennungToolStripMenuItem_Click);
             // 
             // Eigenbelege
             // 
@@ -519,6 +528,7 @@
         private System.Windows.Forms.ToolStripMenuItem regularSalesToolStripMenuItem;
         private System.Windows.Forms.Button btn_PrintLabelForSellOff;
         private System.Windows.Forms.ToolStripMenuItem rEGCheckToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem iMEIErkennungToolStripMenuItem;
     }
 }
 

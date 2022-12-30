@@ -42,8 +42,8 @@
             this.label5 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
             this.lbl_currentPathDisplayTemplate = new System.Windows.Forms.Label();
-            this.lbl_currentPathPlatinenTemplate = new System.Windows.Forms.Label();
-            this.lbl_currentPathSonstigesTemplate = new System.Windows.Forms.Label();
+            this.lbl_pathSnaggit = new System.Windows.Forms.Label();
+            this.lbl_pathElgato = new System.Windows.Forms.Label();
             this.btn_LocationTemplates = new System.Windows.Forms.Button();
             this.label20 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
@@ -152,9 +152,9 @@
             this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label5.Location = new System.Drawing.Point(49, 196);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(142, 18);
+            this.label5.Size = new System.Drawing.Size(94, 18);
             this.label5.TabIndex = 72;
-            this.label5.Text = "Platinen Template";
+            this.label5.Text = "Pfad Snagit";
             // 
             // label6
             // 
@@ -162,9 +162,9 @@
             this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label6.Location = new System.Drawing.Point(48, 235);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(157, 18);
+            this.label6.Size = new System.Drawing.Size(159, 18);
             this.label6.TabIndex = 73;
-            this.label6.Text = "Sonstiges Template";
+            this.label6.Text = "Pfad Elgato Camera";
             // 
             // lbl_currentPathDisplayTemplate
             // 
@@ -175,23 +175,23 @@
             this.lbl_currentPathDisplayTemplate.Text = "label3";
             this.lbl_currentPathDisplayTemplate.Click += new System.EventHandler(this.lbl_currentPathDisplayTemplate_Click);
             // 
-            // lbl_currentPathPlatinenTemplate
+            // lbl_pathSnaggit
             // 
-            this.lbl_currentPathPlatinenTemplate.Location = new System.Drawing.Point(212, 200);
-            this.lbl_currentPathPlatinenTemplate.Name = "lbl_currentPathPlatinenTemplate";
-            this.lbl_currentPathPlatinenTemplate.Size = new System.Drawing.Size(345, 39);
-            this.lbl_currentPathPlatinenTemplate.TabIndex = 75;
-            this.lbl_currentPathPlatinenTemplate.Text = "label3";
-            this.lbl_currentPathPlatinenTemplate.Click += new System.EventHandler(this.lbl_currentPathPlatinenTemplate_Click);
+            this.lbl_pathSnaggit.Location = new System.Drawing.Point(212, 200);
+            this.lbl_pathSnaggit.Name = "lbl_pathSnaggit";
+            this.lbl_pathSnaggit.Size = new System.Drawing.Size(345, 39);
+            this.lbl_pathSnaggit.TabIndex = 75;
+            this.lbl_pathSnaggit.Text = "label3";
+            this.lbl_pathSnaggit.Click += new System.EventHandler(this.lbl_currentPathPlatinenTemplate_Click);
             // 
-            // lbl_currentPathSonstigesTemplate
+            // lbl_pathElgato
             // 
-            this.lbl_currentPathSonstigesTemplate.Location = new System.Drawing.Point(212, 239);
-            this.lbl_currentPathSonstigesTemplate.Name = "lbl_currentPathSonstigesTemplate";
-            this.lbl_currentPathSonstigesTemplate.Size = new System.Drawing.Size(345, 39);
-            this.lbl_currentPathSonstigesTemplate.TabIndex = 76;
-            this.lbl_currentPathSonstigesTemplate.Text = "label3";
-            this.lbl_currentPathSonstigesTemplate.Click += new System.EventHandler(this.lbl_currentPathSonstigesTemplate_Click);
+            this.lbl_pathElgato.Location = new System.Drawing.Point(212, 239);
+            this.lbl_pathElgato.Name = "lbl_pathElgato";
+            this.lbl_pathElgato.Size = new System.Drawing.Size(345, 39);
+            this.lbl_pathElgato.TabIndex = 76;
+            this.lbl_pathElgato.Text = "label3";
+            this.lbl_pathElgato.Click += new System.EventHandler(this.lbl_currentPathSonstigesTemplate_Click);
             // 
             // btn_LocationTemplates
             // 
@@ -332,8 +332,8 @@
             this.Controls.Add(this.label7);
             this.Controls.Add(this.label20);
             this.Controls.Add(this.btn_LocationTemplates);
-            this.Controls.Add(this.lbl_currentPathSonstigesTemplate);
-            this.Controls.Add(this.lbl_currentPathPlatinenTemplate);
+            this.Controls.Add(this.lbl_pathElgato);
+            this.Controls.Add(this.lbl_pathSnaggit);
             this.Controls.Add(this.lbl_currentPathDisplayTemplate);
             this.Controls.Add(this.label6);
             this.Controls.Add(this.label5);
@@ -373,8 +373,8 @@
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label lbl_currentPathDisplayTemplate;
-        private System.Windows.Forms.Label lbl_currentPathPlatinenTemplate;
-        private System.Windows.Forms.Label lbl_currentPathSonstigesTemplate;
+        private System.Windows.Forms.Label lbl_pathSnaggit;
+        private System.Windows.Forms.Label lbl_pathElgato;
         private System.Windows.Forms.Button btn_LocationTemplates;
         private System.Windows.Forms.Label label20;
         private System.Windows.Forms.Label label7;

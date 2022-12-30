@@ -832,5 +832,11 @@ namespace EigenbelegToolAlpha
             TaxCheckForeignGrossSales window = new TaxCheckForeignGrossSales();
             window.Show();
         }
+
+        private void iMEIErkennungToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            IMEIRecognizer iMEIRecognizer = new IMEIRecognizer();
+            iMEIRecognizer.Main();
+        }
     }
 }
