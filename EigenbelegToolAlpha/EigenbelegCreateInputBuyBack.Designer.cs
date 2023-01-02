@@ -56,11 +56,11 @@
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.ForeColor = System.Drawing.SystemColors.ButtonFace;
-            this.label1.Location = new System.Drawing.Point(57, 35);
+            this.label1.Location = new System.Drawing.Point(36, 33);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(289, 24);
+            this.label1.Size = new System.Drawing.Size(314, 24);
             this.label1.TabIndex = 3;
-            this.label1.Text = "Bitte Bestellnummer eintragen";
+            this.label1.Text = "Bitte Sendungsnummer scannen";
             // 
             // EigenbelegCreateInputBuyBack
             // 
@@ -76,7 +76,7 @@
             this.MaximizeBox = false;
             this.Name = "EigenbelegCreateInputBuyBack";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Bestellnummer eingeben";
+            this.Text = "Sendungsnummer Input";
             this.ResumeLayout(false);
             this.PerformLayout();
 

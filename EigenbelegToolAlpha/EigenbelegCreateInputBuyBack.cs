@@ -12,7 +12,7 @@ namespace EigenbelegToolAlpha
 {
     public partial class EigenbelegCreateInputBuyBack : Form
     {
-        public string orderID = "";
+        public string shippingNumber = "";
         public EigenbelegCreateInputBuyBack()
         {
             InitializeComponent();
@@ -20,7 +20,7 @@ namespace EigenbelegToolAlpha
 
         private void btn_Execute_Click(object sender, EventArgs e)
         {
-            orderID = textBox_order.Text;
+            shippingNumber = textBox_order.Text;
             DialogResult = DialogResult.OK;
             this.Close();
         }

@@ -23,8 +23,6 @@ namespace EigenbelegToolAlpha
             CRUDQueries window = new CRUDQueries();
             StartMenu window2 = new StartMenu();
 
-            //BackMarketAPIHandler backMarketAPIHandler = new BackMarketAPIHandler();
-            //backMarketAPIHandler.Main();
             //PayPalAPI payPalAPI = new PayPalAPI();
             //payPalAPI.Main();
 

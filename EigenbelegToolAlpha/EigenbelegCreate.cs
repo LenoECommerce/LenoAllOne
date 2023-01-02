@@ -66,16 +66,6 @@ namespace EigenbelegToolAlpha
             if (comboBox_eigenbelegPlatform.Text.Equals("BackMarket"))
             {
                 comboBox_eigenbelegPaymentMethod.Text = "BuyBack / Lastschrift";
-                //BuyBack Preis Kalkulation
-                using (var form = new EigenbelegBuyBackPriceCalculation())
-                {
-                    var result = form.ShowDialog();
-                    if (result == DialogResult.OK)
-                    {
-                        string val = form.sumup.ToString() +"€";
-                        textBox_eigenbelegTransactionAmount.Text = val;
-                    }
-                }
             }
             else 
             {
@@ -109,10 +99,25 @@ namespace EigenbelegToolAlpha
                 var result = form.ShowDialog();
                 if (result == DialogResult.OK)
                 {
-                    string orderID = form.orderID;
-                    //action
+                    BackMarketAPIHandler backMarketAPIHandler = new BackMarketAPIHandler();
+                    string[] feedback = backMarketAPIHandler.PullBuyBackDataFromOrderID(form.shippingNumber);
+                    textBox_eigenbelegSellerName.Text = feedback[2];
+                    textBox_eigenbelegTransactionAmount.Text = CalculateBackMarketAmount(feedback[4]);
+                    comboBox_eigenbelegeCreateDevice.Text = feedback[0];
+                    comboBox_eigenbelegStorage.Text = feedback[1];
+                    textBox_eigenbelegAdress.Text = feedback[3];
+                    textBox_eigenbelegReference.Text = feedback[5];
+                    comboBox_eigenbelegPlatform.Text = "BackMarket";
+                    comboBox_eigenbelegPaymentMethod.Text = "BuyBack / Lastschrift";
+                    MessageBox.Show("Zustand Allgemein: "+feedback[6]+ "\r\n\r\n"+ feedback[7]);
                 }
             }
+        }
+        public string CalculateBackMarketAmount (string adaptValue)
+        {
+            adaptValue = adaptValue.Replace(".",",");
+            double temp = Convert.ToDouble(adaptValue) + (Convert.ToDouble(adaptValue) * 0.1) + 10;
+            return temp.ToString(); 
         }
     }
 }
