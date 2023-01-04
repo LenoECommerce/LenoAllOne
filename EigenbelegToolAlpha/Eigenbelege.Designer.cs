@@ -60,12 +60,13 @@
             this.etikettenMergeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.regularSalesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.rEGCheckToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.iMEIErkennungToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.btn_folderInstaCreate = new System.Windows.Forms.Button();
             this.btn_buybackPriceAdaptions = new System.Windows.Forms.Button();
             this.lbl_LastPayPalImport = new System.Windows.Forms.Label();
             this.lbl_LastBuyBackSync = new System.Windows.Forms.Label();
             this.btn_PrintLabelForSellOff = new System.Windows.Forms.Button();
-            this.iMEIErkennungToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.button2 = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.eigenbelegeDGV)).BeginInit();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
@@ -379,6 +380,13 @@
             this.rEGCheckToolStripMenuItem.Text = "REG Check";
             this.rEGCheckToolStripMenuItem.Click += new System.EventHandler(this.rEGCheckToolStripMenuItem_Click);
             // 
+            // iMEIErkennungToolStripMenuItem
+            // 
+            this.iMEIErkennungToolStripMenuItem.Name = "iMEIErkennungToolStripMenuItem";
+            this.iMEIErkennungToolStripMenuItem.Size = new System.Drawing.Size(102, 20);
+            this.iMEIErkennungToolStripMenuItem.Text = "IMEI Erkennung";
+            this.iMEIErkennungToolStripMenuItem.Click += new System.EventHandler(this.iMEIErkennungToolStripMenuItem_Click);
+            // 
             // btn_folderInstaCreate
             // 
             this.btn_folderInstaCreate.BackColor = System.Drawing.SystemColors.ActiveCaption;
@@ -442,12 +450,17 @@
             this.btn_PrintLabelForSellOff.UseVisualStyleBackColor = false;
             this.btn_PrintLabelForSellOff.Click += new System.EventHandler(this.btn_PrintLabelForSellOff_Click);
             // 
-            // iMEIErkennungToolStripMenuItem
+            // button2
             // 
-            this.iMEIErkennungToolStripMenuItem.Name = "iMEIErkennungToolStripMenuItem";
-            this.iMEIErkennungToolStripMenuItem.Size = new System.Drawing.Size(102, 20);
-            this.iMEIErkennungToolStripMenuItem.Text = "IMEI Erkennung";
-            this.iMEIErkennungToolStripMenuItem.Click += new System.EventHandler(this.iMEIErkennungToolStripMenuItem_Click);
+            this.button2.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            this.button2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button2.Location = new System.Drawing.Point(617, 155);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(121, 26);
+            this.button2.TabIndex = 54;
+            this.button2.Text = "BillBee Test";
+            this.button2.UseVisualStyleBackColor = false;
+            this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
             // Eigenbelege
             // 
@@ -455,6 +468,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
             this.ClientSize = new System.Drawing.Size(1264, 836);
+            this.Controls.Add(this.button2);
             this.Controls.Add(this.btn_PrintLabelForSellOff);
             this.Controls.Add(this.lbl_LastBuyBackSync);
             this.Controls.Add(this.lbl_LastPayPalImport);
@@ -529,6 +543,7 @@
         private System.Windows.Forms.Button btn_PrintLabelForSellOff;
         private System.Windows.Forms.ToolStripMenuItem rEGCheckToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem iMEIErkennungToolStripMenuItem;
+        private System.Windows.Forms.Button button2;
     }
 }
 

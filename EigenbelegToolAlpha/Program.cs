@@ -17,14 +17,15 @@ namespace EigenbelegToolAlpha
         
         static void Main()
         {
+            var s = File.ReadAllText("credentials.json");
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
 
             CRUDQueries window = new CRUDQueries();
             StartMenu window2 = new StartMenu();
 
-            //PayPalAPI payPalAPI = new PayPalAPI();
-            //payPalAPI.Main();
+            //BillBeeAPIHandler.MainAccess();
+            //PayPalAPIHandler.Main();
 
             if (window2.CheckUser() == false)
             {

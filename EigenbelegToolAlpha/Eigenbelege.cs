@@ -18,6 +18,7 @@ using System.Runtime.InteropServices;
 using System.Security.Cryptography;
 using MigraDoc.DocumentObjectModel.Internals;
 using System.Runtime.Remoting.Messaging;
+using Microsoft.Vbe.Interop;
 
 namespace EigenbelegToolAlpha
 {
@@ -837,6 +838,11 @@ namespace EigenbelegToolAlpha
         {
             IMEIRecognizer iMEIRecognizer = new IMEIRecognizer();
             iMEIRecognizer.Main();
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            
         }
     }
 }
