@@ -74,7 +74,14 @@ namespace EigenbelegToolAlpha
             {
                 string response = MainAccess("https://www.backmarket.fr/ws/buyback/v1/orders?page=1&pageSize=100");
                 string totalOrders = FindOutTotalOrders(response);
-                response = MainAccess("https://www.backmarket.fr/ws/buyback/v1/orders?page="+GiveBackPageNumber(totalOrders)+"&pageSize=100");
+                for (int i = GiveBackPageNumber(totalOrders); i >= 0; i--)
+                {
+                    response = MainAccess("https://www.backmarket.fr/ws/buyback/v1/orders?page=" + i.ToString() + "&pageSize=100");
+                    if (DoesPageContainOrder(response,trackingNumber) == true)
+                    {
+                        break;
+                    }
+                }
                 string orderID = FindOrderIdViaShippingNumber(response, trackingNumber);
                 return ConvertResponse(response, orderID);
             }
@@ -83,6 +90,17 @@ namespace EigenbelegToolAlpha
                 MessageBox.Show(ex.Message);
                 string[] test = new string[8] {"/", "/" , "/" , "/" , "0", "/", "/", "/"};
                 return test;
+            }
+        }
+        public bool DoesPageContainOrder(string checkContent, string shippingID)
+        {
+            if (checkContent.Contains(shippingID))
+            {
+                return true;
+            }
+            else
+            {
+                return false;
             }
         }
         public int GiveBackPageNumber(string checkValue)
@@ -99,6 +117,7 @@ namespace EigenbelegToolAlpha
         public string FindOrderIdViaShippingNumber (string response, string shippingNumber)
         {
             var fullLength = response.Length;
+            var temp = response.IndexOf(shippingNumber);
             string textBefore = response.Substring(0, response.IndexOf(shippingNumber));
             var posOrderID = textBefore.LastIndexOf("orderId");
             return response.Substring(posOrderID + 9,7);
