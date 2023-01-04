@@ -17,7 +17,7 @@ namespace EigenbelegToolAlpha
         
         static void Main()
         {
-            var s = File.ReadAllText("credentials.json");
+            //var s = File.ReadAllText("credentials.json");
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
 
