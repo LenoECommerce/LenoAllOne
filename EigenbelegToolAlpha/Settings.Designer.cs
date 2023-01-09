@@ -57,6 +57,8 @@
             this.lbl_PathVideosUpload = new System.Windows.Forms.Label();
             this.textBox_pathsnagit = new System.Windows.Forms.TextBox();
             this.textBox_pathelgato = new System.Windows.Forms.TextBox();
+            this.label13 = new System.Windows.Forms.Label();
+            this.btn_runningCostsEdit = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // label8
@@ -81,7 +83,7 @@
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(383, 548);
+            this.button1.Location = new System.Drawing.Point(383, 601);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(152, 29);
             this.button1.TabIndex = 64;
@@ -313,11 +315,33 @@
             this.textBox_pathelgato.TabIndex = 94;
             this.textBox_pathelgato.TextChanged += new System.EventHandler(this.textBox_pathelgato_TextChanged);
             // 
+            // label13
+            // 
+            this.label13.AutoSize = true;
+            this.label13.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label13.Location = new System.Drawing.Point(53, 534);
+            this.label13.Name = "label13";
+            this.label13.Size = new System.Drawing.Size(134, 18);
+            this.label13.TabIndex = 95;
+            this.label13.Text = "Laufende Kosten";
+            // 
+            // btn_runningCostsEdit
+            // 
+            this.btn_runningCostsEdit.Location = new System.Drawing.Point(215, 531);
+            this.btn_runningCostsEdit.Name = "btn_runningCostsEdit";
+            this.btn_runningCostsEdit.Size = new System.Drawing.Size(121, 26);
+            this.btn_runningCostsEdit.TabIndex = 96;
+            this.btn_runningCostsEdit.Text = "Bearbeiten";
+            this.btn_runningCostsEdit.UseVisualStyleBackColor = true;
+            this.btn_runningCostsEdit.Click += new System.EventHandler(this.btn_runningCostsEdit_Click);
+            // 
             // Settings
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(572, 589);
+            this.ClientSize = new System.Drawing.Size(572, 651);
+            this.Controls.Add(this.btn_runningCostsEdit);
+            this.Controls.Add(this.label13);
             this.Controls.Add(this.textBox_pathelgato);
             this.Controls.Add(this.textBox_pathsnagit);
             this.Controls.Add(this.lbl_PathVideosUpload);
@@ -386,5 +410,7 @@
         private System.Windows.Forms.Label lbl_PathVideosUpload;
         private System.Windows.Forms.TextBox textBox_pathsnagit;
         private System.Windows.Forms.TextBox textBox_pathelgato;
+        private System.Windows.Forms.Label label13;
+        private System.Windows.Forms.Button btn_runningCostsEdit;
     }
 }

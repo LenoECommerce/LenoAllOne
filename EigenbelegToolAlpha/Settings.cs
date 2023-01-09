@@ -120,5 +120,11 @@ namespace EigenbelegToolAlpha
             selectedFileName = selectedFileName.Replace(@"\", @"\\");
             CRUDQueries.ExecuteQuery("UPDATE `ConfigUser` SET `PathElgatoCameraHubExe` = '" + selectedFileName + "' WHERE `Nutzer` = '" + currentUser + "'");
         }
+
+        private void btn_runningCostsEdit_Click(object sender, EventArgs e)
+        {
+            EvaluationRunningCosts window = new EvaluationRunningCosts();
+            window.Show();
+        }
     }
 }
